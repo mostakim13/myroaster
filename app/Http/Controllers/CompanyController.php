@@ -26,6 +26,11 @@ class CompanyController extends Controller
     }
     public function updateCompany(Request $request)
     {
+
+        $request->validate([
+            'file' => 'required'
+        ]);
+
       $image =$request->file('file');
       $filename=null;
       if ($image) {

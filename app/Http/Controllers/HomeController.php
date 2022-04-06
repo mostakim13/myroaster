@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,17 +26,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-
-
         return view('pages.User.index');
     }
     public function adminHome()
     {
-      //dd($id);
+        //dd($id);
         // $admin = User::where('Status', '=', 1)->get();
         if (Auth::user()->Status == 1) {
             return view('pages.Admin.index');
-        } elseif(Auth::user()->Status == 2) {
+        } elseif (Auth::user()->Status == 2) {
             $notification = array(
                 'message' => 'This is inactive !!!',
                 'alert-type' => 'warning'
@@ -49,16 +48,28 @@ class HomeController extends Controller
     }
     public function adminHomeall($id)
     {
-      //dd($id);
+        //dd($id);
         // $admin = User::where('Status', '=', 1)->get();
-        // if (Auth::user()->Status == 1) {
-            return view('pages.Admin.index');
-        // } elseif(Auth::user()->Status == 2) {
-        //     $notification = array(
-        //         'message' => 'This is inactive !!!',
-        //         'alert-type' => 'warning'
-        //     );
-        //     return Redirect()->route('login')->with($notification);
-        // }
+        if (Auth::user()->Status == 1) {
+        return view('pages.Admin.index');
+        } elseif(Auth::user()->Status == 2) {
+            $notification = array(
+                'message' => 'This is inactive !!!',
+                'alert-type' => 'warning'
+            );
+            return Redirect()->route('login')->with($notification);
+        }
     }
+
+    // public function adminsHome(Request $request)
+    // {
+    //     $user = DB::table('users')
+    //         ->where('id', $request->userid)
+    //         ->first();
+    //     $request->session()->put('super_admin', 1);
+    //     $request->session()->put('id', Auth::id());
+    //     if (Auth::loginUsingId($user->id)) {
+    //         return redirect('/');
+    //     }
+    // }
 }

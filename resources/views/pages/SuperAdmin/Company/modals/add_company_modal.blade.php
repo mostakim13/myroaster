@@ -64,7 +64,7 @@
                                           <div class="col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
-                                                  <input type="file" id="image" class="form-control" name="file" placeholder="Company Image" />
+                                                  <input type="file" id="image" class="form-control" name="file" placeholder="Company Image" required/>
                                               </div>
                                           </div>
 

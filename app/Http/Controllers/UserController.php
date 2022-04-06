@@ -12,6 +12,7 @@ use Session;
 use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use App\Notifications\UserCredential;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
@@ -59,12 +60,15 @@ class UserController extends Controller
 
         $user = User::create($input);
 
-
+Auth::logout();
         return redirect()->route('companies')
             ->with('success', 'User created successfully');
     }
     public function storeCompanies(Request $request)
     {
+        $request->validate([
+            'file' => 'required'
+        ]);
         $image = $request->file('file');
         $filename = null;
         if ($image) {
@@ -93,11 +97,10 @@ class UserController extends Controller
                 'company' => $request->company,
                 'companyContact' => $request->companyContact,
                 'image' => $filename,
+                'Status' => 1,
                 'is_admin' => 1,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'created_at' => Carbon::now()
             ]);
-
             $data->notify(new UserCredential($email_data));
             Session::flash('success', 'User has been Successfully Registered!!');
         });
@@ -164,8 +167,14 @@ class UserController extends Controller
 
         $user->assignRole($request->input('roles'));
 
-        return redirect()->route('users.index')
-            ->with('success', 'User updated successfully');
+        if (auth()->user()->is_admin == 1) {
+            return redirect()->route('admin.home')->with('success', 'Admin updated successfully');
+        } elseif (auth()->user()->super_admin == 1) {
+            return redirect()->route('super-admin.home')->with('success', 'Super Admin updated successfully');
+        } else {
+            return redirect()->route('users.index')
+                ->with('success', 'User updated successfully');
+        }
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -28,6 +29,7 @@ class LoginController extends Controller
      *
      * @var string
      */
+    // protected $redirectTo = RouteServiceProvider::HOME;
     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
@@ -41,6 +43,7 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
+
         $input = $request->all();
 
         $this->validate($request, [
@@ -54,7 +57,8 @@ class LoginController extends Controller
                 return redirect()->route('admin.home');
             } elseif (auth()->user()->super_admin == 1) {
                 return redirect()->route('super-admin.home');
-            } else {
+            }
+            else {
                 return redirect()->route('home');
             }
         } else {

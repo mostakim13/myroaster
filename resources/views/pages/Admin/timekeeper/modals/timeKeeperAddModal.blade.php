@@ -22,7 +22,7 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Employee</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="employeeID" aria-label="Default select example" required>
+                                                    <select class="form-control" name="Empid" aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...</option>
                                                         @foreach ($employees as $employee)
                                                             <option value="{{ $employee->id }}">
@@ -35,7 +35,7 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Client</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="clientID" aria-label="Default select example" required>
+                                                    <select class="form-control" name="Clientid" aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...</option>
                                                         @foreach ($clients as $client)
                                                             <option value="{{ $client->id }}">{{ $client->cname }}
@@ -48,7 +48,7 @@
                                             <div class="col-md-12 col-12">
                                                 <label for="">Select Project</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="projectID" aria-label="Default select example">
+                                                    <select class="form-control" name="Projectid" aria-label="Default select example">
                                                         <option value="" disabled selected hidden>Please Choose...</option>
                                                         @foreach ($projects as $project)
                                                             <option value="{{ $project->id }}">{{ $project->pName }}
@@ -57,6 +57,8 @@
                                                     </select>
                                                 </div>
                                             </div>
+
+
                                             <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>

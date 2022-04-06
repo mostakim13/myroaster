@@ -14,19 +14,26 @@ return new class extends Migration
     public function up()
     {
         Schema::create('time_keepers', function (Blueprint $table) {
-            $table->id();
+            $table->integer('Timekeeperid')->autoIncrement();
             $table->unsignedInteger('user_id');
-            $table->string('employeeID');
-            $table->string('clientID');
-            $table->string('projectID');
-            $table->string('projectStartDate');
-            $table->string('projectEndDate');
-            $table->string('roasterStartDate');
-            $table->string('roasterEndDate');
-            $table->string('duration');
-            $table->string('ratePerHour');
-            $table->string('amount');
-            $table->string('remarks');
+            $table->unsignedInteger('Clientid');
+            $table->unsignedInteger('Projectid');
+            $table->unsignedInteger('Empid');
+            $table->unsignedInteger('Companyid')->nullable();
+            // $table->string('projectStartDate');
+            // $table->string('projectEndDate');
+            $table->string('Rodaterdate');
+            $table->string('Shiftstart');
+            $table->string('Shiftend');
+            $table->string('Signon')->nullable();
+            $table->string('Signoff')->nullable();
+            $table->string('Duration');
+            $table->string('Rate');
+            $table->string('Amount');
+            $table->unsignedInteger('Jobtypeid');
+            $table->unsignedInteger('RoasterstatusID');
+            $table->unsignedInteger('Roastertypeid');
+            $table->string('Remarks')->nullable();
             $table->timestamps();
         });
     }

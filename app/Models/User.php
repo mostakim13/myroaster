@@ -21,16 +21,16 @@ class User extends Authenticatable
     protected $fillable = [
 
         'name',
-       'mname',
-       'lname',
-       'email',
-       'password',
-       'super_admin',
-       'is_admin',
-       'company',
-       'companyContact',
-       'image',
-
+        'mname',
+        'lname',
+        'email',
+        'password',
+        'super_admin',
+        'is_admin',
+        'company',
+        'companyContact',
+        'image',
+        'Status'
     ];
 
     /**
