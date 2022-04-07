@@ -88,13 +88,13 @@
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
-                                                  <input type="file" id="image" class="form-control" name="file" placeholder="Avatar" />
+                                                  <input type="file" id="image" class="form-control" name="file" placeholder="Avatar" required/>
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">First Aid License Expire Date *</label>
-                                                  <input type="date" class="form-control" name="first_aid_license" placeholder="First Aid License Expire Date" />
+                                                  <input type="date" class="form-control" name="first_aid_license" placeholder="First Aid License Expire Date"  required/>
                                               </div>
                                           </div>
 

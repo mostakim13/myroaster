@@ -30,6 +30,22 @@ class EmployeeController extends Controller
     //Employee Store
     public function store(Request $request)
     {
+        $request->validate([
+            'file' => 'required',
+            'first_aid_license' => 'required',
+            'fname' => 'required',
+            'mname' => 'required',
+            'lname' => 'required',
+            'address' => 'required',
+            'state' => 'required',
+            'postal_code' => 'required',
+            'email' => 'required|unique:users|email',
+            'contact_number' => 'required|numeric',
+            'date_of_birth' => 'required',
+            'license_no' => 'required',
+            'license_expire_date' => 'required',
+
+        ]);
         $image = $request->file('file');
         $filename = null;
         if ($image) {
@@ -65,15 +81,15 @@ class EmployeeController extends Controller
         $email_data['email'] = $request['email'];
         $email_data['name'] = $request['name'];
         $email_data['password'] = $password;
-        DB::transaction(function() use ($request,$password,$email_data){
-            $data=User::create([
+        DB::transaction(function () use ($request, $password, $email_data) {
+            $data = User::create([
                 'name' => $request->lname,
                 'email' => $request->email,
-                'password'=>Hash::make($password),
+                'password' => Hash::make($password),
                 'company' => $request->company,
             ]);
             $data->notify(new UserCredential($email_data));
-            Session::flash('success','User has been Successfully Registered!!');
+            Session::flash('success', 'User has been Successfully Registered!!');
         });
 
         $notification = array(
@@ -85,9 +101,22 @@ class EmployeeController extends Controller
 
     public function update(Request $request)
     {
-        // $request->validate([
-        //     'image' => 'required'
-        // ]);
+        $request->validate([
+            'file' => 'required',
+            'first_aid_license' => 'required',
+            'fname' => 'required',
+            'mname' => 'required',
+            'lname' => 'required',
+            'address' => 'required',
+            'state' => 'required',
+            'postal_code' => 'required',
+            'email' => 'required|unique:users|email',
+            'contact_number' => 'required|numeric',
+            'date_of_birth' => 'required',
+            'license_no' => 'required',
+            'license_expire_date' => 'required',
+
+        ]);
         $image = $request->file('file');
         $filename = null;
         $uploadedFile = $request->file('employee_image');

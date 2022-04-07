@@ -64,7 +64,7 @@
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
-                                                  <input type="file" id="cimage" class="form-control" name="file" placeholder="Avatar" />
+                                                  <input type="file" id="cimage" class="form-control" name="file" placeholder="Avatar" required/>
                                               </div>
                                           </div>
 

@@ -27,7 +27,7 @@
                                           <div class="col-md-4 col-12">
                                               <div class="form-group">
                                                   <label for="first-name-column">Middle Name</label>
-                                                  <input type="text" id="mname" value="{{$row->mname}}" class="form-control" placeholder="Middle name" name="mname" />
+                                                  <input type="text" id="mname" value="{{$row->mname}}" class="form-control" placeholder="Middle name" name="mname" required />
                                               </div>
                                           </div>
                                           <div class="col-md-4 col-12">
@@ -100,13 +100,13 @@
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
-                                                  <input type="file" id="image" class="form-control" name="employee_image" placeholder="Avatar" />
+                                                  <input type="file" id="image" class="form-control" name="employee_image" placeholder="Avatar" required />
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">First Aid License Expire Date *</label>
-                                                  <input type="date" value="{{$row->first_aid_license}}" class="form-control" name="first_aid_license" placeholder="First Aid License Expire Date" />
+                                                  <input type="date" value="{{$row->first_aid_license}}" class="form-control" name="first_aid_license" placeholder="First Aid License Expire Date" required />
                                               </div>
                                           </div>
 

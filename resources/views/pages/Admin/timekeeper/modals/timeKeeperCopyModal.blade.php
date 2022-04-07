@@ -20,23 +20,29 @@
 
                                         <div class="row">
                                             <div class="col-md-12 col-12">
-                                                <label for="">Select Employee</label>
+                                                <label for="">Select Employee<span
+                                                    class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="employeeID" aria-label="Default select example" required>
-
+                                                    <select class="form-control" name="Empid"
+                                                        aria-label="Default select example" required>
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
                                                         @foreach ($employees as $employee)
                                                             <option value="{{ $employee->id }}">
-                                                                {{ $employee->lname }}</option>
+                                                                {{ $employee->fname }}</option>
                                                         @endforeach
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="col-md-12 col-12">
-                                                <label for="">Select Client</label>
+                                                <label for="">Select Client<span
+                                                    class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="clientID" aria-label="Default select example" required>
-
+                                                    <select class="form-control" name="Clientid"
+                                                        aria-label="Default select example" required>
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
                                                         @foreach ($clients as $client)
                                                             <option value="{{ $client->id }}">{{ $client->cname }}
                                                             </option>
@@ -46,10 +52,13 @@
                                             </div>
 
                                             <div class="col-md-12 col-12">
-                                                <label for="">Select Project</label>
+                                                <label for="">Select Project<span
+                                                    class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="projectID" aria-label="Default select example">
-
+                                                    <select class="form-control" name="Projectid"
+                                                        aria-label="Default select example">
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
                                                         @foreach ($projects as $project)
                                                             <option value="{{ $project->id }}">{{ $project->pName }}
                                                             </option>
@@ -57,39 +66,73 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="col-md-6 col-12">
+
+
+
+
+
+                                            {{-- <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Project Start Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" name="projectStartDate" id="start" class="form-control"
-                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
+                                                    <input type="text" id="start" name="projectStartDate" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD to YYYY-MM-DD" />
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="col-md-6 col-12">
-                                                <label for="email-id-column">Project Ends Date<span
+                                            {{-- <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Project End Date<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="date" name="projectEndDate" class="form-control" id="end"
-                                                        min="{{ Carbon\Carbon::now()->format('Y-m-d') }}">
+                                                    <input type="text" id="end" name="projectEndDate" class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD to YYYY-MM-DD" />
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="col-md-6 col-12">
+
+                                            {{-- <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Roaster Start Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="start_date1" value="{{ $row->roasterStartDate }}" name="roasterStartDate"
+                                                    <input type="text" id="start_date" name="roasterStartDate"
                                                         class="form-control flatpickr-date-time" placeholder="Start"/>
                                                 </div>
-                                            </div>
-                                            <div class="col-md-6 col-12">
+                                            </div> --}}
+                                            {{-- <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Roaster Ends Date & Time<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="end_date1" name="roasterEndDate"
-                                                        class="form-control flatpickr-date-time" value="{{ $row->roasterEndDate }}"
-                                                         placeholder="End" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" onchange="getDuration()"/>
+                                                    <input type="text" id="end_date" name="roasterEndDate"
+                                                        class="form-control flatpickr-date-time"
+                                                         placeholder="End" min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" onchange="getDays()"/>
+                                                </div>
+                                            </div> --}}
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Roaster Date<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" id="start" name="Roasterdate"
+                                                        class="form-control flatpickr-date-time"
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Shift Start<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" id="start_date1" name="Shiftstart"
+                                                        class="form-control flatpickr-date-time"
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Shift End<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" id="end_date1" name="Shiftend"
+                                                        class="form-control flatpickr-date-time"
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" onchange="getDuration()" />
                                                 </div>
                                             </div>
 
@@ -97,30 +140,85 @@
                                                 <label for="email-id-column">Duration<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" name="duration" value="{{ $row->duration }}" class="form-control" placeholder="Duration"
-                                                    id="day1" readonly="readonly"/>
+                                                    <input type="text" name="Duration" class="form-control"
+                                                        placeholder="Duration" id="day1" readonly="readonly" />
                                                 </div>
                                             </div>
 
                                             <div class="col-md-6 col-12">
-                                                <label for="email-id-column">Amount Per Hour<span
+                                                <label for="email-id-column">Rate<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="hourlyRate" value="{{ $row->ratePerHour }}" name="ratePerHour" onchange="roasterAmountPerHour()" class="form-control" placeholder="0"/>
+                                                    <input type="text" id="hourlyRate" name="Rate"
+                                                        onchange="roasterAmountPerHour()" class="form-control"
+                                                        placeholder="0" />
                                                 </div>
                                             </div>
-                                            <div class="col-md-12 col-12">
+                                            <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Amount<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="roasterAmount" value="{{ $row->amount }}" name="amount" class="form-control" placeholder="0" readonly="readonly"/>
+                                                    <input type="text" id="roasterAmount" name="Amount" class="form-control"
+                                                        placeholder="0" readonly="readonly" required/>
                                                 </div>
                                             </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Sign On</label>
+                                                <div class="form-group">
+                                                    <input type="text" name="Signon"
+                                                        class="form-control flatpickr-date-time"
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" required/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-6 col-12">
+                                                <label for="email-id-column">Sign Off</label>
+                                                <div class="form-group">
+                                                    <input type="text" name="Signoff"
+                                                        class="form-control flatpickr-date-time"
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" required/>
+                                                </div>
+                                            </div>
+
                                             <div class="col-md-12 col-12">
-                                                <label for="email-id-column">Remarks<span
+                                                <label for="email-id-column">Job Type ID<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" name="remarks" value="{{ $row->remarks }}" class="form-control" placeholder="remarks" />
+                                                    <input type="text" name="Jobtypeid" class="form-control"
+                                                        placeholder="job type id" required/>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 col-12">
+                                                <label for="">Roaster Status<span
+                                                    class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="RoasterstatusID"
+                                                        aria-label="Default select example">
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
+                                                        <option value="1">Active</option>
+                                                        <option value="2">Inactive</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-12 col-12">
+                                                <label for="email-id-column">Roaster type<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <input type="text" name="Roastertypeid" class="form-control"
+                                                        placeholder="Roaster type id" />
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-12 col-12">
+                                                <label for="email-id-column">Remarks</label>
+                                                <div class="form-group">
+                                                    <input type="text" name="Remarks" class="form-control"
+                                                        placeholder="Remarks" />
                                                 </div>
                                             </div>
 
@@ -141,3 +239,4 @@
         </div>
     </div>
 </div>
+

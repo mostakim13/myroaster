@@ -30,11 +30,12 @@ class TimeKeeperController extends Controller
     //roaster store
     public function storeTimeKeeper(Request $request)
     {
+        // dd($request);
         $request->validate([
             'Clientid' => 'required',
-            'Projected' => 'required',
+            'Projectid' => 'required',
             'Empid' => 'required',
-            'Rodaterdate' => 'required',
+            'Roasterdate' => 'required',
             'Shiftstart' => 'required',
             'Shiftend' => 'required',
             'Duration' => 'required',
@@ -51,7 +52,7 @@ class TimeKeeperController extends Controller
         $timekeeper->Projectid = $request->Projectid;
         $timekeeper->Empid = $request->Empid;
         $timekeeper->Companyid = Auth::id();
-        $timekeeper->Rodaterdate = $request->Rodaterdate;
+        $timekeeper->Roasterdate = $request->Roasterdate;
         $timekeeper->Shiftstart = $request->Shiftstart;
         $timekeeper->Shiftend = $request->Shiftend;
         $timekeeper->Signon = $request->Signon;
@@ -89,25 +90,25 @@ class TimeKeeperController extends Controller
     {
         $request->validate([
             'Clientid' => 'required',
-            'Projected' => 'required',
+            'Projectid' => 'required',
             'Empid' => 'required',
-            'Rodaterdate' => 'required',
+            'Roasterdate' => 'required',
             'Shiftstart' => 'required',
             'Shiftend' => 'required',
             'Duration' => 'required',
             'Rate' => 'required',
             'Amount' => 'required',
-            'Jobtypeid' => 'required',
-            'RoasterstatusID' => 'required',
-            'Roastertypeid' => 'required'
+            'Jobtypeid' => 'required|numeric|max:10',
+            'RoasterstatusID' => 'required|numeric|max:10',
+            'Roastertypeid' => 'required|numeric|max:10'
         ]);
 
         $timekeeper = TimeKeeper::find($request->id);
         $timekeeper->Clientid = $request->Clientid;
-        $timekeeper->Projected = $request->Projected;
+        $timekeeper->Projectid = $request->Projectid;
         $timekeeper->Empid = $request->Empid;
         $timekeeper->Companyid = $request->Companyid;
-        $timekeeper->Rodaterdate = $request->Rodaterdate;
+        $timekeeper->Roasterdate = $request->Roasterdate;
         $timekeeper->Shiftstart = $request->Shiftstart;
         $timekeeper->Shiftend = $request->Shiftend;
         $timekeeper->Signon = $request->Signon;
@@ -152,7 +153,7 @@ class TimeKeeperController extends Controller
         $employees = Employee::where('user_id', Auth::id())->get();
         $projects = Project::where('user_id', Auth::id())->get();
         $clients = Client::where('user_id', Auth::id())->get();
-        $timekeepers = TimeKeeper::where('roasterStartDate', '>=', $fromDate)->where('roasterEndDate', '<=', $toDate)->get();
+        $timekeepers = TimeKeeper::where('Shiftstart', '>=', $fromDate)->where('Shiftend', '<=', $toDate)->get();
 
 
         return view('pages.Admin.timekeeper.index', compact('timekeepers', 'employees', 'projects', 'clients'));

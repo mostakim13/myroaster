@@ -22,7 +22,7 @@ return new class extends Migration
             $table->unsignedInteger('Companyid')->nullable();
             // $table->string('projectStartDate');
             // $table->string('projectEndDate');
-            $table->string('Rodaterdate');
+            $table->string('Roasterdate');
             $table->string('Shiftstart');
             $table->string('Shiftend');
             $table->string('Signon')->nullable();

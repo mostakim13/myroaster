@@ -81,8 +81,8 @@
                                             <th>Employee</th>
                                             <th>Client</th>
                                             <th>Project</th>
-                                            <th>Roaster Start</th>
-                                            <th>Roaster End</th>
+                                            <th>Shift Start</th>
+                                            <th>Shift End</th>
                                             <th>Duration</th>
                                             <th>Rate</th>
                                             <th>Amount</th>
@@ -97,7 +97,8 @@
                                                 <td>{{ $loop->index+1 }}</td>
                                                 <td>
 
-                                                    {{ $row->employee->fname }} {{ $row->employee->mname }}
+                                                    {{ $row->employee->fname }}
+                                                    {{ $row->employee->mname }}
                                                     {{ $row->employee->lname }}
 
 
@@ -115,12 +116,12 @@
                                                 @endif
                                                    </td>
                                                 <td>
-                                                    {{ $row->roasterStartDate }}
+                                                    {{ $row->Shiftstart }}
                                                 </td>
-                                                <td>{{ $row->roasterEndDate }}</td>
-                                                <td>{{ $row->duration }}</td>
-                                                <td>{{ $row->ratePerHour }}</td>
-                                                <td>{{ $row->amount }}</td>
+                                                <td>{{ $row->Shiftend}}</td>
+                                                <td>{{ $row->Duration }}</td>
+                                                <td>{{ $row->Rate }}</td>
+                                                <td>{{ $row->Amount }}</td>
 
                                                 <td>
                                                     <a href="#" data-toggle="modal"
@@ -196,7 +197,7 @@
     </script>
 
     <script>
-        //get the days between two dates
+        // for add
         function getDays() {
 
             var start_date = new Date(document.getElementById('start_date').value);
@@ -229,7 +230,7 @@
 
 
 
-
+// for edit
         function getDay() {
 
 
@@ -276,7 +277,7 @@
         }
 
 
-
+// for copy
         function getDuration() {
 
             var start_date1 = new Date(document.getElementById('start_date1').value);

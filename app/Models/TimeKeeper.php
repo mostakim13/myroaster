@@ -9,14 +9,13 @@ class TimeKeeper extends Model
 {
     use HasFactory;
     protected $guarded = [];
-    protected $table ="time_keepers";
     public function employee(){
-        return $this->belongsTo('App\Models\Employee','employeeID');
+        return $this->belongsTo('App\Models\Employee','Empid');
     }
     public function client(){
-        return $this->belongsTo('App\Models\Client','clientID');
+        return $this->belongsTo('App\Models\Client','Clientid');
     }
     public function project(){
-        return $this->belongsTo('App\Models\Project','projectID');
+        return $this->belongsTo('App\Models\Project','Projectid');
     }
 }
