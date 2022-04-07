@@ -111,7 +111,7 @@
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <input type="text" id="start" name="Roasterdate"
-                                                        class="form-control flatpickr-date-time"
+                                                        class="form-control flatpickr-range"
                                                         placeholder="YYYY-MM-DD to YYYY-MM-DD" />
                                                 </div>
                                             </div>
