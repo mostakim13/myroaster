@@ -61,12 +61,31 @@
                                                   <input type="number" id="companyContact" class="form-control" name="companyContact" placeholder="Company" required/>
                                               </div>
                                           </div>
-                                          <div class="col-12">
+                                          <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
                                                   <input type="file" id="image" class="form-control" name="file" placeholder="Company Image" required/>
                                               </div>
                                           </div>
+                                          <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">Company Code</label>
+                                                <input type="text" id="" class="form-control" name="Companycode" placeholder="Company Code" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <label for="">Status</label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="status"
+                                                    aria-label="Default select example">
+                                                    <option value="" disabled selected hidden>Please Choose...
+                                                    </option>
+                                                    <option value="1">Active</option>
+                                                    <option value="2">Inactive</option>
+                                                </select>
+                                            </div>
+                                        </div>
 
 
                                       </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Company;
 use App\Models\User;
 use Spatie\Permission\Models\Role;
 use DB;
@@ -104,10 +105,23 @@ Auth::logout();
             $data->notify(new UserCredential($email_data));
             Session::flash('success', 'User has been Successfully Registered!!');
         });
+        $companies = New Company();
+        $companies->user_id = $request->id;
+        $companies->Companycode = $request->Companycode;
+        $companies->name = $request->name;
+        $companies->mname = $request->mname;
+        $companies->lname = $request->lname;
+        $companies->email = $request->email;
+        $companies->company = $request->company;
+        $companies->companyContact = $request->companyContact;
+        $companies->status = $request->status;
+        $companies->created_at = Carbon::now();
+        $companies -> Save();
         $notification = array(
             'message' => 'Company Admin Added Success',
             'alert-type' => 'success'
         );
+
         return Redirect()->back()->with($notification);
     }
 

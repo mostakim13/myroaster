@@ -19,6 +19,7 @@
                                   <form class="form" action="{{route('company-update')}}" method="POST" enctype="multipart/form-data">
                                     @csrf
                                     <input type="hidden" name="id" value="{{$row->id}}">
+                                    {{-- <input type="hidden" name="user_id" value="{{$row->company->user_id}}"> --}}
                                       <div class="row">
                                           <div class="col-md-4 col-12">
                                               <div class="form-group">
@@ -67,18 +68,27 @@
                                                   <input type="text" value="{{$row->company}}" id="company" class="form-control" name="company" placeholder="Company" required/>
                                               </div>
                                           </div>
+
+
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Company Contact Number</label>
                                                   <input type="number" value="{{$row->companyContact}}" id="companyContact" class="form-control" name="companyContact" placeholder="Company" required/>
                                               </div>
                                           </div>
-                                          <div class="col-12">
+                                          <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
                                                   <input type="file" id="image" class="form-control" name="file" placeholder="Company Image" />
                                               </div>
                                           </div>
+
+                                          <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">Company Code</label>
+                                                <input type="text" id="" class="form-control" name="Companycode" placeholder="Company Code" value="{{$row->Companycode}}"  required/>
+                                            </div>
+                                        </div>
 
 
                                       </div>
