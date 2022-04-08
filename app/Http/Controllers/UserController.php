@@ -61,10 +61,14 @@ class UserController extends Controller
 
         $user = User::create($input);
 
-Auth::logout();
+        Auth::logout();
         return redirect()->route('companies')
             ->with('success', 'User created successfully');
     }
+
+
+    //===========================================================================
+    //========================Company Details Store==============================
     public function storeCompanies(Request $request)
     {
         $request->validate([
@@ -89,39 +93,74 @@ Auth::logout();
 
         DB::transaction(function () use ($request, $password, $email_data, $filename) {
 
-            $data = User::create([
+            $GLOBALS['data'] = User::create([
                 'name' => $request->name,
-                'mname' => $request->mname,
-                'lname' => $request->lname,
                 'email' => $request->email,
                 'password' => Hash::make($password),
-                'company' => $request->company,
-                'companyContact' => $request->companyContact,
-                'image' => $filename,
-                'Status' => 1,
                 'is_admin' => 1,
                 'created_at' => Carbon::now()
             ]);
-            $data->notify(new UserCredential($email_data));
+            $GLOBALS['data']->notify(new UserCredential($email_data));
             Session::flash('success', 'User has been Successfully Registered!!');
         });
-        $companies = New Company();
-        $companies->user_id = $request->id;
+        //=========================================================================
+        //================Store Company Details in Company Table===================
+        $companies = new Company();
+        $companies->user_id =  $GLOBALS['data']->id;
         $companies->Companycode = $request->Companycode;
-        $companies->name = $request->name;
+        $companies->image = $filename;
         $companies->mname = $request->mname;
         $companies->lname = $request->lname;
-        $companies->email = $request->email;
+        $companies->status = $request->status;
         $companies->company = $request->company;
         $companies->companyContact = $request->companyContact;
-        $companies->status = $request->status;
         $companies->created_at = Carbon::now();
-        $companies -> Save();
+        $companies->Save();
+
         $notification = array(
             'message' => 'Company Admin Added Success',
             'alert-type' => 'success'
         );
+        return Redirect()->back()->with($notification);
+    }
 
+    //=======================================================================================
+    //===================================Update Company Details==============================
+    public function updateCompany(Request $request)
+    {
+        $request->validate([
+            'file' => 'required'
+        ]);
+        $image = $request->file('file');
+        $filename = null;
+        if ($image) {
+            $filename = time() . $image->getClientOriginalName();
+
+            Storage::disk('public')->putFileAs(
+                'clients/',
+                $image,
+                $filename
+            );
+        }
+
+        $user = User::find($request->user_id);
+        $user ->name = $request->name;
+        $user ->email = $request->email;
+        $user->save();
+
+        $company = Company::find($request->id);
+        $company->mname = $request->mname;
+        $company->lname = $request->lname;
+        $company->status = $request->status;
+        $company->company = $request->company;
+        $company->Companycode = $request->Companycode;
+        $company->companyContact = $request->companyContact;
+        $company->image = $filename;
+        $company->save();
+        $notification = array(
+            'message' => 'Company Updated Successfully Added !!!',
+            'alert-type' => 'success'
+        );
         return Redirect()->back()->with($notification);
     }
 

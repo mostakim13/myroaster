@@ -45,6 +45,7 @@
                                     <th>Actions</th>
                                 </tr>
                             </thead>
+
                             <tbody>
                                 @foreach ($companies as $row)
                                     <tr>
@@ -59,16 +60,18 @@
                                                 No image
                                             @endif
                                         </td>
+
                                         <td>
+
                                             {{ $row->company }}
                                         </td>
                                         <td> {{ $row->companyContact }}</td>
-                                        <td> {{ $row->name }} {{ $row->mname }} {{ $row->lname }}</td>
+                                        <td> {{ $row->name }}</td>
                                         <td>
                                             {{ $row->email }}
                                         </td>
                                         <td>
-                                            @if ($row->Status == 1)
+                                            @if ($row->status == 1)
                                                 <span class="badge badge-pill badge-light-success mr-1">Active</span>
                                             @else
                                                 <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>

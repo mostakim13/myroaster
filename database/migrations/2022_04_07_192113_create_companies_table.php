@@ -17,12 +17,11 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('Companycode');
-            $table->string('name');
+            $table->string('image');
             $table->string('mname');
             $table->string('lname');
-            $table->string('email');
-            $table->string('company');
             $table->string('status');
+            $table->string('company');
             $table->string('companyContact');
             $table->timestamps();
         });

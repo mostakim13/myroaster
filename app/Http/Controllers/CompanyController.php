@@ -22,39 +22,43 @@ class CompanyController extends Controller
     }
     public function index()
     {
-        $companies = User::where('is_admin', '=', 1)->get();
 
+        $companies =  DB::table('users')
+            ->select('users.*', 'companies.*')
+            ->join('companies', 'companies.user_id', '=', 'users.id')
+            ->where(['users.is_admin' => '1'])
+            ->get();
         return view('pages.SuperAdmin.Company.index', compact('companies'));
     }
-    public function updateCompany(Request $request)
-    {
+    // public function updateCompany(Request $request)
+    // {
 
-        $request->validate([
-            'file' => 'required'
-        ]);
+    //     $request->validate([
+    //         'file' => 'required'
+    //     ]);
 
-        $image = $request->file('file');
-        $filename = null;
-        if ($image) {
-            $filename = time() . $image->getClientOriginalName();
+    //     $image = $request->file('file');
+    //     $filename = null;
+    //     if ($image) {
+    //         $filename = time() . $image->getClientOriginalName();
 
-            Storage::disk('public')->putFileAs(
-                'clients/',
-                $image,
-                $filename
-            );
-        }
+    //         Storage::disk('public')->putFileAs(
+    //             'clients/',
+    //             $image,
+    //             $filename
+    //         );
+    //     }
 
-        $company = User::find($request->id);
-        $company->name = $request->name;
-        $company->mname = $request->mname;
-        $company->lname = $request->lname;
-        $company->email = $request->email;
-        $company->Status = $request->Status;
-        $company->company = $request->company;
-        $company->companyContact = $request->companyContact;
-        $company->image = $filename;
-        $company->save();
+    //     $company = User::find($request->id);
+    //     $company->name = $request->name;
+    //     $company->mname = $request->mname;
+    //     $company->lname = $request->lname;
+    //     $company->email = $request->email;
+    //     $company->status = $request->status;
+    //     $company->company = $request->company;
+    //     $company->companyContact = $request->companyContact;
+    //     $company->image = $filename;
+    //     $company->save();
 
 
 
@@ -72,12 +76,12 @@ class CompanyController extends Controller
         // $companies->updated_at = Carbon::now();
         // $companies->Save();
 
-        $notification = array(
-            'message' => 'Company Updated Successfully Added !!!',
-            'alert-type' => 'success'
-        );
-        return Redirect()->back()->with($notification);
-    }
+    //     $notification = array(
+    //         'message' => 'Company Updated Successfully Added !!!',
+    //         'alert-type' => 'success'
+    //     );
+    //     return Redirect()->back()->with($notification);
+    // }
 
 
 
