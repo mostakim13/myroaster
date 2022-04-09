@@ -18,6 +18,11 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
+
+    public   $rules = [
+
+        'name' => 'required',
+    ];
     protected $fillable = [
 
         'name',

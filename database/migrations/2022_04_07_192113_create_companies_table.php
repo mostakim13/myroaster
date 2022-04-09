@@ -18,8 +18,8 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('company_code');
             $table->binary('image')->nullable();
-            $table->string('mname');
-            $table->string('lname');
+            $table->string('mname')->nullable();
+            $table->string('lname')->nullable();
             $table->string('status');
             $table->string('company');
             $table->string('company_contact');

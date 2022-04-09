@@ -62,19 +62,19 @@ class CompanyController extends Controller
 
 
 
-        //=======================update company======================//
+    //=======================update company======================//
 
-        // $companies = Company::find($request->user_id);
-        // $companies->Companycode = $request->Companycode;
-        // $companies->name = $request->name;
-        // $companies->mname = $request->mname;
-        // $companies->lname = $request->lname;
-        // $companies->email = $request->email;
-        // $companies->company = $request->company;
-        // $companies->companyContact = $request->companyContact;
-        // $companies->status = $request->status;
-        // $companies->updated_at = Carbon::now();
-        // $companies->Save();
+    // $companies = Company::find($request->user_id);
+    // $companies->Companycode = $request->Companycode;
+    // $companies->name = $request->name;
+    // $companies->mname = $request->mname;
+    // $companies->lname = $request->lname;
+    // $companies->email = $request->email;
+    // $companies->company = $request->company;
+    // $companies->companyContact = $request->companyContact;
+    // $companies->status = $request->status;
+    // $companies->updated_at = Carbon::now();
+    // $companies->Save();
 
     //     $notification = array(
     //         'message' => 'Company Updated Successfully Added !!!',
@@ -119,6 +119,7 @@ class CompanyController extends Controller
     }
     public function changePassStore(Request $request)
     {
+
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|min:5',
@@ -187,28 +188,28 @@ class CompanyController extends Controller
     }
     public function AdminprofileUpdate(Request $request)
     {
-        //dd($request);
+        // dd($request);
 
         $admin = User::find(Auth::user()->id);
-
         $admin->name = $request->name;
-        $admin->mname = $request->mname;
-        $admin->lname = $request->lname;
         $admin->email = $request->email;
-        $admin->company = $request->company;
-        $admin->companyContact = $request->companyContact;
-
-
         $admin->save();
 
+        $company = Company::find($request->user_id);
+        $company->mname = $request->mname;
+        $company->lname = $request->lname;
+        $company->company = $request->company;
+        $company->company_contact = $request->company_contact;
+        $company->save();
         $notification = array(
             'message' => 'Admin Profile Updated successfully!!!',
             'alert-type' => 'success'
         );
-        return Redirect()->back()->with($notification);
+        return Redirect('/admin/home/{id}')->with($notification);
     }
     public function AdminchangePassStore(Request $request)
     {
+
         $request->validate([
             'old_password' => 'required',
             'new_password' => 'required|min:5',

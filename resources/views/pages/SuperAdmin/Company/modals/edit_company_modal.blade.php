@@ -30,13 +30,16 @@
                                                     <input type="text" value="{{ $row->name }}" id="name"
                                                         class="form-control" placeholder="First Name" name="name"
                                                         required />
+                                                        @error('name')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-4 col-12">
                                                 <div class="form-group">
                                                     <label for="first-name-column">Middle Name</label>
                                                     <input type="text" value="{{ $row->mname }}" id="mname"
-                                                        class="form-control" placeholder="Middle name" name="mname" />
+                                                        class="form-control" placeholder="Middle name" name="mname"/>
                                                 </div>
                                             </div>
                                             <div class="col-md-4 col-12">
@@ -50,8 +53,10 @@
                                                 <div class="form-group">
                                                     <label for="email-id-column">Email</label>
                                                     <input type="email" value="{{ $row->email }}" id="email"
-                                                        class="form-control" name="email" placeholder="Email"
-                                                        required />
+                                                        class="form-control" name="email" placeholder="Email" required/>
+                                                        @error('email')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
@@ -67,6 +72,9 @@
                                                             Inactive</option>
 
                                                     </select>
+                                                    @error('status')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -79,7 +87,10 @@
                                                 <div class="form-group">
                                                     <label for="company-column">Company</label>
                                                     <input type="text" value="{{ $row->company }}" id="company"
-                                                        class="form-control" name="company" placeholder="Company" />
+                                                        class="form-control" name="company" placeholder="Company" required/>
+                                                        @error('company')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
 
@@ -89,14 +100,17 @@
                                                     <label for="company-column">Company Contact Number</label>
                                                     <input type="number" value="{{ $row->company_contact }}"
                                                         id="companyContact" class="form-control" name="company_contact"
-                                                        placeholder="Company" />
+                                                        placeholder="Company" required/>
+                                                        @error('company_contact')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="company-column">Avatar</label>
                                                     <input type="file" id="image" class="form-control" name="file"
-                                                        placeholder="Company Image" />
+                                                        placeholder="Company Image"/>
                                                 </div>
                                             </div>
 
@@ -104,13 +118,13 @@
                                                 <div class="form-group">
                                                     <label for="company-column">Company Code</label>
                                                     <input type="text" class="form-control" name="company_code"
-                                                        placeholder="Company Code" value="{{ $row->company_code }}" />
+                                                        placeholder="Company Code" value="{{ $row->company_code }}" required/>
+                                                        @error('company_code')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
-
-
                                         </div>
-
                                 </div>
                             </div>
                         </div>
