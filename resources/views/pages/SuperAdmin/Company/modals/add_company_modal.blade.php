@@ -103,7 +103,7 @@
                                                 <label for="">Status</label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="status"
-                                                        aria-label="Default select example">
+                                                        >
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         <option value="1">Active</option>

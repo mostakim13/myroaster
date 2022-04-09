@@ -12,6 +12,7 @@ use Hash;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Auth;
+use Alert;
 use Carbon\Carbon;
 
 class CompanyController extends Controller
@@ -96,6 +97,7 @@ class CompanyController extends Controller
             'message' => 'Company record has been deleted successfully!!!',
             'alert-type' => 'error'
         );
+        Alert::success('Deleted', "Company record has been deleted successfully!!!");
         return Redirect()->back()->with($notification);
     }
     public function SuperAdminProfile($id)
@@ -115,6 +117,7 @@ class CompanyController extends Controller
             'message' => 'Super Admin Profile Updated successfully!!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', "Super Admin Profile Updated successfully!!!");
         return Redirect()->route('super-admin.home')->with($notification);
     }
     public function changePassStore(Request $request)
@@ -141,6 +144,7 @@ class CompanyController extends Controller
                     'message' => 'Your Password Change Success. Now Login With New Password',
                     'alert-type' => 'success'
                 );
+                Alert::success('Success', "Password Changed Successfully. Now login with new password !!");
                 return Redirect()->route('login')->with($notification);
             } else {
 
@@ -148,6 +152,7 @@ class CompanyController extends Controller
                     'message' => 'New Password And Confirm Password Not Same',
                     'alert-type' => 'error'
                 );
+                Alert::error('Error', "New password and confirmation password didn't match !!");
                 return Redirect()->back()->with($notification);
             }
         } else {
@@ -155,6 +160,7 @@ class CompanyController extends Controller
                 'message' => 'Old Password Not Match',
                 'alert-type' => 'error'
             );
+            Alert::error('Error', "Old password didn't match !!");
             return Redirect()->back()->with($notification);
         }
     }
@@ -180,6 +186,7 @@ class CompanyController extends Controller
             'message' => 'Super Admin Profile Updated successfully!!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', "Super Admin Profile Updated successfully!!!");
         return Redirect()->back()->with($notification);
     }
     public function AdminProfile($id)
@@ -205,6 +212,7 @@ class CompanyController extends Controller
             'message' => 'Admin Profile Updated successfully!!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', "Admin Profile Updated successfully!!!");
         return Redirect('/admin/home/{id}')->with($notification);
     }
     public function AdminchangePassStore(Request $request)
@@ -231,6 +239,7 @@ class CompanyController extends Controller
                     'message' => 'Your Password Change Success. Now Login With New Password',
                     'alert-type' => 'success'
                 );
+                Alert::success('Success', 'Your Password Change Success. Now Login With New Password');
                 return Redirect()->route('login')->with($notification);
             } else {
 
@@ -238,6 +247,7 @@ class CompanyController extends Controller
                     'message' => 'New Password And Confirm Password Not Same',
                     'alert-type' => 'error'
                 );
+                Alert::error('Error', 'New Password And Confirmation Password did not match !!');
                 return Redirect()->back()->with($notification);
             }
         } else {
@@ -245,6 +255,7 @@ class CompanyController extends Controller
                 'message' => 'Old Password Not Match',
                 'alert-type' => 'error'
             );
+            Alert::error('Error', "Old password didn't Match !!");
             return Redirect()->back()->with($notification);
         }
     }
@@ -270,6 +281,7 @@ class CompanyController extends Controller
             'message' => 'Company Profile Updated successfully!!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', "Company Profile Updated successfully!!!");
         return Redirect()->back()->with($notification);
     }
 }

@@ -10,6 +10,7 @@ use Spatie\Permission\Models\Role;
 use DB;
 use Hash;
 use Session;
+use Alert;
 use Illuminate\Support\Arr;
 use Carbon\Carbon;
 use App\Notifications\UserCredential;
@@ -75,7 +76,7 @@ class UserController extends Controller
         // dd($request);
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'company_code' => 'required',
             'status' => 'required',
             'company' => 'required',
@@ -116,7 +117,6 @@ class UserController extends Controller
                 'created_at' => Carbon::now()
             ]);
             $GLOBALS['data']->notify(new UserCredential($email_data));
-            Session::flash('success', 'User has been Successfully Registered!!');
         });
         //=========================================================================
         //================Store Company Details in Company Table===================
@@ -136,6 +136,7 @@ class UserController extends Controller
             'message' => 'Company Admin Added Success',
             'alert-type' => 'success'
         );
+        Alert::success('Success', 'Company Admin Added Successfully !!!');
         return Redirect()->back()->with($notification);
     }
 
@@ -146,7 +147,7 @@ class UserController extends Controller
         // dd($request->status);
         $request->validate([
             'name' => 'required',
-            'email' => 'required',
+            'email' => 'required|email',
             'company_code' => 'required',
             'status' => 'required',
             'company' => 'required',
@@ -190,6 +191,7 @@ class UserController extends Controller
             'message' => 'Company Updated Successfully Added !!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', 'Company Updated Successfully !!!');
         return Redirect()->back()->with($notification);
     }
 
@@ -231,7 +233,7 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,' . $id,
+            'email' => 'required|email',
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);

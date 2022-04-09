@@ -2,6 +2,7 @@
 
 
 @section('super_admincontent')
+@include('sweetalert::alert')
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -98,6 +99,34 @@
             </div>
         </div>
     </div>
-    <!-- Table head options end -->
-    <!-- Basic Tables end -->
+
+    @if (Session::has('sweet_alert.alert'))
+<script>
+  swal({!! Session::get('sweet_alert.alert') !!});
+</script>
+@endif
+<script>
+    $(document).on('click', '.button', function (e) {
+    e.preventDefault();
+    var id = $(this).data('id');
+    swal({
+            title: "Are you sure!",
+            type: "error",
+            confirmButtonClass: "btn-danger",
+            confirmButtonText: "Yes!",
+            showCancelButton: true,
+        },
+        function() {
+            $.ajax({
+                type: "POST",
+                url: "{{url('/destroy')}}",
+                data: {id:id},
+                success: function (data) {
+                              //
+                    }
+            });
+    });
+});
+</script>
+
 @endsection
