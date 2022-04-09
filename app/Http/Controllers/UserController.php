@@ -71,9 +71,11 @@ class UserController extends Controller
     //========================Company Details Store==============================
     public function storeCompanies(Request $request)
     {
+
+        // dd($request);
         $request->validate([
             'file' => 'required',
-            'company' => 'unique'
+
         ]);
         $image = $request->file('file');
         $filename = null;

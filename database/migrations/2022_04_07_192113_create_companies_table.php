@@ -16,13 +16,13 @@ return new class extends Migration
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->string('Companycode');
-            $table->string('image');
+            $table->string('company_code');
+            $table->binary('image')->nullable();
             $table->string('mname');
             $table->string('lname');
             $table->string('status');
             $table->string('company');
-            $table->string('companyContact');
+            $table->string('company_contact');
             $table->timestamps();
         });
     }
