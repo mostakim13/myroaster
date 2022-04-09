@@ -74,6 +74,20 @@
                                           </div>
 
                                           <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">RSA Number</label>
+                                                <input type="number"  class="form-control" name="rsa_number" placeholder="License No" required/>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6 col-12">
+                                            <div class="form-group">
+                                                <label for="company-column">RSA Expire Date</label>
+                                                <input type="date"  class="form-control flatpickr-date-time" name="rsa_expire_date" placeholder="License No" required/>
+                                            </div>
+                                        </div>
+
+                                          <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Sec License No</label>
                                                   <input type="number"  class="form-control" name="license_no" placeholder="License No" required/>

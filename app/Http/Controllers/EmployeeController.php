@@ -45,6 +45,8 @@ class EmployeeController extends Controller
             'license_no' => 'required',
             'license_expire_date' => 'required',
 
+        ],[
+            'email.unique:users' => 'Email is already used'
         ]);
         $image = $request->file('file');
         $filename = null;
@@ -68,7 +70,8 @@ class EmployeeController extends Controller
         $employee->email = $request->email;
         $employee->contact_number = $request->contact_number;
         $employee->date_of_birth = $request->date_of_birth;
-
+        $employee->rsa_number = $request->rsa_number;
+        $employee->rsa_expire_date = $request->rsa_expire_date;
         $employee->license_no = $request->license_no;
         $employee->license_expire_date = $request->license_expire_date;
         $employee->first_aid_license = $request->first_aid_license;

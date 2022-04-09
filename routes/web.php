@@ -64,9 +64,8 @@ Route::group(['middleware' => ['super_admin']], function() {
 });
 //Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 // admin/company routes
-Route::get('admin/home/', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
-Route::post('admin/home/admin', [HomeController::class, 'adminsHome'])->name('superhome');
-// Route::get('admin/home/admins/{id}', [HomeController::class, 'adminHomeall'])->middleware('super_admin');
+Route::get('admin/home/{id}', [HomeController::class, 'adminHome'])->middleware('is_admin');
+Route::get('admin/home/admins/{id}', [HomeController::class, 'adminHomeall'])->middleware('super_admin');
 Route::get('admin/home/employee/{id}', [EmployeeController::class, 'index'])->middleware('is_admin');
 Route::post('admin/home/employee/store', [EmployeeController::class, 'store'])->name('store-employee')->middleware('is_admin');
 Route::post('admin/home/employee/update', [EmployeeController::class, 'update'])->name('update-employee')->middleware('is_admin');
@@ -118,38 +117,38 @@ Route::get('admin/home/calender/{id}', [CalenderController::class, 'index'])->mi
 
 
 // weekly report
-Route::get('/status', [StatusController::class, 'index'])->name('status');
+Route::get('admin/home/status/{company_code}', [StatusController::class, 'index']);
 Route::post('/status', [StatusController::class, 'store'])->name('status.store');
 Route::post('/status/edit', [StatusController::class, 'update'])->name('status.update');
 Route::get('status/delete/{id}', [StatusController::class, 'destroy']);
 
 
 #roaster status
-Route::get('roaster/status', [RoasterStatusController::class, 'index'])->name('roaster.status');
+Route::get('admin/home/roaster/status/{company_code}', [RoasterStatusController::class, 'index']);
 Route::post('roaster/status', [RoasterStatusController::class, 'store'])->name('roasterStatus.store');
 Route::post('roaster/status/edit', [RoasterStatusController::class, 'update'])->name('roasterStatus.update');
 Route::get('roaster/status/delete/{id}', [RoasterStatusController::class, 'destroy']);
 
 #payment status
-Route::get('payment/status', [PaymentStatusController::class, 'index'])->name('payment.status');
+Route::get('admin/home/payment/status/{company_code}', [PaymentStatusController::class, 'index'])->name('payment.status');
 Route::post('payment/status', [PaymentStatusController::class, 'store'])->name('paymentStatus.store');
 Route::post('payment/status/edit', [PaymentStatusController::class, 'update'])->name('paymentStatus.update');
 Route::get('payment/status/delete/{id}', [PaymentStatusController::class, 'destroy']);
 
 #company type
-Route::get('company/type', [CompanyTypeController::class, 'index'])->name('company.type');
+Route::get('admin/home/company/type/{company_code}', [CompanyTypeController::class, 'index'])->name('company.type');
 Route::post('company/type', [CompanyTypeController::class, 'store'])->name('companyType.store');
 Route::post('company/type/edit', [CompanyTypeController::class, 'update'])->name('companyType.update');
 Route::get('company/type/delete/{id}', [CompanyTypeController::class, 'destroy']);
 
 #job type
-Route::get('job/type', [JobTypeController::class, 'index'])->name('job.type');
+Route::get('admin/home/job/type/{company_code}', [JobTypeController::class, 'index'])->name('job.type');
 Route::post('job/type', [JobTypeController::class, 'store'])->name('jobType.store');
 Route::post('job/type/edit', [JobTypeController::class, 'update'])->name('jobType.update');
 Route::get('job/type/delete/{id}', [JobTypeController::class, 'destroy']);
 
 #my availability
-Route::get('myavailability', [MyavailabilityController::class, 'index'])->name('myAvailability');
+Route::get('admin/home/myavailability/{company_code}', [MyavailabilityController::class, 'index']);
 Route::post('myavailability', [MyavailabilityController::class, 'store'])->name('myAvailability.store');
 Route::post('myavailability/edit', [MyavailabilityController::class, 'update'])->name('myAvailability.update');
 Route::get('myavailability/delete/{id}', [MyavailabilityController::class, 'destroy']);

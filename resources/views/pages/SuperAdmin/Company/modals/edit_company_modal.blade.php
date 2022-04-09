@@ -87,8 +87,8 @@
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="company-column">Company Contact Number</label>
-                                                    <input type="number" value="{{ $row->companyContact }}"
-                                                        id="companyContact" class="form-control" name="companyContact"
+                                                    <input type="number" value="{{ $row->company_contact }}"
+                                                        id="companyContact" class="form-control" name="company_contact"
                                                         placeholder="Company" />
                                                 </div>
                                             </div>
@@ -103,8 +103,8 @@
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="company-column">Company Code</label>
-                                                    <input type="text" class="form-control" name="Companycode"
-                                                        placeholder="Company Code" value="{{ $row->Companycode }}" />
+                                                    <input type="text" class="form-control" name="company_code"
+                                                        placeholder="Company Code" value="{{ $row->company_code }}" />
                                                 </div>
                                             </div>
 

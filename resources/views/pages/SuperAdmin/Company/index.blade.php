@@ -65,7 +65,7 @@
 
                                             {{ $row->company }}
                                         </td>
-                                        <td> {{ $row->companyContact }}</td>
+                                        <td> {{ $row->company_contact }}</td>
                                         <td> {{ $row->name }}</td>
                                         <td>
                                             {{ $row->email }}

@@ -9,7 +9,7 @@
                 <h2 class="content-header-title float-left mb-0">Roaster-Status</h2>
                 <div class="breadcrumb-wrapper">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="{{route('admin.home')}}">Home</a>
+                        <li class="breadcrumb-item"><a href="/admin/home/{{ Auth::user()->company->company_code }}">Home</a>
                         </li>
                         <li class="breadcrumb-item active">Roaster-Status Lists
                         </li>

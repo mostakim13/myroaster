@@ -30,17 +30,18 @@ class HomeController extends Controller
     }
     public function adminHome()
     {
+
         //dd($id);
         // $admin = User::where('Status', '=', 1)->get();
-        if (Auth::user()->Status == 1) {
+        // if (Auth::user()->Status == 1) {
             return view('pages.Admin.index');
-        } elseif (Auth::user()->Status == 2) {
-            $notification = array(
-                'message' => 'This is inactive !!!',
-                'alert-type' => 'warning'
-            );
-            return Redirect()->route('login')->with($notification);
-        }
+        // } elseif (Auth::user()->Status == 2) {
+        //     $notification = array(
+        //         'message' => 'This is inactive !!!',
+        //         'alert-type' => 'warning'
+        //     );
+            // return Redirect()->route('login');
+        // }
     }
     public function SuperadminHome()
     {

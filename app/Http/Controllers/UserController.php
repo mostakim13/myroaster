@@ -107,13 +107,13 @@ class UserController extends Controller
         //================Store Company Details in Company Table===================
         $companies = new Company();
         $companies->user_id =  $GLOBALS['data']->id;
-        $companies->Companycode = $request->Companycode;
+        $companies->company_code = $request->company_code;
         $companies->image = $filename;
         $companies->mname = $request->mname;
         $companies->lname = $request->lname;
         $companies->status = $request->status;
         $companies->company = $request->company;
-        $companies->companyContact = $request->companyContact;
+        $companies->company_contact = $request->company_contact;
         $companies->created_at = Carbon::now();
         $companies->Save();
 
@@ -153,8 +153,8 @@ class UserController extends Controller
         $company->lname = $request->lname;
         $company->status = $request->status;
         $company->company = $request->company;
-        $company->Companycode = $request->Companycode;
-        $company->companyContact = $request->companyContact;
+        $company->company_code = $request->company_code;
+        $company->company_contact = $request->company_contact;
         $company->image = $filename;
         $company->save();
         $notification = array(

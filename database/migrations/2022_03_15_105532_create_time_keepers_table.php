@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('time_keepers', function (Blueprint $table) {
             $table->integer('Timekeeperid')->autoIncrement();
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('Clientid');
-            $table->unsignedInteger('Projectid');
-            $table->unsignedInteger('Empid');
-            $table->unsignedInteger('Companyid')->nullable();
+            $table->unsignedInteger('client_id');
+            $table->unsignedInteger('Project_id');
+            $table->unsignedInteger('employee_id');
+            $table->unsignedInteger('company_id')->nullable();
             // $table->string('projectStartDate');
             // $table->string('projectEndDate');
             $table->string('Roasterdate');

@@ -10,4 +10,4 @@
 
 
 <!-- BEGIN: Vendor JS-->
-@include('layouts.admin.partials.scripts')
+@include('layouts.Admin.partials.scripts')
