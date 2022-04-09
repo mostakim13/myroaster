@@ -41,7 +41,7 @@
 
     @include('layouts.SuperAdmin.partials.scripts')
 
-    <script src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
+    {{-- <script src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
     <script>
         @if (Session::has('message'))
             var type ="{{ Session::get('alert-type', 'info') }}"
@@ -63,7 +63,7 @@
             break;
             }
         @endif
-    </script>
+    </script> --}}
 </body>
 <!-- END: Body-->
 
