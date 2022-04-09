@@ -40,10 +40,9 @@ Auth::routes();
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
-
 });
 Route::get('/super-admin/home', [HomeController::class, 'SuperadminHome'])->name('super-admin.home')->middleware('super_admin');
 //Company Routes
@@ -53,14 +52,13 @@ Route::post('/super-admin/company/update', [UserController::class, 'updateCompan
 Route::get('/super-admin/company/delete/{id}', [CompanyController::class, 'delete'])->middleware('super_admin');
 
 //super admin profile
-Route::get('/super-admin/profile-settings/{id}', [CompanyController::class,'SuperAdminProfile'])->middleware('super_admin');
-Route::post('/super-admin/profile-settings/update', [CompanyController::class,'profileUpdate'])->name('super-admin-profile-update')->middleware('super_admin');
-Route::post('/super-admin/profile-settings/image/update', [CompanyController::class,'UpdateSuperAdminPhoto'])->name('super-admin-profile-photo-update')->middleware('super_admin');
-Route::post('/super-admin/user-password/change-password-store',[CompanyController::class,'changePassStore'])->name('change-password-store')->middleware('super_admin');
-Route::group(['middleware' => ['super_admin']], function() {
+Route::get('/super-admin/profile-settings/{id}', [CompanyController::class, 'SuperAdminProfile'])->middleware('super_admin');
+Route::post('/super-admin/profile-settings/update', [CompanyController::class, 'profileUpdate'])->name('super-admin-profile-update')->middleware('super_admin');
+Route::post('/super-admin/profile-settings/image/update', [CompanyController::class, 'UpdateSuperAdminPhoto'])->name('super-admin-profile-photo-update')->middleware('super_admin');
+Route::post('/super-admin/user-password/change-password-store', [CompanyController::class, 'changePassStore'])->name('change-password-store')->middleware('super_admin');
+Route::group(['middleware' => ['super_admin']], function () {
     Route::resource('roles', RoleController::class);
     Route::resource('users', UserController::class);
-
 });
 //Route::get('admin/home', [HomeController::class, 'adminHome'])->name('admin.home')->middleware('is_admin');
 // admin/company routes
@@ -72,10 +70,10 @@ Route::post('admin/home/employee/update', [EmployeeController::class, 'update'])
 Route::get('admin/home/employee/delete/{id}', [EmployeeController::class, 'delete'])->middleware('is_admin');
 
 //admin/company profile routes
-Route::get('/admin/company/profile-settings/{id}', [CompanyController::class,'AdminProfile'])->middleware('is_admin');
-Route::post('/admin/company/profile-settings/update', [CompanyController::class,'AdminprofileUpdate'])->name('admin-profile-update')->middleware('is_admin');
-Route::post('/admin/company/profile-settings/image/update', [CompanyController::class,'UpdateAdminPhoto'])->name('admin-profile-photo-update')->middleware('is_admin');
-Route::post('/admin/company/user-password/change-password-store',[CompanyController::class,'AdminchangePassStore'])->name('admin-change-password-store')->middleware('is_admin');
+Route::get('/admin/company/profile-settings/{id}', [CompanyController::class, 'AdminProfile'])->middleware('is_admin');
+Route::post('/admin/company/profile-settings/update', [CompanyController::class, 'AdminprofileUpdate'])->name('admin-profile-update')->middleware('is_admin');
+Route::post('/admin/company/profile-settings/image/update', [CompanyController::class, 'UpdateAdminPhoto'])->name('admin-profile-photo-update')->middleware('is_admin');
+Route::post('/admin/company/user-password/change-password-store', [CompanyController::class, 'AdminchangePassStore'])->name('admin-change-password-store')->middleware('is_admin');
 //admin add clients
 Route::get('admin/home/client/{id}', [ClientController::class, 'index'])->middleware('is_admin');
 Route::post('admin/home/client/store', [ClientController::class, 'store'])->name('store-client')->middleware('is_admin');

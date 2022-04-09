@@ -82,7 +82,7 @@
                                                     data-feather='edit'></i></a>
                                             <!-- <a href="/super-admin/company/delete/{{ $row->id }}"><i data-feather='trash-2'></i></a> -->
                                             <input type="hidden" name="userid" value="{{ $row->id }}">
-                                            <a href="{{ route('superhome') }}"><i data-feather='eye'></i></a>
+                                            <a href="#"><i data-feather='eye'></i></a>
                                         </td>
                                         @include(
                                             'pages.SuperAdmin.Company.modals.edit_company_modal'

@@ -107,20 +107,15 @@ class CompanyController extends Controller
         //dd($request);
 
         $superadmin = User::find(Auth::user()->id);
-
         $superadmin->name = $request->name;
-        $superadmin->mname = $request->mname;
-        $superadmin->lname = $request->lname;
         $superadmin->email = $request->email;
-
-
         $superadmin->save();
 
         $notification = array(
             'message' => 'Super Admin Profile Updated successfully!!!',
             'alert-type' => 'success'
         );
-        return Redirect()->back()->with($notification);
+        return Redirect()->route('super-admin.home')->with($notification);
     }
     public function changePassStore(Request $request)
     {

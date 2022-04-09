@@ -100,22 +100,12 @@
                                             <div class="row">
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
-                                                        <label for="account-username">First Name</label>
-                                                        <input type="text" class="form-control" id="account-username" value="{{Auth::user()->name}}" name="name" placeholder="Middle Name" required />
+                                                        <label for="account-username">Name</label>
+                                                        <input type="text" class="form-control" id="account-username" value="{{Auth::user()->name}}" name="name" placeholder="Name" required />
                                                     </div>
                                                 </div>
-                                                <div class="col-12 col-sm-6">
-                                                  <div class="form-group">
-                                                      <label for="account-username">Middle Name</label>
-                                                      <input type="text" class="form-control" id="account-username" value="{{Auth::user()->mname}}" name="mname" placeholder="Middle Name" required />
-                                                  </div>
-                                                </div>
-                                                <div class="col-12 col-sm-6">
-                                                  <div class="form-group">
-                                                      <label for="account-username">Last Name</label>
-                                                      <input type="text" class="form-control" id="account-username" value="{{Auth::user()->lname}}" name="lname" placeholder="Last Name" required />
-                                                  </div>
-                                                </div>
+
+
                                                 <div class="col-12 col-sm-6">
                                                     <div class="form-group">
                                                         <label for="account-e-mail">E-mail</label>
