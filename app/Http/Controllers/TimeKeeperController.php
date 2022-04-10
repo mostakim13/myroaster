@@ -122,6 +122,7 @@ class TimeKeeperController extends Controller
         $timekeeper->amount = $request->amount;
         $timekeeper->job_type_id = $request->job_type_id;
         $timekeeper->roaster_status_id = $request->roaster_status_id;
+        $timekeeper->company_code = Auth::user()->company->company_code;
         // $timekeeper->roaster_type = $request->roaster_type;
         $timekeeper->remarks = $request->remarks;
         $timekeeper->updated_at = Carbon::now();

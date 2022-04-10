@@ -6,6 +6,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Illuminate\Support\Facades\Auth;
+use Auth;
 
 class ProjectController extends Controller
 {
@@ -32,6 +33,7 @@ class ProjectController extends Controller
     $project->project_address= $request->project_address;
     $project->project_venue = $request->project_venue;
     $project->project_state= $request->project_state;
+    $project->company_code = Auth::user()->company->company_code;
     $project->clientName= $request->clientName;
 
     $project->save();

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\CompanyType;
 use Illuminate\Http\Request;
+use Alert;
 
 class CompanyTypeController extends Controller
 {
@@ -27,9 +28,9 @@ class CompanyTypeController extends Controller
         $single->remarks= $request->remarks;
         $single->user_id= $request->user_id;
         $single->company_code= $request->company_code;
-
         $single->save();
 
+        Alert::success('Success', 'Company Type Added Successfully !!!');
         return redirect()->back();
     }
 
@@ -52,7 +53,7 @@ class CompanyTypeController extends Controller
 
         $single->save();
         }
-
+        Alert::success('Success', 'Company Type Updated Successfully !!!');
         return redirect()->back();
     }
 
@@ -62,7 +63,7 @@ class CompanyTypeController extends Controller
         if($single){
             $single->delete();
         }
-
+        Alert::success('Deleted', 'Company Type Deleted Successfully !!!');
         return redirect()->back();
     }
 }

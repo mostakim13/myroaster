@@ -75,6 +75,7 @@ class EmployeeController extends Controller
         $employee->license_no = $request->license_no;
         $employee->license_expire_date = $request->license_expire_date;
         $employee->first_aid_license = $request->first_aid_license;
+        $employee->company_code = Auth::user()->company->company_code;
         $employee->image = $filename;
         $employee->save();
 

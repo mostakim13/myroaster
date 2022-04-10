@@ -44,16 +44,16 @@ class ClientController extends Controller
     $client->cstate= $request->cstate;
     $client->cpostal_code= $request->cpostal_code;
     $client->cperson= $request->cperson;
+    $client->company_code = Auth::user()->company->company_code;
     $client->cimage= $filename;
-
     $client->save();
+
     $notification=array(
         'message'=>'Client Added Successfully Added !!!',
         'alert-type'=>'success'
     );
+    Alert::success('Success', 'Client Added Successfully !!!');
     return Redirect()->back()->with($notification);
-
-
   }
   public function update(Request $request)
   {
@@ -65,14 +65,12 @@ class ClientController extends Controller
     $oldfileexists = Storage::disk('public')->exists('clients/' . $oldfilename);
 
     if ($uploadedFile !== null) {
-
         if ($oldfileexists && $oldfilename != $uploadedFile) {
             //Delete old file
             Storage::disk('public')->delete('clients/' . $oldfilename);
         }
         $filename_modified = str_replace(' ', '_', $uploadedFile->getClientOriginalName());
         $filename = time() . '_' . $filename_modified;
-
         Storage::disk('public')->putFileAs(
             'clients/',
             $uploadedFile,
@@ -87,6 +85,7 @@ class ClientController extends Controller
             'message'=>'Client Image Not Found !!!',
             'alert-type'=>'error'
         );
+        Alert::error('Error', 'Client Image Not Found !!!');
         return Redirect()->back()->with($notification);
 
         //file check in storage
@@ -95,7 +94,6 @@ class ClientController extends Controller
 
 
     $client= Client::find($request->id);
-
     $client->user_id= Auth::id();
     $client->cname= $request->cname;
     $client->cemail= $request->cemail;
@@ -111,6 +109,7 @@ class ClientController extends Controller
         'message'=>'Client Updated Successfully Added !!!',
         'alert-type'=>'success'
     );
+    Alert::success('Success', 'Client Updated Successfully !!!');
     return Redirect()->back()->with($notification);
   }
   public function delete($id)
@@ -123,6 +122,7 @@ class ClientController extends Controller
         'message'=>'Client record has been deleted successfully!!!',
         'alert-type'=>'error'
     );
+    Alert::success('Deleted', 'Client record has been deleted successfully !!!');
     return Redirect()->back()->with($notification);
   }
 }
