@@ -2,7 +2,7 @@
 
 
 @section('admincontent')
-
+@include('sweetalert::alert')
                 <!-- Dashboard Ecommerce Starts -->
                 <section id="dashboard-ecommerce">
                     <div class="row match-height">

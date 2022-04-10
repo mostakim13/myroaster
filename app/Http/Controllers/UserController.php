@@ -50,12 +50,12 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'required|same:confirm-password',
-            'roles' => 'required'
-        ]);
+        // $this->validate($request, [
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'password' => 'required|same:confirm-password',
+        //     'roles' => 'required'
+        // ]);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -74,22 +74,22 @@ class UserController extends Controller
     {
 
         // dd($request);
-        $request->validate([
-            'name' => 'required',
-            'email' => 'required|email',
-            'company_code' => 'required',
-            'status' => 'required',
-            'company' => 'required',
-            'company_contact' => 'required'
+        // $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'company_code' => 'required',
+        //     'status' => 'required',
+        //     'company' => 'required',
+        //     'company_contact' => 'required'
 
-        ],[
-            'name.required' => 'Please enter your first name.',
-            'email.required' => 'Please enter your email.',
-            'company_code.required' => 'Please enter your company code.',
-            'status.required' => 'Please select status.',
-            'company.required' => 'Please enter your company name.',
-            'company_contact.required' => 'Please enter your contact number.',
-        ]);
+        // ],[
+        //     'name.required' => 'Please enter your first name.',
+        //     'email.required' => 'Please enter your email.',
+        //     'company_code.required' => 'Please enter your company code.',
+        //     'status.required' => 'Please select status.',
+        //     'company.required' => 'Please enter your company name.',
+        //     'company_contact.required' => 'Please enter your contact number.',
+        // ]);
         $image = $request->file('file');
         $filename = null;
         if ($image) {

@@ -60,6 +60,20 @@
                                                   <input type="text"  class="form-control" name="cperson" placeholder="Contact Person" required />
                                               </div>
                                           </div>
+                                          <div class="col-md-6 col-12">
+                                            <label for="email-id-column">Select Status<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="Status"
+                                                    aria-label="Default select example" required>
+                                                    <option value="" disabled selected hidden>Please Choose...
+                                                    </option>
+                                                    <option value="1">Active</option>
+                                                    <option value="2">Inactive</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
 
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">

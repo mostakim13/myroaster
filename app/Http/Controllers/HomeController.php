@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Alert;
 
 class HomeController extends Controller
 {
@@ -33,15 +34,17 @@ class HomeController extends Controller
 
         //dd($id);
         // $admin = User::where('Status', '=', 1)->get();
-        // if (Auth::user()->Status == 1) {
+        if (Auth::user()->company->status == 1 && Auth::user()->is_admin == 1) {
             return view('pages.Admin.index');
-        // } elseif (Auth::user()->Status == 2) {
-        //     $notification = array(
-        //         'message' => 'This is inactive !!!',
-        //         'alert-type' => 'warning'
-        //     );
-            // return Redirect()->route('login');
-        // }
+        } else if (Auth::user()->company->status == 2) {
+            $notification = array(
+                'message' => 'This is inactive !!!',
+                'alert-type' => 'warning'
+            );
+            Auth::logout();
+            Alert::warning('Sorry!', 'Your account is inactive. Please contact with admin.');
+            return Redirect()->route('login');
+        }
     }
     public function SuperadminHome()
     {

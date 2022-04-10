@@ -80,7 +80,11 @@
 
 
                               <td>
-                                <span class="badge badge-pill badge-light-success mr-1">Active</span>
+                                @if ($row->status == 1)
+                                        <span class="badge badge-pill badge-light-success mr-1">Active</span>
+                                    @else
+                                        <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
+                                    @endif
                               </td>
 
                               <td>

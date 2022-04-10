@@ -61,11 +61,25 @@
                                                   <input type="text" value="{{$row->cperson}}"  class="form-control" name="cperson" placeholder="Contact Person" required />
                                               </div>
                                           </div>
+                                          <div class="col-md-6 col-12">
+                                            <label for="email-id-column">Select Status<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="status"
+                                                    aria-label="Default select example" required>
+                                                    <option value="" disabled selected hidden>Please Choose...
+                                                    </option>
+                                                    <option value="1" {{ $row->status == 1 ? 'selected' : '' }}>Active</option>
+                                                    <option value="2" {{ $row->status == 2 ? 'selected' : '' }}>Inactive</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
 
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
-                                                  <input type="file" id="cimage" class="form-control" name="image" placeholder="Avatar" required/>
+                                                  <input type="file" id="cimage" class="form-control" name="image" placeholder="Avatar"/>
                                               </div>
                                           </div>
 

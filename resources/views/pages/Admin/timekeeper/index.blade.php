@@ -1,5 +1,6 @@
 @extends('layouts.Admin.master')
 @section('admincontent')
+@include('sweetalert::alert')
     <div class="col-lg-12 col-md-12">
         <div class="card p-0">
             <div class="card-header text-primary border-top-0 border-left-0 border-right-0">
@@ -51,12 +52,12 @@
                                 @csrf
                                 <div class="row row-xs">
                                     <div class="col-md-5 col-lg-4 ">
-                                        <input type="date" class="form-control flatpickr-date-time"
+                                        <input type="date" class="form-control flatpickr-basic"
                                             placeholder="Select Roaster Start Date" name="start_date2"
                                             id="start_date datepicker_from" required="required">
                                     </div>
                                     <div class="col-md-5 col-lg-4 mt-3 mt-md-0 ">
-                                        <input type="date" class="form-control flatpickr-date-time"
+                                        <input type="date" class="form-control flatpickr-basic"
                                             placeholder="Select Roaster End Date" id="end_date" required="required"
                                             name="end_date2" min="0000-00-00 00:00:00">
                                     </div>

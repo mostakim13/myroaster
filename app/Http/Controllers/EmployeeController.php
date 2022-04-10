@@ -13,6 +13,7 @@ use DB;
 use Session;
 use Hash;
 use App\Notifications\UserCredential;
+use Alert;
 
 class EmployeeController extends Controller
 {
@@ -51,6 +52,7 @@ class EmployeeController extends Controller
         $employee->postal_code = $request->postal_code;
         $employee->email = $request->email;
         $employee->contact_number = $request->contact_number;
+        $employee->status = $request->status;
         $employee->date_of_birth = $request->date_of_birth;
         $employee->rsa_number = $request->rsa_number;
         $employee->rsa_expire_date = $request->rsa_expire_date;
@@ -82,27 +84,28 @@ class EmployeeController extends Controller
             'message' => 'Employee Added Successfully Added !!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', 'Employee Added Successfully !!!');
         return Redirect()->back()->with($notification);
     }
 
     public function update(Request $request)
     {
-        $request->validate([
-            'file' => 'required',
-            'first_aid_license' => 'required',
-            'fname' => 'required',
-            'mname' => 'required',
-            'lname' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'postal_code' => 'required',
-            'email' => 'required|unique:users|email',
-            'contact_number' => 'required|numeric',
-            'date_of_birth' => 'required',
-            'license_no' => 'required',
-            'license_expire_date' => 'required',
+        // $request->validate([
+        //     'file' => 'required',
+        //     'first_aid_license' => 'required',
+        //     'fname' => 'required',
+        //     'mname' => 'required',
+        //     'lname' => 'required',
+        //     'address' => 'required',
+        //     'state' => 'required',
+        //     'postal_code' => 'required',
+        //     'email' => 'required|unique:users|email',
+        //     'contact_number' => 'required|numeric',
+        //     'date_of_birth' => 'required',
+        //     'license_no' => 'required',
+        //     'license_expire_date' => 'required',
 
-        ]);
+        // ]);
         $image = $request->file('file');
         $filename = null;
         $uploadedFile = $request->file('employee_image');
@@ -133,8 +136,8 @@ class EmployeeController extends Controller
                 'message' => 'User Image Not Found !!!',
                 'alert-type' => 'error'
             );
-            Alert::success('Success', 'User Image Not Found !!!');
-            return Redirect()->back()->with($notification);
+            Alert::error('Error', 'User Image Not Found !!!');
+            // return Redirect()->back()->with($notification);
 
             //file check in storage
         }
@@ -148,6 +151,7 @@ class EmployeeController extends Controller
         $employee->lname = $request->lname;
         $employee->address = $request->address;
         $employee->state = $request->state;
+        $employee->status = $request->status;
         $employee->postal_code = $request->postal_code;
         $employee->email = $request->email;
         $employee->contact_number = $request->contact_number;

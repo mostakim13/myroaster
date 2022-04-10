@@ -166,10 +166,24 @@
                                                     </select>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12 col-12">
+                                                <label for="">Roaster Type ID<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="roaster_type_id"
+                                                        aria-label="Default select example">
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                    </select>
+                                                </div>
+                                            </div>
 
                                             @php
                                                 $roaster_statuses = App\Models\RoasterStatus::all();
                                             @endphp
+
                                             <div class="col-md-12 col-12">
                                                 <label for="">Roaster Status<span
                                                         class="text-danger">*</span></label>

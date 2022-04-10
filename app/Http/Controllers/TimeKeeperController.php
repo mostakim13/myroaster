@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Faker\Provider\ar_EG\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class TimeKeeperController extends Controller
 {
@@ -64,7 +65,7 @@ class TimeKeeperController extends Controller
         $timekeeper->amount = $request->amount;
         $timekeeper->job_type_id = $request->job_type_id;
         $timekeeper->roaster_status_id = $request->roaster_status_id;
-        // $timekeeper->roaster_type = $request->roaster_type;
+        $timekeeper->roaster_type_id = $request->roaster_type_id;
         $timekeeper->remarks = $request->remarks;
         $timekeeper->created_at = Carbon::now();
         $timekeeper->save();
@@ -85,6 +86,7 @@ class TimeKeeperController extends Controller
             'message' => 'Roaster Successfully Added !!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', 'Roaster Successfully Added !!!');
         return Redirect()->back()->with($notification);
     }
 
@@ -92,6 +94,7 @@ class TimeKeeperController extends Controller
     public function update(Request $request)
     {
 
+        // dd($request);
         $request->validate([
             'client_id' => 'required',
             'project_id' => 'required',
@@ -122,6 +125,7 @@ class TimeKeeperController extends Controller
         $timekeeper->amount = $request->amount;
         $timekeeper->job_type_id = $request->job_type_id;
         $timekeeper->roaster_status_id = $request->roaster_status_id;
+        $timekeeper->roaster_type_id = $request->roaster_type_id;
         $timekeeper->company_code = Auth::user()->company->company_code;
         // $timekeeper->roaster_type = $request->roaster_type;
         $timekeeper->remarks = $request->remarks;
@@ -132,6 +136,7 @@ class TimeKeeperController extends Controller
             'message' => 'Scheduler Updated Successfully Added !!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', 'Scheduler Updated Successfully !!!');
         return Redirect()->back()->with($notification);
     }
 
@@ -146,6 +151,7 @@ class TimeKeeperController extends Controller
             'message' => 'Timekeeper record has been deleted successfully!!!',
             'alert-type' => 'error'
         );
+        Alert::success('Success', 'Timekeeper record has been deleted successfully!!!');
         return Redirect()->back()->with($notification);
     }
 
@@ -158,7 +164,7 @@ class TimeKeeperController extends Controller
         $employees = Employee::where('user_id', Auth::id())->get();
         $projects = Project::where('user_id', Auth::id())->get();
         $clients = Client::where('user_id', Auth::id())->get();
-        $timekeepers = TimeKeeper::where('Shiftstart', '>=', $fromDate)->where('Shiftend', '<=', $toDate)->get();
+        $timekeepers = TimeKeeper::where('shift_start', '>=', $fromDate)->where('Shift_end', '<=', $toDate)->get();
 
 
         return view('pages.Admin.timekeeper.index', compact('timekeepers', 'employees', 'projects', 'clients'));

@@ -1,5 +1,5 @@
-<div class="modal fade text-left" id="copyTimeKeeper{{ $row->id }}" tabindex="-1" role="dialog"
-    aria-labelledby="myModalLabel17" aria-hidden="true">
+<div class="modal fade text-left" id="copyTimeKeeper{{ $row->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel17"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -79,7 +79,7 @@
                                                 <label for="email-id-column">Shift Start<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="start_date1" name="shift_start"
+                                                    <input type="text" id="start_date" name="shift_start"
                                                         class="form-control flatpickr-date-time"
                                                         placeholder="YYYY-MM-DD to YYYY-MM-DD" />
                                                 </div>
@@ -89,10 +89,9 @@
                                                 <label for="email-id-column">Shift End<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="end_date1" name="shift_end"
+                                                    <input type="text" id="end_date" name="shift_end"
                                                         class="form-control flatpickr-date-time"
-                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD"
-                                                        onchange="getDuration()" />
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" onchange="getDays()" />
                                                 </div>
                                             </div>
 
@@ -101,7 +100,7 @@
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <input type="text" name="duration" class="form-control"
-                                                        placeholder="Duration" id="day1" readonly="readonly" />
+                                                        placeholder="Duration" id="days" readonly="readonly" />
                                                 </div>
                                             </div>
 
@@ -109,19 +108,17 @@
                                                 <label for="email-id-column">Rate<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="hourlyRate" name="ratePerHour"
-                                                        onchange="roasterAmountPerHour()" class="form-control"
+                                                    <input type="text" id="rate" name="ratePerHour"
+                                                        onchange="amountPerHour()" class="form-control"
                                                         placeholder="0" />
                                                 </div>
                                             </div>
-
                                             <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Amount<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <input type="text" id="roasterAmount" name="amount"
-                                                        class="form-control" placeholder="0" readonly="readonly"
-                                                        required />
+                                                    <input type="text" id="amount" name="amount" class="form-control"
+                                                        placeholder="0" readonly="readonly" required />
                                                 </div>
                                             </div>
 
@@ -143,14 +140,49 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-12 col-12">
+                                            {{-- <div class="col-md-12 col-12">
                                                 <label for="email-id-column">Job Type ID<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <input type="text" name="job_type_id" class="form-control"
-                                                        placeholder="job type id" required />
+                                                        placeholder="job type id" required/>
+                                                </div>
+                                            </div> --}}
+                                            @php
+                                                $job_types = App\Models\JobType::all();
+                                            @endphp
+                                            <div class="col-md-12 col-12">
+                                                <label for="">Job Type ID<span class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="job_type_id"
+                                                        aria-label="Default select example">
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
+                                                        @foreach ($job_types as $job_type)
+                                                            <option value="{{ $job_type->id }}">
+                                                                {{ $job_type->name }}</option>
+                                                        @endforeach
+
+                                                    </select>
                                                 </div>
                                             </div>
+                                            <div class="col-md-12 col-12">
+                                                <label for="">Roaster Type ID<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="roaster_type_id"
+                                                        aria-label="Default select example">
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+                                            @php
+                                                $roaster_statuses = App\Models\RoasterStatus::all();
+                                            @endphp
 
                                             <div class="col-md-12 col-12">
                                                 <label for="">Roaster Status<span
@@ -160,11 +192,14 @@
                                                         aria-label="Default select example">
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
-                                                        <option value="1">Active</option>
-                                                        <option value="2">Inactive</option>
+                                                        @foreach ($roaster_statuses as $roaster_status)
+                                                            <option value="{{ $roaster_status->id }}">
+                                                                {{ $roaster_status->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
+
 
                                             {{-- <div class="col-md-12 col-12">
                                                 <label for="email-id-column">Roaster type<span
@@ -182,7 +217,10 @@
                                                         placeholder="Remarks" />
                                                 </div>
                                             </div>
+
+
                                         </div>
+
                                 </div>
                             </div>
                         </div>

@@ -13,7 +13,7 @@
     <link data-require="jqueryui@*" data-semver="1.10.0" rel="stylesheet"
         href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.0/css/smoothness/jquery-ui-1.10.0.custom.min.css" />
     <div class="row">
-
+        @include('sweetalert::alert')
         <div class="col-lg-12 col-md-12">
             <div class="card p-0">
                 <div class="card-header text-primary border-top-0 border-left-0 border-right-0">

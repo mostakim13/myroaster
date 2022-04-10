@@ -6,6 +6,7 @@ use App\Models\Client;
 use Illuminate\Http\Request;
 use App\Models\Project;
 use Auth;
+use Alert;
 
 class ProjectController extends Controller
 {
@@ -40,6 +41,7 @@ class ProjectController extends Controller
         'message'=>'Project Successfully Added !!!',
         'alert-type'=>'success'
     );
+    Alert::success('Success', 'Project Successfully Added !!!');
     return Redirect()->back()->with($notification);
 
 
@@ -64,6 +66,7 @@ class ProjectController extends Controller
         'message'=>'Project Updated Successfully !!!',
         'alert-type'=>'success'
     );
+    Alert::success('Success', 'Project Updated Successfully !!!');
     return Redirect()->back()->with($notification);
   }
   public function delete($id)
@@ -76,6 +79,7 @@ class ProjectController extends Controller
         'message'=>'Project record has been deleted successfully!!!',
         'alert-type'=>'error'
     );
+    Alert::success('Deleted', 'Project record has been deleted successfully!!!');
     return Redirect()->back()->with($notification);
   }
 }

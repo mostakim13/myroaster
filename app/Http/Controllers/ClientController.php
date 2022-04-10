@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Client;
 use Auth;
 use Illuminate\Support\Facades\Storage;
+use Alert;
 
 class ClientController extends Controller
 {
@@ -42,6 +43,7 @@ class ClientController extends Controller
     $client->cnumber=$request->cnumber;
     $client->caddress= $request->caddress;
     $client->cstate= $request->cstate;
+    $client->status = $request->status;
     $client->cpostal_code= $request->cpostal_code;
     $client->cperson= $request->cperson;
     $client->company_code = Auth::user()->company->company_code;
@@ -85,9 +87,6 @@ class ClientController extends Controller
             'message'=>'Client Image Not Found !!!',
             'alert-type'=>'error'
         );
-        Alert::error('Error', 'Client Image Not Found !!!');
-        return Redirect()->back()->with($notification);
-
         //file check in storage
       }
 
@@ -100,6 +99,7 @@ class ClientController extends Controller
     $client->cnumber=$request->cnumber;
     $client->caddress= $request->caddress;
     $client->cstate= $request->cstate;
+    $client->status = $request->status;
     $client->cpostal_code= $request->cpostal_code;
     $client->cperson= $request->cperson;
     $client->cimage= $filename;

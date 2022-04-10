@@ -27,13 +27,13 @@
                                           <div class="col-md-4 col-12">
                                               <div class="form-group">
                                                   <label for="first-name-column">Middle Name</label>
-                                                  <input type="text" id="mname" value="{{$row->mname}}" class="form-control" placeholder="Middle name" name="mname" required />
+                                                  <input type="text" id="mname" value="{{$row->mname}}" class="form-control" placeholder="Middle name" name="mname"/>
                                               </div>
                                           </div>
                                           <div class="col-md-4 col-12">
                                               <div class="form-group">
                                                   <label for="last-name-column">Last Name *</label>
-                                                  <input type="text" id="lname" value="{{$row->lname}}" class="form-control" placeholder="Last Name" name="lname" required />
+                                                  <input type="text" id="lname" value="{{$row->lname}}" class="form-control" placeholder="Last Name" name="lname"/>
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
@@ -67,12 +67,26 @@
                                               </div>
                                             </div>
 
-                                          <div class="col-12">
+                                          <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Date of Birth *</label>
-                                                  <input type="date" value="{{$row->date_of_birth}}"  class="form-control" name="date_of_birth" placeholder="Date Of Birth" required/>
+                                                  <input type="date" value="{{$row->date_of_birth}}"  class="form-control flatpickr-basic" name="date_of_birth" placeholder="Date Of Birth" required/>
                                               </div>
                                           </div>
+                                          <div class="col-md-6 col-12">
+                                            <label for="email-id-column">Select Status<span
+                                                    class="text-danger">*</span></label>
+                                            <div class="form-group">
+                                                <select class="form-control" name="status"
+                                                    aria-label="Default select example" required>
+                                                    <option value="" disabled selected hidden>Please Choose...
+                                                    </option>
+                                                    <option value="1" {{ $row->status == 1 ? 'selected' : '' }}>Active</option>
+                                                    <option value="2" {{ $row->status == 2 ? 'selected' : '' }}>Inactive</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">RSA Number</label>
@@ -80,9 +94,9 @@
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
+                                            <label for="company-column">RSA Expire Date *</label>
                                               <div class="form-group">
-                                                  <label for="company-column">RSA Expire Date *</label>
-                                                  <input type="date" value="{{$row->rsa_expire_date}}"  class="form-control" name="rsa_expire_date" placeholder="RSA Expire Date" required/>
+                                                  <input type="date" value="{{$row->rsa_expire_date}}"  class="form-control flatpickr-basic" name="rsa_expire_date" placeholder="RSA Expire Date" required/>
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
@@ -93,20 +107,20 @@
                                           </div>
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
-                                                  <label for="company-column">License Expire Date *</label>
-                                                  <input type="date" value="{{$row->license_expire_date}}"  class="form-control" name="license_expire_date" placeholder="License Expire Date" required/>
+                                                <label for="company-column">License Expire Date *</label>
+                                                  <input type="date" value="{{$row->license_expire_date}}"  class="form-control flatpickr-basic" name="license_expire_date" placeholder="License Expire Date" required/>
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="company-column">Avatar</label>
-                                                  <input type="file" id="image" class="form-control" name="employee_image" placeholder="Avatar" required />
+                                                  <input type="file" id="image" class="form-control" name="employee_image" placeholder="Avatar"/>
                                               </div>
                                           </div>
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
-                                                  <label for="company-column">First Aid License Expire Date *</label>
-                                                  <input type="date" value="{{$row->first_aid_license}}" class="form-control" name="first_aid_license" placeholder="First Aid License Expire Date" required />
+                                                <label for="company-column">First Aid License Expire Date *</label>
+                                                  <input type="date" value="{{$row->first_aid_license}}" class="form-control flatpickr-basic" name="first_aid_license" placeholder="First Aid License Expire Date" required />
                                               </div>
                                           </div>
 
