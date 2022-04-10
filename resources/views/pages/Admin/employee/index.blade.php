@@ -54,35 +54,36 @@
                                             @if ($row->image != null)
                                                 <img src="{{ asset('storage/employees/' . $row->image) }}" alt="Avatar"
                                                     height="26" width="26" />
+                                            @else
+                                                No image
+                                            @endif
                                         </td>
-                                    @else
-                                        No image
-                                @endif
-                                <td>
-                                    {{ $row->fname }} {{ $row->lname }}
-                                </td>
-                                <td>{{ $row->email }}</td>
-                                <td>{{ $row->contact_number }}</td>
+                                        <td>
+                                            {{ $row->fname }} {{ $row->lname }}
+                                        </td>
+                                        <td>{{ $row->email }}</td>
+                                        <td>{{ $row->contact_number }}</td>
 
 
-                                <td>
-                                    @if ($row->status == 1)
-                                        <span class="badge badge-pill badge-light-success mr-1">Active</span>
-                                    @else
-                                        <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
-                                    @endif
-                                </td>
+                                        <td>
+                                            @if ($row->status == 1)
+                                                <span class="badge badge-pill badge-light-success mr-1">Active</span>
+                                            @else
+                                                <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
+                                            @endif
+                                        </td>
 
-                                <td>
-                                    <a href="#" data-toggle="modal" data-target="#editEmployee{{ $row->id }}"><i
-                                            data-feather='edit'></i></a>
-                                    <a href="/admin/home/employee/delete/{{ $row->id }}"><i
-                                            data-feather='trash-2'></i></a>
-                                </td>
-                                </tr>
-                                @include(
-                                    'pages.Admin.employee.modals.employeeeditmodal'
-                                )
+                                        <td>
+                                            <a href="#" data-toggle="modal"
+                                                data-target="#editEmployee{{ $row->id }}"><i
+                                                    data-feather='edit'></i></a>
+                                            <a href="/admin/home/employee/delete/{{ $row->id }}"><i
+                                                    data-feather='trash-2'></i></a>
+                                        </td>
+                                    </tr>
+                                    @include(
+                                        'pages.Admin.employee.modals.employeeeditmodal'
+                                    )
                                 @endforeach
 
                             </tbody>
