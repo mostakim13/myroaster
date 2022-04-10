@@ -29,6 +29,8 @@ class CompanyController extends Controller
             ->join('companies', 'companies.user_id', '=', 'users.id')
             ->where(['users.is_admin' => '1'])
             ->get();
+
+
         return view('pages.SuperAdmin.Company.index', compact('companies'));
     }
     // public function updateCompany(Request $request)

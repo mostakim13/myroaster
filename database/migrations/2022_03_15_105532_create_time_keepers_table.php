@@ -15,24 +15,23 @@ return new class extends Migration
     {
         Schema::create('time_keepers', function (Blueprint $table) {
             $table->integer('Timekeeperid')->autoIncrement();
-            $table->unsignedInteger('user_id');
-            $table->unsignedInteger('client_id');
-            $table->unsignedInteger('Project_id');
-            $table->unsignedInteger('employee_id');
-            $table->unsignedInteger('company_id')->nullable();
-            // $table->string('projectStartDate');
-            // $table->string('projectEndDate');
+            $table->string('company_code');
+            $table->integer('user_id')->unsigned()->index()->foreign()->references("id")->on("users")->onDelete("cascade");
+            $table->integer('client_id')->unsigned()->index()->foreign()->references("id")->on("clients")->onDelete("cascade");
+            $table->integer('project_id')->unsigned()->index()->foreign()->references("id")->on("projects")->onDelete("cascade");
+            $table->integer('employee_id')->unsigned()->index()->foreign()->references("id")->on("employees")->onDelete("cascade");
+            $table->integer('company_id')->unsigned()->index()->foreign()->references("id")->on("companies")->onDelete("cascade");
             $table->string('roaster_date');
             $table->string('shift_start');
             $table->string('shift_end');
-            $table->string('Sign_in')->nullable();
+            $table->string('sign_in')->nullable();
             $table->string('sign_out')->nullable();
             $table->string('duration');
             $table->string('ratePerHour');
             $table->string('amount');
-            $table->unsignedInteger('jobtypeid');
-            $table->unsignedInteger('roaster_status_id');
-            $table->unsignedInteger('roaster_type_id');
+            $table->integer('job_type_id')->unsigned()->index()->foreign()->references("id")->on("job_types")->onDelete("cascade");;
+            $table->integer('roaster_id')->unsigned()->index()->foreign()->references("id")->on("roaster_statuses")->onDelete("cascade");;
+            $table->integer('roaster_type')->unsigned()->index()->foreign()->references("id")->on("roaster_types")->onDelete("cascade");;
             $table->string('remarks')->nullable();
             $table->timestamps();
         });

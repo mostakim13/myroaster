@@ -24,7 +24,9 @@ class EmployeeController extends Controller
     //Employee View File
     public function index($id)
     {
-        $employees = Employee::where('user_id', Auth::id())->get();
+        $employees = DB::table('users')
+            ->select('users.*', 'employees.*')
+            ->join('employees', 'employees.user_id', '=', 'users.id')->get();
         return view('pages.Admin.employee.index', compact('employees'));
     }
 
@@ -42,8 +44,26 @@ class EmployeeController extends Controller
                 $filename
             );
         }
+
+
+
+        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        $password = substr(str_shuffle($chars), 0, 10);
+        $email_data['email'] = $request['email'];
+        $email_data['name'] = $request['name'];
+        $email_data['password'] = $password;
+        DB::transaction(function () use ($request, $password, $email_data) {
+            $GLOBALS['data'] = User::create([
+                'name' => $request->fname,
+                'email' => $request->email,
+                'password' => Hash::make($password),
+                'company' => $request->company,
+
+            ]);
+            $GLOBALS['data']->notify(new UserCredential($email_data));
+        });
         $employee = new Employee;
-        $employee->user_id = Auth::id();
+        $employee->user_id = $GLOBALS['data']->id;
         $employee->fname = $request->fname;
         $employee->mname = $request->mname;
         $employee->lname = $request->lname;
@@ -62,23 +82,6 @@ class EmployeeController extends Controller
         $employee->company_code = Auth::user()->company->company_code;
         $employee->image = $filename;
         $employee->save();
-
-
-        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ01234567890123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-        $password = substr(str_shuffle($chars), 0, 10);
-        $email_data['email'] = $request['email'];
-        $email_data['name'] = $request['name'];
-        $email_data['password'] = $password;
-        DB::transaction(function () use ($request, $password, $email_data) {
-            $data = User::create([
-                'name' => $request->lname,
-                'email' => $request->email,
-                'password' => Hash::make($password),
-                'company' => $request->company,
-            ]);
-            $data->notify(new UserCredential($email_data));
-            Session::flash('success', 'User has been Successfully Registered!!');
-        });
 
         $notification = array(
             'message' => 'Employee Added Successfully Added !!!',
@@ -106,6 +109,20 @@ class EmployeeController extends Controller
         //     'license_expire_date' => 'required',
 
         // ]);
+
+        $rules = [
+            'fname' => 'required',
+            'email' => 'required|email|unique:users',
+            'company_code' => 'required',
+            'status' => 'required',
+            'company' => 'required',
+            'company_contact' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+
         $image = $request->file('file');
         $filename = null;
         $uploadedFile = $request->file('employee_image');
@@ -171,10 +188,23 @@ class EmployeeController extends Controller
     }
     public function delete($id)
     {
-        //dd($id);
-        $employee = Employee::find($id);
-        //dd($employee);
-        $employee->delete();
+        $data = Employee::findOrFail($id);
+
+        User::where('id',$data->user_id)->delete();
+        // $user_id = Employee::all();
+        Employee::findOrFail($data->id)->delete();
+
+
+        // $data =DB::table('employees')
+        // ->Join('users','employees.user_id', '=','users.id')
+        // ->where('employees.id', $id);
+        // $data->delete();
+
+        // DB::table('users')
+        //     ->join('employees', 'users.id', 'employees.user_id')
+        //     ->where('employees.id', $id)
+        //     ->delete();
+
         $notification = array(
             'message' => 'Employee record has been deleted successfully!!!',
             'alert-type' => 'error'

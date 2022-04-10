@@ -17,10 +17,11 @@ return new class extends Migration
             $table->id();
             $table->string('fname');
             $table->string('mname')->nullable();
-            $table->string('lname');
-
+            $table->string('lname')->nullable();
+            $table->string('company_code');
             $table->string('address');
             $table->string('state');
+            $table->string('status');
             $table->string('postal_code');
             $table->string('email')->unique();
             $table->string('contact_number');
@@ -32,7 +33,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('first_aid_license');
             $table->integer('user_id')->unsigned()->index()->foreign()->references("id")->on("users")->onDelete("cascade");
-            
+
 
             $table->timestamps();
         });

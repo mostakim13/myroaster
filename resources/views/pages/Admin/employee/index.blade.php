@@ -59,9 +59,11 @@
                                             @endif
                                         </td>
                                         <td>
-                                            {{ $row->fname }} {{ $row->lname }}
+                                            {{ $row->fname }}
                                         </td>
-                                        <td>{{ $row->email }}</td>
+                                        <td>{{ $row->email }}
+
+                                        </td>
                                         <td>{{ $row->contact_number }}</td>
 
 
@@ -74,12 +76,14 @@
                                         </td>
 
                                         <td>
+                                            <input type="hidden" name="id" value="{{ $row->id }}">
+                                            <input type="hidden" name="user_id" value="{{ $row->user_id  }}">
                                             <a href="#" data-toggle="modal"
                                                 data-target="#editEmployee{{ $row->id }}"><i
                                                     data-feather='edit'></i></a>
-                                            <a href="/admin/home/employee/delete/{{ $row->id }}"><i
-                                                    data-feather='trash-2'></i></a>
+                                            <a href="/admin/home/employee/delete/{{ $row->id }}"><i data-feather='trash-2'></i></a>
                                         </td>
+
                                     </tr>
                                     @include(
                                         'pages.Admin.employee.modals.employeeeditmodal'

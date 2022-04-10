@@ -18,8 +18,9 @@ return new class extends Migration
             $table->unsignedInteger('user_id')->unsigned()->index()->foreign()->references("id")->on("users")->onDelete("cascade");
             $table->string('pName');
             $table->string('cName');
-            $table->string('Status');
+            $table->string('status');
             $table->string('cNumber');
+            $table->string('company_code');
             $table->string('clientName');
             $table->string('project_address')->nullable();
             $table->string('project_state')->nullable();

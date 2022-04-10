@@ -20,7 +20,8 @@ return new class extends Migration
             $table->string('cemail');
             $table->string('cnumber');
             $table->string('cstate');
-
+            $table->string('status');
+            $table->string('company_code');
             $table->string('caddress');
             $table->string('cperson');
             $table->string('cpostal_code');

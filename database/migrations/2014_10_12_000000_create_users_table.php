@@ -21,7 +21,6 @@ return new class extends Migration
             $table->string('password');
             $table->boolean('super_admin')->nullable();
             $table->boolean('is_admin')->nullable();
-            $table->boolean('status')->nullable();
             $table->string('image')->nullable();
             $table->rememberToken();
             $table->timestamps();

@@ -50,12 +50,16 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        // $this->validate($request, [
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        //     'password' => 'required|same:confirm-password',
-        //     'roles' => 'required'
-        // ]);
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|same:confirm-password|max:255|unique:users',
+            'roles' => 'required',
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
@@ -68,28 +72,23 @@ class UserController extends Controller
     }
 
 
-    //===========================================================================
-    //========================Company Details Store==============================
+    //===========================================================================//
+    //========================Company Details Store Start========================//
     public function storeCompanies(Request $request)
     {
+        $rules = [
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'company_code' => 'required',
+            'status' => 'required',
+            'company' => 'required',
+            'company_contact' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
 
-        // dd($request);
-        // $request->validate([
-        //     'name' => 'required',
-        //     'email' => 'required|email',
-        //     'company_code' => 'required',
-        //     'status' => 'required',
-        //     'company' => 'required',
-        //     'company_contact' => 'required'
-
-        // ],[
-        //     'name.required' => 'Please enter your first name.',
-        //     'email.required' => 'Please enter your email.',
-        //     'company_code.required' => 'Please enter your company code.',
-        //     'status.required' => 'Please select status.',
-        //     'company.required' => 'Please enter your company name.',
-        //     'company_contact.required' => 'Please enter your contact number.',
-        // ]);
         $image = $request->file('file');
         $filename = null;
         if ($image) {
@@ -118,8 +117,8 @@ class UserController extends Controller
             ]);
             $GLOBALS['data']->notify(new UserCredential($email_data));
         });
-        //=========================================================================
-        //================Store Company Details in Company Table===================
+        //=========================================================================//
+        //================Store Company Details in Company Table===================//
         $companies = new Company();
         $companies->user_id =  $GLOBALS['data']->id;
         $companies->company_code = $request->company_code;
@@ -136,31 +135,29 @@ class UserController extends Controller
             'message' => 'Company Admin Added Success',
             'alert-type' => 'success'
         );
-        Alert::success('Success', 'Company Admin Added Successfully !!!');
+        Alert::success('Success', 'Company Admin Added Successfully!');
         return Redirect()->back()->with($notification);
     }
+     //===========================================================================//
+    //========================Company Details Store End========================//
 
-    //=======================================================================================
-    //===================================Update Company Details==============================
+    //=======================================================================================//
+    //===================================Update Company Details==============================//
     public function updateCompany(Request $request)
     {
-        // dd($request->status);
-        $request->validate([
+        $rules = [
             'name' => 'required',
             'email' => 'required|email',
             'company_code' => 'required',
             'status' => 'required',
             'company' => 'required',
             'company_contact' => 'required'
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
 
-        ],[
-            'name.required' => 'Please enter your first name.',
-            'email.required' => 'Please enter your email.',
-            'company_code.required' => 'Please enter your company code.',
-            'status.required' => 'Please select status.',
-            'company.required' => 'Please enter your company name.',
-            'company_contact.required' => 'Please enter your contact number.',
-        ]);
         $image = $request->file('file');
         $filename = null;
         if ($image) {
@@ -188,10 +185,10 @@ class UserController extends Controller
         $company->image = $filename;
         $company->save();
         $notification = array(
-            'message' => 'Company Updated Successfully Added !!!',
+            'message' => 'Company Updated Successfully Added!',
             'alert-type' => 'success'
         );
-        Alert::success('Success', 'Company Updated Successfully !!!');
+        Alert::success('Success', 'Company Updated Successfully!');
         return Redirect()->back()->with($notification);
     }
 
@@ -231,12 +228,16 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $this->validate($request, [
+        $rules = [
             'name' => 'required',
-            'email' => 'required|email',
-            'password' => 'same:confirm-password',
-            'roles' => 'required'
-        ]);
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|same:confirm-password|max:255|unique:users',
+            'roles' => 'required',
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
 
         $input = $request->all();
         if (!empty($input['password'])) {

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Alert;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -66,6 +67,7 @@ class LoginController extends Controller
                 'message'=>'Email and Password did not match!',
                 'alert-type' =>'error'
             );
+            Alert::error('Error', 'Email and Password did not match!');
           return redirect()->route('login')->with($notification);
         }
     }

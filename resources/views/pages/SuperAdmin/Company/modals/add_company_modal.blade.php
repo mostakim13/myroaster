@@ -25,7 +25,7 @@
                                                 <div class="form-group">
                                                     <label for="first-name-column">First Name</label>
                                                     <input type="text" id="name" class="form-control"
-                                                        placeholder="First Name" name="name" />
+                                                        placeholder="First Name" name="name" required/>
                                                     @error('name')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -49,7 +49,7 @@
                                                 <div class="form-group">
                                                     <label for="email-id-column">Email</label>
                                                     <input type="email" id="email" class="form-control" name="email"
-                                                        placeholder="Email"/>
+                                                        placeholder="Email" required/>
                                                         @error('email')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -65,7 +65,7 @@
                                                 <div class="form-group">
                                                     <label for="company-column">Company</label>
                                                     <input type="text" id="company" class="form-control"
-                                                        name="company" placeholder="Company"/>
+                                                        name="company" placeholder="Company" required/>
                                                         @error('company')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -75,7 +75,7 @@
                                                 <div class="form-group">
                                                     <label for="company-column">Company Contact Number</label>
                                                     <input type="number" id="companyContact" class="form-control"
-                                                        name="company_contact" placeholder="Company"/>
+                                                        name="company_contact" placeholder="Company" required/>
                                                         @error('company_contact')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -92,7 +92,7 @@
                                                 <div class="form-group">
                                                     <label for="company-column">Company Code</label>
                                                     <input type="text" id="" class="form-control" name="company_code"
-                                                        placeholder="Company Code"/>
+                                                        placeholder="Company Code" required/>
                                                         @error('company_code')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -102,8 +102,7 @@
                                             <div class="col-md-6 col-12">
                                                 <label for="">Status</label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="status"
-                                                        >
+                                                    <select class="form-control" name="status" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         <option value="1">Active</option>
