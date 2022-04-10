@@ -169,8 +169,10 @@
                             <?php
                             if (Auth::user()->super_admin == 1) {
                                 echo 'Super Admin';
-                            } else {
+                            } elseif (Auth::user()->is_admin == 1) {
                                 echo 'Admin';
+                            } else {
+                                echo 'User';
                             }
 
                             ?>

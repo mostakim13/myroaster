@@ -2,6 +2,7 @@
 
 
 @section('admincontent')
+@include('sweetalert::alert')
 <div class="content-header row">
     <div class="content-header-left col-md-9 col-12 mb-2">
         <div class="row breadcrumbs-top">
@@ -51,7 +52,7 @@
                             <td>
                                 @if ($row->image != null)
 
-                              <img src="{{asset("storage/employees/$row->image")}}" alt="Avatar" height="26" width="26" /></td>
+                              <img src="{{asset('storage/employees/'.$row->image)}}" alt="Avatar" height="26" width="26" /></td>
                               @else
                                   No image
                               @endif

@@ -81,10 +81,14 @@
                                     <!-- header media -->
                                     <div class="media">
                                         <a href="javascript:void(0);" class="mr-25">
-                                            <img class="round"
+                                            {{-- <img class="round"
                                                 src="{{ asset('storage/clients/' . Auth::user()->image) }}" alt="avatar"
-                                                height="80" width="80">
+                                                height="80" width="80"> --}}
+                                                <img src="{{ asset("/storage/Admin/".Auth::user()->image) }}" alt="Avatar"
+                                                height="80" width="80" />
+
                                         </a>
+
                                         <!-- upload and reset button -->
                                         <div class="media-body mt-75 ml-1">
                                             <!-- <label for="account-upload" class="btn btn-sm btn-primary mb-75 mr-75">Upload</label>

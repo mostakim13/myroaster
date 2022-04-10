@@ -203,14 +203,17 @@
                       <?php
                       if (  Auth::user()->super_admin == 1) {
                         echo "Super Admin";
-                      }else {
+                      }elseif ( Auth::user()->is_admin == 1) {
                         echo "Admin";
+                      }
+                      else{
+                          echo "User";
                       }
 
 
                        ?>
 
-                  </span></div><span class="avatar"><img class="round" src="{{asset('storage/clients/'. Auth::user()->image )}}" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
+                  </span></div><span class="avatar"><img class="round" src="{{asset('storage/Admin/'. Auth::user()->image )}}" alt="avatar" height="40" width="40"><span class="avatar-status-online"></span></span>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item" href="/admin/company/profile-settings/{{Auth::user()->id}}"><i class="mr-50" data-feather="user"></i> Profile</a>
                     <div class="dropdown-divider"></div><a class="nav-link" href="{{ route('logout') }}"

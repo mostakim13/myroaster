@@ -30,24 +30,6 @@ class EmployeeController extends Controller
     //Employee Store
     public function store(Request $request)
     {
-        $request->validate([
-            'file' => 'required',
-            'first_aid_license' => 'required',
-            'fname' => 'required',
-            'mname' => 'required',
-            'lname' => 'required',
-            'address' => 'required',
-            'state' => 'required',
-            'postal_code' => 'required',
-            'email' => 'required|unique:users|email',
-            'contact_number' => 'required|numeric',
-            'date_of_birth' => 'required',
-            'license_no' => 'required',
-            'license_expire_date' => 'required',
-
-        ],[
-            'email.unique:users' => 'Email is already used'
-        ]);
         $image = $request->file('file');
         $filename = null;
         if ($image) {
@@ -151,6 +133,7 @@ class EmployeeController extends Controller
                 'message' => 'User Image Not Found !!!',
                 'alert-type' => 'error'
             );
+            Alert::success('Success', 'User Image Not Found !!!');
             return Redirect()->back()->with($notification);
 
             //file check in storage
@@ -179,6 +162,7 @@ class EmployeeController extends Controller
             'message' => 'Employee Updated Successfully Added !!!',
             'alert-type' => 'success'
         );
+        Alert::success('Success', 'Employee Updated Successfully !!!');
         return Redirect()->back()->with($notification);
     }
     public function delete($id)
@@ -191,6 +175,7 @@ class EmployeeController extends Controller
             'message' => 'Employee record has been deleted successfully!!!',
             'alert-type' => 'error'
         );
+        Alert::success('Deleted', 'Employee record has been deleted successfully !!!');
         return Redirect()->back()->with($notification);
     }
 }
