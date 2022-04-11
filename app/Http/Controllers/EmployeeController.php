@@ -24,9 +24,7 @@ class EmployeeController extends Controller
     //Employee View File
     public function index($id)
     {
-        $employees = DB::table('users')
-            ->select('users.*', 'employees.*')
-            ->join('employees', 'employees.user_id', '=', 'users.id')->get();
+        $employees = Employee::where('user_id', Auth::id())->get();
         return view('pages.Admin.employee.index', compact('employees'));
     }
 
