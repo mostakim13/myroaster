@@ -31,6 +31,15 @@ class EmployeeController extends Controller
     //Employee Store
     public function store(Request $request)
     {
+        $rules = [
+
+            'email' => 'required|email|unique:users',
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+
         $image = $request->file('file');
         $filename = null;
         if ($image) {
@@ -51,17 +60,19 @@ class EmployeeController extends Controller
         $email_data['name'] = $request['name'];
         $email_data['password'] = $password;
         DB::transaction(function () use ($request, $password, $email_data) {
-            $GLOBALS['data'] = User::create([
+            $data = User::create([
                 'name' => $request->fname,
                 'email' => $request->email,
                 'password' => Hash::make($password),
                 'company' => $request->company,
 
             ]);
-            $GLOBALS['data']->notify(new UserCredential($email_data));
+            $data->notify(new UserCredential($email_data));
         });
+
+
         $employee = new Employee;
-        $employee->user_id = $GLOBALS['data']->id;
+        $employee->user_id = Auth::user()->id;
         $employee->fname = $request->fname;
         $employee->mname = $request->mname;
         $employee->lname = $request->lname;
@@ -108,18 +119,16 @@ class EmployeeController extends Controller
 
         // ]);
 
-        $rules = [
-            'fname' => 'required',
-            'email' => 'required|email|unique:users',
-            'company_code' => 'required',
-            'status' => 'required',
-            'company' => 'required',
-            'company_contact' => 'required'
-        ];
-        $customMessages = [
-            'required' => 'The :attribute field is required.'
-        ];
-        $this->validate($request, $rules, $customMessages);
+        // $rules = [
+        //     'fname' => 'required',
+        //     'email' => 'required|email',
+        //     'company_code' => 'required',
+
+        // ];
+        // $customMessages = [
+        //     'required' => 'The :attribute field is required.'
+        // ];
+        // $this->validate($request, $rules, $customMessages);
 
         $image = $request->file('file');
         $filename = null;
@@ -188,7 +197,7 @@ class EmployeeController extends Controller
     {
         $data = Employee::findOrFail($id);
 
-        User::where('id',$data->user_id)->delete();
+        User::where('id', $data->user_id)->delete();
         // $user_id = Employee::all();
         Employee::findOrFail($data->id)->delete();
 

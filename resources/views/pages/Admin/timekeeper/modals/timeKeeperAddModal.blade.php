@@ -27,8 +27,11 @@
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($employees as $employee)
-                                                            <option value="{{ $employee->id }}">
-                                                                {{ $employee->fname }}</option>
+                                                            @if ($employee->status == 1)
+                                                                <option value="{{ $employee->id }}">
+                                                                    {{ $employee->fname }}</option>
+                                                            @else
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -42,8 +45,12 @@
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($clients as $client)
-                                                            <option value="{{ $client->id }}">{{ $client->cname }}
-                                                            </option>
+                                                            @if ($client->status == 1)
+                                                                <option value="{{ $client->id }}">
+                                                                    {{ $client->cname }}
+                                                                </option>
+                                                            @else
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -58,8 +65,12 @@
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($projects as $project)
-                                                            <option value="{{ $project->id }}">{{ $project->pName }}
-                                                            </option>
+                                                            @if ($project->status == 1)
+                                                                <option value="{{ $project->id }}">
+                                                                    {{ $project->pName }}
+                                                                </option>
+                                                            @else
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>
@@ -122,23 +133,23 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-12">
+                                            {{-- <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Sign In</label>
                                                 <div class="form-group">
                                                     <input type="text" name="sign_in"
                                                         class="form-control flatpickr-date-time"
                                                         placeholder="YYYY-MM-DD to YYYY-MM-DD" required />
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
-                                            <div class="col-md-6 col-12">
+                                            {{-- <div class="col-md-6 col-12">
                                                 <label for="email-id-column">Sign Out</label>
                                                 <div class="form-group">
                                                     <input type="text" name="sign_out"
                                                         class="form-control flatpickr-date-time"
                                                         placeholder="YYYY-MM-DD to YYYY-MM-DD" required />
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                             {{-- <div class="col-md-12 col-12">
                                                 <label for="email-id-column">Job Type ID<span

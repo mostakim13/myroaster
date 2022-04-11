@@ -2,7 +2,7 @@
 
 
 @section('admincontent')
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -10,7 +10,8 @@
                     <h2 class="content-header-title float-left mb-0">Projects</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="/admin/home/{{ Auth::user()->company->company_code }}">Home</a>
+                            <li class="breadcrumb-item"><a
+                                    href="/admin/home/{{ Auth::user()->company->company_code }}">Home</a>
                             </li>
                             <li class="breadcrumb-item active">Project Lists
                             </li>
@@ -49,30 +50,36 @@
                             <tbody>
                                 @foreach ($projects as $project)
                                     <tr>
-                                        <td>{{ $loop->index+1 }}</td>
+                                        <td>{{ $loop->index + 1 }}</td>
                                         <td>{{ $project->pName }}</td>
                                         <td>{{ $project->cName }}</td>
                                         <td>{{ $project->cNumber }}</td>
                                         <td>
-                                            @if ($project->Status == 1)
-                                            <span class="badge badge-pill badge-light-success mr-1">Active</span>
+                                            @if ($project->status == 1)
+                                                <span class="badge badge-pill badge-light-success mr-1">Active</span>
                                             @else
-                                            <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
+                                                <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
                                             @endif
 
                                         </td>
-                                        <td>@if (isset($project->client->cname))
-                                            {{ $project->client->cname }}
-                                            @else
-                                            Null
-                                        @endif</td>
                                         <td>
-                                            <a href="#" data-toggle="modal" data-target="#editProject{{$project->id}}"><i
+                                            @if (isset($project->client->cname))
+                                                {{ $project->client->cname }}
+                                            @else
+                                                Null
+                                            @endif
+                                        </td>
+                                        <td>
+                                            <a href="#" data-toggle="modal"
+                                                data-target="#editProject{{ $project->id }}"><i
                                                     data-feather='edit'></i></a>
-                                            <a href="/admin/home/project/delete/{{$project->id}}"><i data-feather='trash-2'></i></a>
+                                            <a href="/admin/home/project/delete/{{ $project->id }}"><i
+                                                    data-feather='trash-2'></i></a>
                                         </td>
                                     </tr>
-                                    @include('pages.Admin.project.modals.projectEditModal')
+                                    @include(
+                                        'pages.Admin.project.modals.projectEditModal'
+                                    )
                                 @endforeach
 
 

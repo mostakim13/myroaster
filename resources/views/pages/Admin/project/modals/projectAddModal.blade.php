@@ -73,7 +73,7 @@
                                                 <label for="email-id-column">Select Status<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="Status"
+                                                    <select class="form-control" name="status"
                                                         aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
@@ -93,8 +93,12 @@
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($clients as $client)
-                                                            <option value="{{ $client->id }}">{{ $client->cname }}
-                                                            </option>
+                                                            @if ($client->status == 1)
+                                                                <option value="{{ $client->id }}">
+                                                                    {{ $client->cname }}
+                                                                </option>
+                                                            @else
+                                                            @endif
                                                         @endforeach
                                                     </select>
                                                 </div>

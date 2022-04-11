@@ -58,8 +58,8 @@ class TimeKeeperController extends Controller
         $timekeeper->roaster_date = $request->roaster_date;
         $timekeeper->shift_start = $request->shift_start;
         $timekeeper->shift_end = $request->shift_end;
-        $timekeeper->sign_in = $request->sign_in;
-        $timekeeper->sign_out = $request->sign_out;
+        // $timekeeper->sign_in = $request->sign_in;
+        // $timekeeper->sign_out = $request->sign_out;
         $timekeeper->duration = $request->duration;
         $timekeeper->ratePerHour = $request->ratePerHour;
         $timekeeper->amount = $request->amount;
@@ -118,8 +118,8 @@ class TimeKeeperController extends Controller
         $timekeeper->roaster_date = $request->roaster_date;
         $timekeeper->shift_start = $request->shift_start;
         $timekeeper->shift_end = $request->shift_end;
-        $timekeeper->sign_in = $request->sign_in;
-        $timekeeper->sign_out = $request->sign_out;
+        // $timekeeper->sign_in = $request->sign_in;
+        // $timekeeper->sign_out = $request->sign_out;
         $timekeeper->duration = $request->duration;
         $timekeeper->ratePerHour = $request->ratePerHour;
         $timekeeper->amount = $request->amount;

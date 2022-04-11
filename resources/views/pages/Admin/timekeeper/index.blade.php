@@ -1,37 +1,20 @@
 @extends('layouts.Admin.master')
 @section('admincontent')
-@include('sweetalert::alert')
+    @include('sweetalert::alert')
     <div class="col-lg-12 col-md-12">
         <div class="card p-0">
             <div class="card-header text-primary border-top-0 border-left-0 border-right-0">
                 <h3 class="card-title text-primary d-inline">
-                    Select Project Dates
+                    Start Roaster
                 </h3>
                 <span class="float-right">
                     <i class="fa fa-chevron-up clickable"></i>
                 </span>
             </div>
-
             <div class="card-body">
                 {{-- <form method="head" action="" data-toggle="modal" id="myForm"> --}}
                 <div class="row row-xs">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <input type="text" id="startDate" name="projectStartDate"
-                                class="form-control flatpickr-date-time" placeholder="YYYY-MM-DD to YYYY-MM-DD"
-                                min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" />
-                        </div>
-                    </div>
-
-                    <div class="col-md-4 col-12">
-                        <div class="form-group">
-                            <input type="text" id="endDate" name="projectEndDate" class="form-control flatpickr-date-time"
-                                placeholder="YYYY-MM-DD to YYYY-MM-DD"
-                                min="{{ Carbon\Carbon::now()->format('Y-m-d') }}" />
-                        </div>
-                    </div>
                     <div class="col-md-2 col-lg-3 mt-3 mt-md-0">
-
                         {{-- <input class="btn btn btn-outline-primary btn-block" onclick="myFunction()" type="submit"
                                 value="Create Schedule"> --}}
                         <a class="btn btn-primary" onclick="myFunction()" href="#" data-toggle="modal"
