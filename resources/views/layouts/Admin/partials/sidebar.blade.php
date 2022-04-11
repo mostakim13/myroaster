@@ -1,8 +1,8 @@
 <div class="main-menu menu-fixed menu-light menu-accordion menu-shadow" data-scroll-to-active="true">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
-            <li class="nav-item mr-auto"><a class="navbar-brand" href="/admin/home/{{ Auth::user()->company->company_code }}"><span
-                        class="brand-logo">
+            <li class="nav-item mr-auto"><a class="navbar-brand"
+                    href="/admin/home/{{ Auth::user()->company->company_code }}"><span class="brand-logo">
                         <svg viewbox="0 0 139 95" version="1.1" xmlns="http://www.w3.org/2000/svg"
                             xmlns:xlink="http://www.w3.org/1999/xlink" height="24">
                             <defs>
@@ -49,59 +49,68 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/home/{{ Auth::user()->company->company_code }}"><i
-                        data-feather="home"></i><span class="menu-title text-truncate"
-                        data-i18n="Dashboards">Dashboard</span><span
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/admin/home/{{ Auth::user()->company->company_code }}"><i data-feather="home"></i><span
+                        class="menu-title text-truncate" data-i18n="Dashboards">Dashboard</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/admin/home/employee/{{ Auth::user()->company->company_code }}"><i data-feather='user-check'></i><span
-                        class="menu-title text-truncate" data-i18n="Dashboards">Employee</span><span
+                    href="/admin/home/employee/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='user-check'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Employee</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/home/myavailability/{{ Auth::user()->company->company_code }}"><i
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/admin/home/myavailability/{{ Auth::user()->company->company_code }}"><i
                         data-feather='file-text'></i><span class="menu-title text-truncate" data-i18n="Dashboards">My
                         Availavility</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/admin/home/client/{{ Auth::user()->company->company_code }}"><i data-feather='users'></i><span
-                        class="menu-title text-truncate" data-i18n="Dashboards">Client</span><span
+                    href="/admin/home/client/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='users'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Client</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/admin/home/project/{{ Auth::user()->company->company_code }}"><i data-feather='briefcase'></i><span
-                        class="menu-title text-truncate" data-i18n="Dashboards">Project</span><span
+                    href="/admin/home/project/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='briefcase'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Project</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/admin/home/timekeeper/{{ Auth::user()->company->company_code }}"><i data-feather='clock'></i><span
-                        class="menu-title text-truncate" data-i18n="Dashboards">TimeKeeper</span><span
+                    href="/admin/home/timekeeper/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='clock'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">TimeKeeper</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/admin/home/viewjob/{{ Auth::user()->company->company_code }}"><i data-feather='eye'></i><span
-                        class="menu-title text-truncate" data-i18n="Dashboards">View-Job</span><span
+                    href="/admin/home/viewjob/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='eye'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">View-Job</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/admin/home/payment/{{ Auth::user()->company->company_code }}"><i data-feather='dollar-sign'></i><span
-                        class="menu-title text-truncate" data-i18n="Dashboards">Payment</span><span
+                    href="/admin/home/payment/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='dollar-sign'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Payment</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
-                    href="/admin/home/calender/{{ Auth::user()->company->company_code }}"><i data-feather='calendar'></i><span
-                        class="menu-title text-truncate" data-i18n="Dashboards">Calendar</span><span
+                    href="/admin/home/calender/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='calendar'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Calendar</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/home/{{ Auth::user()->company->company_code }}"><i
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/admin/home/{{ Auth::user()->company->company_code }}"><i
                         data-feather='file-text'></i><span class="menu-title text-truncate"
                         data-i18n="Dashboards">Weekly Report</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
@@ -111,31 +120,36 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="slack"></i><span
                         class="menu-title text-truncate" data-i18n="Invoice">Setup</span></a>
                 <ul class="menu-content">
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/home/status/{{ Auth::user()->company->company_code }}"><i
+                    <li class=" nav-item"><a class="d-flex align-items-center"
+                            href="/admin/home/status/{{ Auth::user()->company->company_code }}"><i
                                 data-feather='circle'></i><span class="menu-title text-truncate"
                                 data-i18n="Dashboards">Status</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                            href="/admin/home/roaster/status/{{ Auth::user()->company->company_code }}"><i data-feather='circle'></i><span
-                                class="menu-title text-truncate" data-i18n="Dashboards">Roaster Status</span><span
+                            href="/admin/home/roaster/status/{{ Auth::user()->company->company_code }}"><i
+                                data-feather='circle'></i><span class="menu-title text-truncate"
+                                data-i18n="Dashboards">Roaster Status</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                            href="/admin/home/payment/status/{{ Auth::user()->company->company_code }}"><i data-feather='circle'></i><span
-                                class="menu-title text-truncate" data-i18n="Dashboards">Payment Status</span><span
+                            href="/admin/home/payment/status/{{ Auth::user()->company->company_code }}"><i
+                                data-feather='circle'></i><span class="menu-title text-truncate"
+                                data-i18n="Dashboards">Payment Status</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
                     </li>
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                            href="/admin/home/company/type/{{ Auth::user()->company->company_code }}"><i data-feather='circle'></i><span
-                                class="menu-title text-truncate" data-i18n="Dashboards">Company Type</span><span
+                            href="/admin/home/company/type/{{ Auth::user()->company->company_code }}"><i
+                                data-feather='circle'></i><span class="menu-title text-truncate"
+                                data-i18n="Dashboards">Company Type</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
                     </li>
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="/admin/home/job/type/{{ Auth::user()->company->company_code }}"><i
+                    <li class=" nav-item"><a class="d-flex align-items-center"
+                            href="/admin/home/job/type/{{ Auth::user()->company->company_code }}"><i
                                 data-feather='circle'></i><span class="menu-title text-truncate"
                                 data-i18n="Dashboards">Job Type</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>

@@ -65,7 +65,7 @@
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($projects as $project)
-                                                            @if ($project->status == 1)
+                                                            @if ($project->Status == 1)
                                                                 <option value="{{ $project->id }}">
                                                                     {{ $project->pName }}
                                                                 </option>
@@ -133,39 +133,13 @@
                                                 </div>
                                             </div>
 
-                                            {{-- <div class="col-md-6 col-12">
-                                                <label for="email-id-column">Sign In</label>
-                                                <div class="form-group">
-                                                    <input type="text" name="sign_in"
-                                                        class="form-control flatpickr-date-time"
-                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" required />
-                                                </div>
-                                            </div> --}}
-
-                                            {{-- <div class="col-md-6 col-12">
-                                                <label for="email-id-column">Sign Out</label>
-                                                <div class="form-group">
-                                                    <input type="text" name="sign_out"
-                                                        class="form-control flatpickr-date-time"
-                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" required />
-                                                </div>
-                                            </div> --}}
-
-                                            {{-- <div class="col-md-12 col-12">
-                                                <label for="email-id-column">Job Type ID<span
-                                                        class="text-danger">*</span></label>
-                                                <div class="form-group">
-                                                    <input type="text" name="job_type_id" class="form-control"
-                                                        placeholder="job type id" required/>
-                                                </div>
-                                            </div> --}}
                                             @php
                                                 $job_types = App\Models\JobType::all();
                                             @endphp
                                             <div class="col-md-12 col-12">
-                                                <label for="">Job Type ID<span class="text-danger">*</span></label>
+                                                <label for="">Job Type<span class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="job_type_id"
+                                                    <select class="form-control" name="job_type"
                                                         aria-label="Default select example">
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
@@ -173,20 +147,21 @@
                                                             <option value="{{ $job_type->id }}">
                                                                 {{ $job_type->name }}</option>
                                                         @endforeach
-
                                                     </select>
                                                 </div>
                                             </div>
+
                                             <div class="col-md-12 col-12">
-                                                <label for="">Roaster Type ID<span
-                                                        class="text-danger">*</span></label>
+                                                <label for="">Roaster Type<span class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="roaster_type_id"
+                                                    <select class="form-control" name="roaster_type"
                                                         aria-label="Default select example">
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
-                                                        <option value="1">One</option>
-                                                        <option value="2">Two</option>
+                                                        @foreach ($roaster_types as $roaster_type)
+                                                            <option value="{{ $roaster_type->id }}">
+                                                                {{ $roaster_type->name }}</option>
+                                                        @endforeach
                                                     </select>
                                                 </div>
                                             </div>
@@ -199,7 +174,7 @@
                                                 <label for="">Roaster Status<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="roaster_status_id"
+                                                    <select class="form-control" name="roaster_status"
                                                         aria-label="Default select example">
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>

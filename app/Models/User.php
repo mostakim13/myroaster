@@ -53,8 +53,12 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-public function company(){
-    return $this->belongsTo('App\Models\Company','id','user_id');
-}
-
+    public function company()
+    {
+        return $this->belongsTo('App\Models\Company', 'id', 'user_id');
+    }
+    public function employee()
+    {
+        return $this->belongsTo('App\Models\Employee', 'id', 'user_id');
+    }
 }

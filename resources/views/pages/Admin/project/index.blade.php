@@ -55,7 +55,7 @@
                                         <td>{{ $project->cName }}</td>
                                         <td>{{ $project->cNumber }}</td>
                                         <td>
-                                            @if ($project->status == 1)
+                                            @if ($project->Status == 1)
                                                 <span class="badge badge-pill badge-light-success mr-1">Active</span>
                                             @else
                                                 <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>

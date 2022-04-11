@@ -24,60 +24,43 @@ class TimeKeeperController extends Controller
         $clients = Client::where('user_id', Auth::id())->get();
         // $companies = User::where('user_id', Auth::id())->get();
         $timekeepers = TimeKeeper::where('user_id', Auth::id())->get();
-        return view('pages.Admin.timekeeper.index', compact('employees', 'projects', 'clients', 'timekeepers'));
+        $roaster_types = RoasterType::all();
+        return view('pages.Admin.timekeeper.index', compact('employees', 'projects', 'clients', 'timekeepers', 'roaster_types'));
     }
 
 
-    //roaster store
+    //=============================Timekeeper Store=============================//
     public function storeTimeKeeper(Request $request)
     {
-        // dd($request);
-        $request->validate([
-            'client_id' => 'required',
-            'project_id' => 'required',
-            'employee_id' => 'required',
-            'roaster_date' => 'required',
-            'shift_start' => 'required',
-            'shift_end' => 'required',
-            'duration' => 'required',
-            'ratePerHour' => 'required',
-            'amount' => 'required',
-            'job_type_id' => 'required',
-            'roaster_status_id' => 'required',
 
-        ]);
-
-        //==========================================================================
-        //=============================Timekeeper Store=============================
         $timekeeper = new TimeKeeper();
         $timekeeper->user_id = Auth::id();
         $timekeeper->employee_id = $request->employee_id;
         $timekeeper->client_id = $request->client_id;
         $timekeeper->project_id = $request->project_id;
+        $timekeeper->employee_id = Auth::user()->employee->id;
         $timekeeper->company_id = Auth::id();
         $timekeeper->roaster_date = $request->roaster_date;
         $timekeeper->shift_start = $request->shift_start;
         $timekeeper->shift_end = $request->shift_end;
-        // $timekeeper->sign_in = $request->sign_in;
-        // $timekeeper->sign_out = $request->sign_out;
+        $timekeeper->company_code = 'mim';
         $timekeeper->duration = $request->duration;
         $timekeeper->ratePerHour = $request->ratePerHour;
         $timekeeper->amount = $request->amount;
-        $timekeeper->job_type_id = $request->job_type_id;
-        $timekeeper->roaster_status_id = $request->roaster_status_id;
-        $timekeeper->roaster_type_id = $request->roaster_type_id;
+        $timekeeper->job_type = $request->job_type;
+        $timekeeper->roaster_id = Auth::id();
+        $timekeeper->roaster_status = $request->roaster_status;
+        $timekeeper->roaster_type = $request->roaster_type;
         $timekeeper->remarks = $request->remarks;
         $timekeeper->created_at = Carbon::now();
         $timekeeper->save();
 
-        //==========================================================================
-        //=============================Payment Store================================
+        //=============Payment Store=============//
         $payment = new Payment;
         $payment->roaster_id = $timekeeper->id;
         $payment->save();
 
-        //============================================================================
-        //=============================Roaster Type Store=============================
+        //=============Roaster Type Store=========//
         $roaster = new RoasterType;
         $roaster->roaster_id = $timekeeper->id;
         $roaster->save();
@@ -90,44 +73,28 @@ class TimeKeeperController extends Controller
         return Redirect()->back()->with($notification);
     }
 
-    //update timekeeper
+    // =============================Timekeeper Update=============================//
     public function update(Request $request)
     {
-
-        // dd($request);
-        $request->validate([
-            'client_id' => 'required',
-            'project_id' => 'required',
-            'employee_id' => 'required',
-            'roaster_date' => 'required',
-            'shift_start' => 'required',
-            'shift_end' => 'required',
-            'duration' => 'required',
-            'ratePerHour' => 'required',
-            'amount' => 'required',
-            'job_type_id' => 'required|numeric',
-            'roaster_status_id' => 'required',
-
-        ]);
-
+        dd($request->duration);
         $timekeeper = TimeKeeper::find($request->id);
+        // $timekeeper->user_id = Auth::id();
         $timekeeper->employee_id = $request->employee_id;
         $timekeeper->client_id = $request->client_id;
         $timekeeper->project_id = $request->project_id;
-        $timekeeper->company_id = Auth::id();
+        // $timekeeper->employee_id = Auth::user()->employee->id;
+        // $timekeeper->company_id = Auth::id();
         $timekeeper->roaster_date = $request->roaster_date;
         $timekeeper->shift_start = $request->shift_start;
         $timekeeper->shift_end = $request->shift_end;
-        // $timekeeper->sign_in = $request->sign_in;
-        // $timekeeper->sign_out = $request->sign_out;
+        // $timekeeper->company_code = 'mim';
         $timekeeper->duration = $request->duration;
         $timekeeper->ratePerHour = $request->ratePerHour;
         $timekeeper->amount = $request->amount;
-        $timekeeper->job_type_id = $request->job_type_id;
-        $timekeeper->roaster_status_id = $request->roaster_status_id;
-        $timekeeper->roaster_type_id = $request->roaster_type_id;
-        $timekeeper->company_code = Auth::user()->company->company_code;
-        // $timekeeper->roaster_type = $request->roaster_type;
+        $timekeeper->job_type = $request->job_type;
+        // $timekeeper->roaster_id = Auth::id();
+        $timekeeper->roaster_status = $request->roaster_status;
+        $timekeeper->roaster_type = $request->roaster_type;
         $timekeeper->remarks = $request->remarks;
         $timekeeper->updated_at = Carbon::now();
         $timekeeper->save();

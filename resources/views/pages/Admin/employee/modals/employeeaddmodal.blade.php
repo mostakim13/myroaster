@@ -37,7 +37,7 @@
                                                 <div class="form-group">
                                                     <label for="last-name-column">Last Name *</label>
                                                     <input type="text" id="lname" class="form-control"
-                                                        placeholder="Last Name" name="lname"/>
+                                                        placeholder="Last Name" name="lname" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
@@ -79,8 +79,8 @@
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
                                                     <label for="company-column">Date of Birth *</label>
-                                                    <input type="date" class="form-control flatpickr-basic" name="date_of_birth"
-                                                        placeholder="Date Of Birth" required />
+                                                    <input type="date" class="form-control flatpickr-basic"
+                                                        name="date_of_birth" placeholder="Date Of Birth" required />
                                                 </div>
                                             </div>
 
@@ -88,7 +88,7 @@
                                                 <label for="email-id-column">Select Status<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="Status"
+                                                    <select class="form-control" name="status"
                                                         aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
@@ -125,8 +125,9 @@
                                             <div class="col-md-6 col-12">
                                                 <label for="company-column">License Expire Date *</label>
                                                 <div class="form-group">
-                                                    <input type="date" class="form-control flatpickr-basic" name="license_expire_date"
-                                                        placeholder="License Expire Date" required />
+                                                    <input type="date" class="form-control flatpickr-basic"
+                                                        name="license_expire_date" placeholder="License Expire Date"
+                                                        required />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
@@ -139,7 +140,8 @@
                                             <div class="col-md-6 col-12">
                                                 <label for="company-column">First Aid License Expire Date *</label>
                                                 <div class="form-group">
-                                                    <input type="date" class="form-control flatpickr-basic" name="first_aid_license"
+                                                    <input type="date" class="form-control flatpickr-basic"
+                                                        name="first_aid_license"
                                                         placeholder="First Aid License Expire Date" required />
                                                 </div>
                                             </div>
