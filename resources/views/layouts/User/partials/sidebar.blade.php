@@ -49,9 +49,9 @@
     <div class="shadow-bottom"></div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                        data-feather="calendar"></i><span class="menu-title text-truncate"
-                        data-i18n="Dashboards">Calendar</span><span
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/home/calender/{{ Auth::user()->id }}"><i data-feather="calendar"></i><span
+                        class="menu-title text-truncate" data-i18n="Dashboards">Calendar</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="eye"></i><span
@@ -67,9 +67,9 @@
                         class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
                 <ul>
-                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                                data-feather="activity"></i><span class="menu-title text-truncate"
-                                data-i18n="Dashboards">Availability</span><span
+                    <li class=" nav-item"><a class="d-flex align-items-center"
+                            href="/home/myavailability/{{ Auth::user()->id }}"><i data-feather="activity"></i><span
+                                class="menu-title text-truncate" data-i18n="Dashboards">Availability</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
                     </li>
                 </ul>

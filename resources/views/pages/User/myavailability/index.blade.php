@@ -1,7 +1,7 @@
-@extends('layouts.Admin.master')
+@extends('layouts.User.master')
 
 
-@section('admincontent')
+@section('user_content')
     <div class="content-header row">
         <div class="content-header-left col-md-9 col-12 mb-2">
             <div class="row breadcrumbs-top">
@@ -9,8 +9,7 @@
                     <h2 class="content-header-title float-left mb-0">My Availavility</h2>
                     <div class="breadcrumb-wrapper">
                         <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a
-                                    href="/admin/home/{{ Auth::user()->company->company_code }}">Home</a>
+                            <li class="breadcrumb-item"><a href="/home">Home</a>
                             </li>
                             <li class="breadcrumb-item active">My Availavility Lists
                             </li>
@@ -64,8 +63,7 @@
                                         <td>
                                             <a href="#" data-toggle="modal" data-target="#edit{{ $row->id }}"><i
                                                     data-feather='edit'></i></a>
-                                            <a href="/myavailability/delete/{{ $row->id }}"><i
-                                                    data-feather='trash-2'></i></a>
+                                            <a href="#"><i data-feather='trash-2'></i></a>
                                         </td>
                                     </tr>
                                     @include(

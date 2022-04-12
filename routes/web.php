@@ -112,7 +112,7 @@ Route::post('admin/home/timekeeper/search', [TimeKeeperController::class, 'searc
 
 //admin calender
 Route::get('admin/home/calender/{id}', [CalenderController::class, 'index'])->middleware('is_admin');
-
+Route::get('home/calender/{id}', [CalenderController::class, 'userIndex']);
 
 // weekly report
 Route::get('admin/home/status/{company_code}', [StatusController::class, 'index']);
@@ -147,6 +147,9 @@ Route::get('job/type/delete/{id}', [JobTypeController::class, 'destroy']);
 
 #my availability
 Route::get('admin/home/myavailability/{company_code}', [MyavailabilityController::class, 'index']);
+
+Route::get('home/myavailability/{id}', [MyavailabilityController::class, 'userIndex']);
+
 Route::post('myavailability', [MyavailabilityController::class, 'store'])->name('myAvailability.store');
 Route::post('myavailability/edit', [MyavailabilityController::class, 'update'])->name('myAvailability.update');
 Route::get('myavailability/delete/{id}', [MyavailabilityController::class, 'destroy']);

@@ -11,26 +11,32 @@ class MyavailabilityController extends Controller
     public function index()
     {
         // return 555;
-        $data= Myavailability::get();
-        return view("pages.Admin.myavailability.index",compact('data'));
+        $data = Myavailability::get();
+        return view("pages.Admin.myavailability.index", compact('data'));
+    }
+
+    public function userIndex($id)
+    {
+        $data = Myavailability::get();
+        return view("pages.User.myavailability.index", compact('data'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'employee_id' => 'required',
-        'company_code' => 'required',
-        'start_date' => 'required|date',
-        'end_date' => 'required|date|after:start_date',
+            'employee_id' => 'required',
+            'company_code' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
         ]);
 
         $single = new Myavailability();
-        $single->user_id= Auth::id();;
-        $single->employee_id= $request->employee_id;
-        $single->company_code= $request->company_code;
-        $single->remarks= $request->remarks;
-        $single->start_date= $request->start_date;
-        $single->end_date= $request->end_date;
+        $single->user_id = Auth::id();;
+        $single->employee_id = $request->employee_id;
+        $single->company_code = $request->company_code;
+        $single->remarks = $request->remarks;
+        $single->start_date = $request->start_date;
+        $single->end_date = $request->end_date;
 
         $single->save();
 
@@ -40,22 +46,22 @@ class MyavailabilityController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-        'employee_id' => 'required',
-        'company_code' => 'required',
-        'start_date' => 'required|date',
-        'end_date' => 'required|date|after:start_date',
+            'employee_id' => 'required',
+            'company_code' => 'required',
+            'start_date' => 'required|date',
+            'end_date' => 'required|date|after:start_date',
         ]);
 
 
         $single = Myavailability::find($request->id);
-        if($single){
-        $single->employee_id= $request->employee_id;
-        $single->company_code= $request->company_code;
-        $single->remarks= $request->remarks;
-        $single->start_date= $request->start_date;
-        $single->end_date= $request->end_date;
+        if ($single) {
+            $single->employee_id = $request->employee_id;
+            $single->company_code = $request->company_code;
+            $single->remarks = $request->remarks;
+            $single->start_date = $request->start_date;
+            $single->end_date = $request->end_date;
 
-        $single->save();
+            $single->save();
         }
 
         return redirect()->back();
@@ -64,7 +70,7 @@ class MyavailabilityController extends Controller
     public function destroy($id)
     {
         $single = Myavailability::find($id);
-        if($single){
+        if ($single) {
             $single->delete();
         }
 
