@@ -172,11 +172,10 @@
                                                         aria-label="Default select example">
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
-                                                        @foreach ($roaster_types as $roaster_type)
-                                                            <option value="{{ $roaster_type->id }}">
-                                                                {{ $roaster_type->name }}</option>
-                                                        @endforeach
-
+                                                       
+                                                            <option value="1">One</option>
+                                                            <option value="2">Two</option> 
+                                                       
                                                     </select>
                                                 </div>
                                             </div>

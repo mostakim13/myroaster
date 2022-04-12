@@ -31,14 +31,6 @@ class EmployeeController extends Controller
     //Employee Store
     public function store(Request $request)
     {
-        $rules = [
-
-            'email' => 'required|email|unique:users',
-        ];
-        $customMessages = [
-            'required' => 'The :attribute field is required.'
-        ];
-        $this->validate($request, $rules, $customMessages);
 
         $image = $request->file('file');
         $filename = null;
@@ -195,11 +187,12 @@ class EmployeeController extends Controller
     }
     public function delete($id)
     {
-        $data = Employee::findOrFail($id);
+        // $data = Employee::findOrFail($id);
 
-        User::where('id', $data->user_id)->delete();
+        // User::where('id', $data->user_id)->delete();
         // $user_id = Employee::all();
-        Employee::findOrFail($data->id)->delete();
+        
+        Employee::findOrFail($id)->delete();
 
 
         // $data =DB::table('employees')

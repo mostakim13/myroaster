@@ -61,11 +61,11 @@
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="project_id"
-                                                        aria-label="Default select example">
+                                                        aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($projects as $project)
-                                                            @if ($project->Status == 1)
+                                                            @if ($project->status == 1)
                                                                 <option value="{{ $project->id }}">
                                                                     {{ $project->pName }}
                                                                 </option>
@@ -82,7 +82,7 @@
                                                 <div class="form-group">
                                                     <input type="text" id="start" name="roaster_date"
                                                         class="form-control flatpickr-range"
-                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" />
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" required />
                                                 </div>
                                             </div>
 
@@ -92,7 +92,7 @@
                                                 <div class="form-group">
                                                     <input type="text" id="start_date" name="shift_start"
                                                         class="form-control flatpickr-date-time"
-                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" />
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" required />
                                                 </div>
                                             </div>
 
@@ -102,7 +102,8 @@
                                                 <div class="form-group">
                                                     <input type="text" id="end_date" name="shift_end"
                                                         class="form-control flatpickr-date-time"
-                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" onchange="getDays()" />
+                                                        placeholder="YYYY-MM-DD to YYYY-MM-DD" onchange="getDays()"
+                                                        required />
                                                 </div>
                                             </div>
 
@@ -111,7 +112,7 @@
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <input type="text" name="duration" class="form-control"
-                                                        placeholder="Duration" id="days" readonly="readonly" />
+                                                        placeholder="Duration" id="days" readonly="readonly" required />
                                                 </div>
                                             </div>
 
@@ -121,7 +122,7 @@
                                                 <div class="form-group">
                                                     <input type="text" id="rate" name="ratePerHour"
                                                         onchange="amountPerHour()" class="form-control"
-                                                        placeholder="0" />
+                                                        placeholder="0" required />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">
@@ -140,7 +141,7 @@
                                                 <label for="">Job Type<span class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="job_type"
-                                                        aria-label="Default select example">
+                                                        aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($job_types as $job_type)
@@ -155,13 +156,13 @@
                                                 <label for="">Roaster Type<span class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="roaster_type"
-                                                        aria-label="Default select example">
+                                                        aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
-                                                        @foreach ($roaster_types as $roaster_type)
-                                                            <option value="{{ $roaster_type->id }}">
-                                                                {{ $roaster_type->name }}</option>
-                                                        @endforeach
+
+                                                        <option value="1">One</option>
+                                                        <option value="2">Two</option>
+
                                                     </select>
                                                 </div>
                                             </div>
@@ -175,7 +176,7 @@
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
                                                     <select class="form-control" name="roaster_status"
-                                                        aria-label="Default select example">
+                                                        aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($roaster_statuses as $roaster_status)

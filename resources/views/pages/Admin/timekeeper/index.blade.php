@@ -38,11 +38,17 @@
                                         <input type="date" class="form-control flatpickr-basic"
                                             placeholder="Select Roaster Start Date" name="start_date2"
                                             id="start_date datepicker_from" required="required">
+                                             @error('start_date2')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                     </div>
                                     <div class="col-md-5 col-lg-4 mt-3 mt-md-0 ">
                                         <input type="date" class="form-control flatpickr-basic"
                                             placeholder="Select Roaster End Date" id="end_date" required="required"
                                             name="end_date2" min="0000-00-00 00:00:00">
+                                            @error('end_date2')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                     </div>
                                     <div class="col-md-2 col-lg-3 mt-3 mt-md-0">
                                         <button type="submit" class="btn btn btn-outline-primary btn-block"
@@ -178,86 +184,8 @@
             document.getElementById('amount').value = amount;
         }
 
-        //================================ For Edit==============================
-        // function getDay() {
-        //     var start_dates = new Date(document.getElementById('start_dates{{ $row->id }}').value);
-        //     var end_dates = new Date(document.getElementById('end_dates{{ $row->id }}').value);
-        //     // console.log(start_dates, end_dates);
-        //     //Here we will use getTime() function to get the time difference
-        //     var time_differences = (end_dates.getTime() - start_dates.getTime());
-        //     //Here we will divide the above time difference by the no of miliseconds in a day
-        //     var days_differences = (time_differences / (1000 * 3600));
-        //     //alert(days);
-        //     document.getElementById('day{{ $row->id }}').value = days_differences;
-        // }
-
-        // function amountPerHours() {
-        //     var start_dates = new Date(document.getElementById('start_dates{{ $row->id }}').value);
-        //     var end_dates = new Date(document.getElementById('end_dates{{ $row->id }}').value);
-        //     var rates = document.getElementById('rates{{ $row->id }}').value;
-
-        //     //Here we will use getTime() function to get the time difference
-        //     var time_differences = (end_dates.getTime() - start_dates.getTime());
-        //     //Here we will divide the above time difference by the no of miliseconds in a day
-        //     var days_differences = (time_differences / (1000 * 3600));
-        //     var amounts = (time_differences / (1000 * 3600) * rates);
-
-        //     //alert(days);
-        //     document.getElementById('amounts{{ $row->id }}').value = amounts;
-        // }
-
-
-        //================================For Copy=================================
-        // function getDuration() {
-        //     var start_date1 = new Date(document.getElementById('start_date1{{ $row->id }}').value);
-        //     var end_date1 = new Date(document.getElementById('end_date1{{ $row->id }}').value);
-        //     //Here we will use getTime() function to get the time difference
-        //     var time_difference1 = (end_date1.getTime() - start_date1.getTime());
-        //     //Here we will divide the above time difference by the no of miliseconds in a day
-        //     var days_difference1 = (time_difference1 / (1000 * 3600));
-        //     //alert(days);
-        //     document.getElementById('day1{{ $row->id }}').value = days_difference1;
-        // }
-
-        // function roasterAmountPerHour() {
-        //     var start_date1 = new Date(document.getElementById('start_date1{{ $row->id }}').value);
-        //     var end_date1 = new Date(document.getElementById('end_date1{{ $row->id }}').value);
-        //     var hourlyRate = document.getElementById('hourlyRate{{ $row->id }}').value;
-        //     //Here we will use getTime() function to get the time difference
-        //     var time_difference1 = (end_date1.getTime() - start_date1.getTime());
-        //     //Here we will divide the above time difference by the no of miliseconds in a day
-        //     var day_difference1 = (time_difference1 / (1000 * 3600));
-        //     var roasterAmount = (time_difference1 / (1000 * 3600) * hourlyRate);
-        //     //alert(days);
-        //     document.getElementById('roasterAmount{{ $row->id }}').value = roasterAmount;
-        // }
+       
     </script>
-    <script>
-        function getDay() {
-            var start_dates = new Date(document.getElementById('start_dates{{ $row->id }}').value);
-            var end_dates = new Date(document.getElementById('end_dates{{ $row->id }}').value);
-            console.log(start_dates, end_dates);
-            //Here we will use getTime() function to get the time difference
-            var time_differences = (end_dates.getTime() - start_dates.getTime());
-            //Here we will divide the above time difference by the no of miliseconds in a day
-            var days_differences = (time_differences / (1000 * 3600));
-            //alert(days);
-            document.getElementById('day{{ $row->id }}').value = days_differences;
-        }
-
-        function amountPerHours() {
-            var start_dates = new Date(document.getElementById('start_dates{{ $row->id }}').value);
-            var end_dates = new Date(document.getElementById('end_dates{{ $row->id }}').value);
-            var rates = document.getElementById('rates{{ $row->id }}').value;
-
-            //Here we will use getTime() function to get the time difference
-            var time_differences = (end_dates.getTime() - start_dates.getTime());
-            //Here we will divide the above time difference by the no of miliseconds in a day
-            var days_differences = (time_differences / (1000 * 3600));
-            var amounts = (time_differences / (1000 * 3600) * rates);
-
-            //alert(days);
-            document.getElementById('amounts{{ $row->id }}').value = amounts;
-        }
-    </script>
+    
+      
 @endsection

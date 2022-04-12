@@ -1,7 +1,7 @@
 <nav class="header-navbar navbar navbar-expand-lg align-items-center floating-nav navbar-light navbar-shadow">
     <div class="navbar-container d-flex content">
         <div class="bookmark-wrapper d-flex align-items-center">
-            <ul class="nav navbar-nav d-xl-none">
+            {{-- <ul class="nav navbar-nav d-xl-none">
                 <li class="nav-item"><a class="nav-link menu-toggle" href="javascript:void(0);"><i
                             class="ficon" data-feather="menu"></i></a></li>
             </ul>
@@ -29,10 +29,10 @@
                         <ul class="search-list search-list-bookmark"></ul>
                     </div>
                 </li>
-            </ul>
+            </ul> --}}
         </div>
         <ul class="nav navbar-nav align-items-center ml-auto">
-            <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag"
+            {{-- <li class="nav-item dropdown dropdown-language"><a class="nav-link dropdown-toggle" id="dropdown-flag"
                     href="javascript:void(0);" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
                         class="flag-icon flag-icon-us"></i><span class="selected-language">English</span></a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-flag"><a class="dropdown-item"
@@ -42,10 +42,10 @@
                         href="javascript:void(0);" data-language="de"><i class="flag-icon flag-icon-de"></i>
                         German</a><a class="dropdown-item" href="javascript:void(0);" data-language="pt"><i
                             class="flag-icon flag-icon-pt"></i> Portuguese</a></div>
-            </li>
-            <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon"
-                        data-feather="moon"></i></a></li>
-            <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon"
+            </li> --}}
+            {{-- <li class="nav-item d-none d-lg-block"><a class="nav-link nav-link-style"><i class="ficon"
+                        data-feather="moon"></i></a></li> --}}
+            {{-- <li class="nav-item nav-search"><a class="nav-link nav-link-search"><i class="ficon"
                         data-feather="search"></i></a>
                 <div class="search-input">
                     <div class="search-input-icon"><i data-feather="search"></i></div>
@@ -54,10 +54,10 @@
                     <div class="search-input-close"><i data-feather="x"></i></div>
                     <ul class="search-list search-list-main"></ul>
                 </div>
-            </li>
+            </li> --}}
 
-            <li class="nav-item dropdown dropdown-notification mr-25"><a class="nav-link"
-                    href="javascript:void(0);" data-toggle="dropdown"><i class="ficon"
+            <li class="nav-item dropdown dropdown-notification mr-25">
+                <a class="nav-link" href="javascript:void(0);" data-toggle="dropdown"><i class="ficon"
                         data-feather="bell"></i><span class="badge badge-pill badge-danger badge-up">5</span></a>
                 <ul class="dropdown-menu dropdown-menu-media dropdown-menu-right">
                     <li class="dropdown-menu-header">
@@ -130,8 +130,8 @@
                             <div class="media d-flex align-items-start">
                                 <div class="media-left">
                                     <div class="avatar bg-light-success">
-                                        <div class="avatar-content"><i class="avatar-icon"
-                                                data-feather="check"></i></div>
+                                        <div class="avatar-content"><i class="avatar-icon" data-feather="check"></i>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="media-body">
@@ -156,8 +156,8 @@
                             </div>
                         </a>
                     </li>
-                    <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block"
-                            href="javascript:void(0)">Read all notifications</a></li>
+                    <li class="dropdown-menu-footer"><a class="btn btn-primary btn-block" href="javascript:void(0)">Read
+                            all notifications</a></li>
                 </ul>
             </li>
             <li class="nav-item dropdown dropdown-user"><a class="nav-link dropdown-toggle dropdown-user-link"
@@ -181,9 +181,9 @@
                             src="{{ asset('storage/SuperAdmin/' . Auth::user()->image) }}" alt="avatar" height="40"
                             width="40"><span class="avatar-status-online"></span></span>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a
-                        class="dropdown-item" href="/super-admin/profile-settings/{{ Auth::user()->id }}"><i
-                            class="mr-50" data-feather="user"></i> Profile</a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown-user"><a class="dropdown-item"
+                        href="/super-admin/profile-settings/{{ Auth::user()->id }}"><i class="mr-50"
+                            data-feather="user"></i> Profile</a>
                     <div class="dropdown-divider"></div><a class="nav-link" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                      document.getElementById('logout-form').submit();">

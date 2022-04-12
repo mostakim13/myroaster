@@ -24,8 +24,8 @@ class TimeKeeperController extends Controller
         $clients = Client::where('user_id', Auth::id())->get();
         // $companies = User::where('user_id', Auth::id())->get();
         $timekeepers = TimeKeeper::where('user_id', Auth::id())->get();
-        $roaster_types = RoasterType::all();
-        return view('pages.Admin.timekeeper.index', compact('employees', 'projects', 'clients', 'timekeepers', 'roaster_types'));
+        // $roaster_types = RoasterType::all();
+        return view('pages.Admin.timekeeper.index', compact('employees', 'projects', 'clients', 'timekeepers'));
     }
 
 
@@ -76,7 +76,6 @@ class TimeKeeperController extends Controller
     // =============================Timekeeper Update=============================//
     public function update(Request $request)
     {
-        dd($request->duration);
         $timekeeper = TimeKeeper::find($request->id);
         // $timekeeper->user_id = Auth::id();
         $timekeeper->employee_id = $request->employee_id;
@@ -125,6 +124,16 @@ class TimeKeeperController extends Controller
     //timekepper search
     public function search(Request $request)
     {
+        $rules = [
+            'start_date2' => 'required',
+            'end_date2' => 'required',
+        ];
+        $customMessages = [
+            'required' => 'Start date is required.',
+            'end_date2.required' => 'End date is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+
         $fromDate = $request->input('start_date2');
         $toDate = $request->input('end_date2');
 

@@ -52,6 +52,7 @@
                                         <td>{{ $loop->index + 1 }}</td>
                                         <td>
                                             @if ($row->image != null)
+
                                                 <img src="{{ asset('storage/employees/' . $row->image) }}" alt="Avatar"
                                                     height="26" width="26" />
                                             @else
@@ -66,14 +67,14 @@
                                         </td>
                                         <td>{{ $row->contact_number }}</td>
 
+                                <td>
+                                    @if ($row->status == 1)
+                                        <span class="badge badge-pill badge-light-success mr-1">Active</span>
+                                    @else
+                                        <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
+                                    @endif
+                                </td>
 
-                                        <td>
-                                            @if ($row->status == 1)
-                                                <span class="badge badge-pill badge-light-success mr-1">Active</span>
-                                            @else
-                                                <span class="badge badge-pill badge-light-danger mr-1">Inactive</span>
-                                            @endif
-                                        </td>
 
                                         <td>
                                             <input type="hidden" name="id" value="{{ $row->id }}">
