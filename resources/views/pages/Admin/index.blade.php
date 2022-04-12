@@ -2,9 +2,11 @@
 
 
 @section('admincontent')
-@include('sweetalert::alert')
-                <!-- Dashboard Ecommerce Starts -->
-                <section id="dashboard-ecommerce">
+    @include('sweetalert::alert')
+
+    <h1 class="text-center">Welcome to Admin Dashboard</h1>
+    <!-- Dashboard Ecommerce Starts -->
+    {{-- <section id="dashboard-ecommerce">
                     <div class="row match-height">
                         <!-- Medal Card -->
                         <div class="col-xl-4 col-md-6 col-12">
@@ -728,10 +730,9 @@
                         </div>
                         <!--/ Transaction Card -->
                     </div>
-                </section>
-                <!-- Dashboard Ecommerce ends -->
+                </section> --}}
+    <!-- Dashboard Ecommerce ends -->
 
 
     <!-- END: Content-->
-
 @endsection
