@@ -62,7 +62,7 @@
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
                 <ul>
                     <li class=" nav-item"><a class="d-flex align-items-center"
-                            href="/admin/company/profile-settings/{{ Auth::user()->id }}"><i
+                            href="/admin/home/employee/{{ Auth::user()->company->company_code }}"><i
                                 data-feather='file-text'></i><span class="menu-title text-truncate"
                                 data-i18n="Dashboards">Profile</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
