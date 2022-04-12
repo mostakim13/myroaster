@@ -2,6 +2,7 @@
 
 
 @section('super_admincontent')
+    <h1>Welcome to Super Admin Dashboard</h1>
     <!-- Dashboard Ecommerce Starts -->
     {{-- <section id="dashboard-ecommerce">
                     <div class="row match-height">

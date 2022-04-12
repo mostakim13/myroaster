@@ -62,14 +62,17 @@
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="clock"></i><span
                         class="menu-title text-truncate" data-i18n="Dashboards">My timesheet</span></a>
             </li>
-            <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
-                        data-feather="activity"></i><span class="menu-title text-truncate"
-                        data-i18n="Dashboards">Availability</span><span
-                        class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
-            </li>
+
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="user"></i><span
                         class="menu-title text-truncate" data-i18n="Dashboards">Profile</span><span
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+                <ul>
+                    <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i
+                                data-feather="activity"></i><span class="menu-title text-truncate"
+                                data-i18n="Dashboards">Availability</span><span
+                                class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+                    </li>
+                </ul>
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="edit-3"></i><span
                         class="menu-title text-truncate" data-i18n="Dashboards">Switch company</span><span
