@@ -52,19 +52,20 @@ class EmployeeController extends Controller
         $email_data['name'] = $request['name'];
         $email_data['password'] = $password;
         DB::transaction(function () use ($request, $password, $email_data) {
-            $data = User::create([
+            $GLOBALS['data'] = User::create([
                 'name' => $request->fname,
                 'email' => $request->email,
                 'password' => Hash::make($password),
                 'company' => $request->company,
 
             ]);
-            $data->notify(new UserCredential($email_data));
+            $GLOBALS['data']->notify(new UserCredential($email_data));
         });
 
 
         $employee = new Employee;
         $employee->user_id = Auth::user()->id;
+        $employee->userID = $GLOBALS['data']->id;
         $employee->fname = $request->fname;
         $employee->mname = $request->mname;
         $employee->lname = $request->lname;
@@ -94,34 +95,6 @@ class EmployeeController extends Controller
 
     public function update(Request $request)
     {
-        // $request->validate([
-        //     'file' => 'required',
-        //     'first_aid_license' => 'required',
-        //     'fname' => 'required',
-        //     'mname' => 'required',
-        //     'lname' => 'required',
-        //     'address' => 'required',
-        //     'state' => 'required',
-        //     'postal_code' => 'required',
-        //     'email' => 'required|unique:users|email',
-        //     'contact_number' => 'required|numeric',
-        //     'date_of_birth' => 'required',
-        //     'license_no' => 'required',
-        //     'license_expire_date' => 'required',
-
-        // ]);
-
-        // $rules = [
-        //     'fname' => 'required',
-        //     'email' => 'required|email',
-        //     'company_code' => 'required',
-
-        // ];
-        // $customMessages = [
-        //     'required' => 'The :attribute field is required.'
-        // ];
-        // $this->validate($request, $rules, $customMessages);
-
         $image = $request->file('file');
         $filename = null;
         $uploadedFile = $request->file('employee_image');
@@ -191,7 +164,7 @@ class EmployeeController extends Controller
 
         // User::where('id', $data->user_id)->delete();
         // $user_id = Employee::all();
-        
+
         Employee::findOrFail($id)->delete();
 
 
@@ -211,5 +184,105 @@ class EmployeeController extends Controller
         );
         Alert::success('Deleted', 'Employee record has been deleted successfully !!!');
         return Redirect()->back()->with($notification);
+    }
+
+    //for profile
+    public function userProfile($id)
+    {
+        return view('pages.User.profile');
+    }
+
+    public function updateUserPhoto(Request $request)
+    {
+        $image = $request->file('file');
+        $filename = null;
+        if ($image) {
+            $filename = time() . $image->getClientOriginalName();
+
+            Storage::disk('public')->putFileAs(
+                'employees/',
+                $image,
+                $filename
+            );
+        }
+
+        $user = User::find($request->id);
+        $user->image = $filename;
+
+        $user->save();
+        $notification = array(
+            'message' => 'Employee Profile Updated successfully!!!',
+            'alert-type' => 'success'
+        );
+        Alert::success('Success', "Employee Profile Updated successfully!!!");
+        return Redirect()->back()->with($notification);
+    }
+
+    public function userProfileUpdate(Request $request)
+    {
+        // dd($request);
+        $user = User::find(Auth::user()->id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+
+        $employee = Employee::find($request->user_id);
+        $employee->mname = $request->mname;
+        $employee->lname = $request->lname;
+        $employee->company_code = $request->company_code;
+        $employee->contact_number = $request->contact_number;
+        $employee->save();
+        $notification = array(
+            'message' => 'Admin Profile Updated successfully!!!',
+            'alert-type' => 'success'
+        );
+        Alert::success('Success', "Admin Profile Updated successfully!!!");
+        return Redirect('/home')->with($notification);
+    }
+
+
+    public function userchangePassStore(Request $request)
+    {
+
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|min:5',
+            'password_confirmation' => 'required|min:5',
+        ]);
+        $db_pass = Auth::user()->password;
+        $current_password = $request->old_password;
+        $newpass = $request->new_password;
+        $confirmpass = $request->password_confirmation;
+
+        if (Hash::check($current_password, $db_pass)) {
+            if ($newpass === $confirmpass) {
+                User::findOrFail(Auth::id())->update([
+                    'password' => Hash::make($newpass)
+                ]);
+
+                Auth::logout();
+                $notification = array(
+                    'message' => 'Your Password Change Success. Now Login With New Password',
+                    'alert-type' => 'success'
+                );
+                Alert::success('Success', 'Your Password Change Success. Now Login With New Password');
+                return Redirect()->route('login')->with($notification);
+            } else {
+
+                $notification = array(
+                    'message' => 'New Password And Confirm Password Not Same',
+                    'alert-type' => 'error'
+                );
+                Alert::error('Error', 'New Password And Confirmation Password did not match !!');
+                return Redirect()->back()->with($notification);
+            }
+        } else {
+            $notification = array(
+                'message' => 'Old Password Not Match',
+                'alert-type' => 'error'
+            );
+            Alert::error('Error', "Old password didn't Match !!");
+            return Redirect()->back()->with($notification);
+        }
     }
 }

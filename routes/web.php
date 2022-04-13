@@ -112,7 +112,7 @@ Route::post('admin/home/timekeeper/search', [TimeKeeperController::class, 'searc
 
 //admin calender
 Route::get('admin/home/calender/{id}', [CalenderController::class, 'index'])->middleware('is_admin');
-Route::get('home/calender/{id}', [CalenderController::class, 'userIndex']);
+
 
 // weekly report
 Route::get('admin/home/status/{company_code}', [StatusController::class, 'index']);
@@ -153,3 +153,13 @@ Route::get('home/myavailability/{id}', [MyavailabilityController::class, 'userIn
 Route::post('myavailability', [MyavailabilityController::class, 'store'])->name('myAvailability.store');
 Route::post('myavailability/edit', [MyavailabilityController::class, 'update'])->name('myAvailability.update');
 Route::get('myavailability/delete/{id}', [MyavailabilityController::class, 'destroy']);
+
+
+//============================User Routes========================
+Route::get('home/calender/{id}', [CalenderController::class, 'userIndex']);
+
+// User Profile
+Route::get('/user/employee/profile-settings/{id}', [EmployeeController::class, 'userProfile']);
+Route::post('/user/employee/profile-settings/update', [EmployeeController::class, 'userProfileUpdate'])->name('user-profile-update');
+Route::post('user/employee/profile-settings/image/update', [EmployeeController::class, 'updateUserPhoto'])->name('user-profile-photo-update');
+Route::post('/user/employee/user-password/change-password-store', [EmployeeController::class, 'userchangePassStore'])->name('user-change-password-store');

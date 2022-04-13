@@ -15,7 +15,7 @@
                             <div class="card">
 
                                 <div class="card-body">
-                                    <form class="form" action="{{ route('admin-profile-photo-update') }}"
+                                    <form class="form" action="{{ route('user-profile-photo-update') }}"
                                         method="POST" enctype="multipart/form-data">
                                         @csrf
                                         <input type="hidden" name="id" value="{{ Auth::user()->id }}">
@@ -28,10 +28,7 @@
                                                         placeholder="Admin Image" />
                                                 </div>
                                             </div>
-
-
                                         </div>
-
                                 </div>
                             </div>
                         </div>
