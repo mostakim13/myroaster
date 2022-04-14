@@ -4,65 +4,60 @@ namespace App\Http\Controllers;
 
 use App\Models\RoasterStatus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Alert;
 
 class RoasterStatusController extends Controller
 {
     public function index()
     {
         // return 555;
-        $data= RoasterStatus::get();
-        return view("pages.Admin.roaster_status.index",compact('data'));
+        $data = RoasterStatus::get();
+        return view("pages.Admin.roaster_status.index", compact('data'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-        'name' => 'required',
-        'user_id' => 'required',
-        'company_code' => 'required',
+            'name' => 'required',
         ]);
 
         $single = new RoasterStatus;
-        $single->name= $request->name;
-        $single->remarks= $request->remarks;
-        $single->user_id= $request->user_id;
-        $single->company_code= $request->company_code;
-
+        $single->name = $request->name;
+        $single->remarks = $request->remarks;
+        $single->user_id = Auth::id();
+        $single->company_code = Auth::user()->company->company_code;
         $single->save();
-
+        Alert::success('Success', 'Roaster status added success');
         return redirect()->back();
     }
 
     public function update(Request $request)
     {
         $validated = $request->validate([
-        'id' => 'required',
-        'name' => 'required',
-        'user_id' => 'required',
-        'company_code' => 'required',
+            'name' => 'required',
         ]);
 
         $single = RoasterStatus::find($request->id);
-        if($single){
+        if ($single) {
 
-        $single->name= $request->name;
-        $single->remarks= $request->remarks;
-        $single->user_id= $request->user_id;
-        $single->company_code= $request->company_code;
-
-        $single->update();
+            $single->name = $request->name;
+            $single->remarks = $request->remarks;
+            $single->user_id = Auth::id();
+            $single->company_code = Auth::user()->company->company_code;
+            $single->update();
         }
-
+        Alert::success('Updated', 'Roaster status updated success');
         return redirect()->back();
     }
 
     public function destroy($id)
     {
         $single = RoasterStatus::find($id);
-        if($single){
+        if ($single) {
             $single->delete();
         }
-
+        Alert::success('Deleted', 'Roaster status deleted success');
         return redirect()->back();
     }
 }
