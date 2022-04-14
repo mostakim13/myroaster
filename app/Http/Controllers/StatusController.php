@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Status;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 use Alert;
 
 class StatusController extends Controller
@@ -12,13 +12,14 @@ class StatusController extends Controller
     public function index()
     {
         // \Artisan::call('migrate');
-        $statuses = Status::get();
+        $statuses = Status::where('user_id', Auth::id())->get();
         return view("pages.Admin.status.index", compact('statuses'));
     }
 
 
     public function store(Request $request)
     {
+
         $validated = $request->validate([
             'status_name' => 'required',
         ]);

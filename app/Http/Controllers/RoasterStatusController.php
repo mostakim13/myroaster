@@ -12,7 +12,7 @@ class RoasterStatusController extends Controller
     public function index()
     {
         // return 555;
-        $data = RoasterStatus::get();
+        $data = RoasterStatus::where('user_id', Auth::id())->get();;
         return view("pages.Admin.roaster_status.index", compact('data'));
     }
 

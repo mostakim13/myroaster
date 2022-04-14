@@ -16,8 +16,10 @@ use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\MyavailabilityController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentStatusController;
+use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\RoasterStatusController;
 use App\Http\Controllers\StatusController;
+use App\Http\Controllers\UpcomingeventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -147,12 +149,23 @@ Route::get('job/type/delete/{id}', [JobTypeController::class, 'destroy']);
 
 #my availability
 Route::get('admin/home/myavailability/{company_code}', [MyavailabilityController::class, 'index']);
-
 Route::get('home/myavailability/{id}', [MyavailabilityController::class, 'userIndex']);
-
 Route::post('myavailability', [MyavailabilityController::class, 'store'])->name('myAvailability.store');
 Route::post('myavailability/edit', [MyavailabilityController::class, 'update'])->name('myAvailability.update');
 Route::get('myavailability/delete/{id}', [MyavailabilityController::class, 'destroy']);
+
+
+// Upcoming event routes
+Route::get('admin/home/upcomingevent/{id}', [UpcomingeventController::class, 'index'])->middleware('is_admin');
+Route::post('admin/home/upcomingevent/store', [UpcomingeventController::class, 'store'])->name('store-upcomingevent')->middleware('is_admin');
+Route::post('admin/home/upcomingevent/update', [UpcomingeventController::class, 'update'])->name('update-upcomingevent')->middleware('is_admin');
+Route::get('admin/home/upcomingevent/delete/{id}', [UpcomingeventController::class, 'delete'])->middleware('is_admin');
+
+// Revenue routes
+Route::get('admin/home/revenue/{id}', [RevenueController::class, 'index'])->middleware('is_admin');
+Route::post('admin/home/revenue/store', [RevenueController::class, 'store'])->name('store-revenue')->middleware('is_admin');
+Route::post('admin/home/revenue/update', [RevenueController::class, 'update'])->name('update-revenue')->middleware('is_admin');
+Route::get('admin/home/revenue/delete/{id}', [RevenueController::class, 'delete'])->middleware('is_admin');
 
 
 //============================User Routes========================

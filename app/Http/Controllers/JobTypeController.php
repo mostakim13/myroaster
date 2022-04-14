@@ -12,7 +12,7 @@ class JobTypeController extends Controller
     public function index()
     {
         // return 555;
-        $data = JobType::get();
+        $data = JobType::where('user_id', Auth::id())->get();
         return view("pages.Admin.job_type.index", compact('data'));
     }
 

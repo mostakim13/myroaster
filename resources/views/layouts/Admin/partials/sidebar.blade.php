@@ -179,6 +179,20 @@
                         class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
 
             </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/admin/home/upcomingevent/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='circle'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Upcomming Event</span><span
+                        class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/admin/home/revenue/{{ Auth::user()->company->company_code }}"><i
+                        data-feather='circle'></i><span class="menu-title text-truncate"
+                        data-i18n="Dashboards">Revenue</span><span
+                        class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+
+            </li>
 
             <li class=" nav-item"><a class="d-flex align-items-center" href="#"><i data-feather="slack"></i><span
                         class="menu-title text-truncate" data-i18n="Invoice">Setup</span></a>

@@ -12,7 +12,7 @@ class PaymentStatusController extends Controller
     public function index()
     {
         // return 555;
-        $data = PaymentStatus::get();
+        $data = PaymentStatus::where('user_id', Auth::id())->get();
         return view("pages.Admin.payment_status.index", compact('data'));
     }
 
