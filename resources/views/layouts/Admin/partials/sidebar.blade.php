@@ -80,6 +80,12 @@
                                 data-i18n="Dashboards">View Job</span><span
                                 class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
                     </li>
+                    <li class=" nav-item"><a class="d-flex align-items-center"
+                            href="/admin/home/inducted/site/{{ Auth::user()->company->company_code }}"><i
+                                data-feather='file-text'></i><span class="menu-title text-truncate"
+                                data-i18n="Dashboards">Inducted Site</span><span
+                                class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+                    </li>
                 </ul>
 
             </li>

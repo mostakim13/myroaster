@@ -12,6 +12,7 @@ use App\Http\Controllers\TimeKeeperController;
 use App\Http\Controllers\ViewJobController;
 use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\CompanyTypeController;
+use App\Http\Controllers\InductedsiteController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\MyavailabilityController;
 use App\Http\Controllers\PaymentController;
@@ -166,6 +167,12 @@ Route::get('admin/home/revenue/{id}', [RevenueController::class, 'index'])->midd
 Route::post('admin/home/revenue/store', [RevenueController::class, 'store'])->name('store-revenue')->middleware('is_admin');
 Route::post('admin/home/revenue/update', [RevenueController::class, 'update'])->name('update-revenue')->middleware('is_admin');
 Route::get('admin/home/revenue/delete/{id}', [RevenueController::class, 'delete'])->middleware('is_admin');
+
+// Induction routes
+Route::get('admin/home/inducted/site/{id}', [InductedsiteController::class, 'index'])->middleware('is_admin');
+Route::post('admin/home/inducted/site/store', [InductedsiteController::class, 'store'])->name('store-induction')->middleware('is_admin');
+Route::post('admin/home/inducted/site/update', [InductedsiteController::class, 'update'])->name('update-induction')->middleware('is_admin');
+Route::get('admin/home/inducted/site/delete/{id}', [InductedsiteController::class, 'delete'])->middleware('is_admin');
 
 
 //============================User Routes========================
