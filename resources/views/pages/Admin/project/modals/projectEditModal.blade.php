@@ -79,13 +79,13 @@
                                                 <label for="email-id-column">Select Status<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="status"
+                                                    <select class="form-control" name="Status"
                                                         aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
-                                                        <option value="1" {{ $project->status == 1 ? 'selected' : '' }}>
+                                                        <option value="1" {{ $project->Status == 1 ? 'selected' : '' }}>
                                                             Active</option>
-                                                        <option value="2" {{ $project->status == 2 ? 'selected' : '' }}>
+                                                        <option value="2" {{ $project->Status == 2 ? 'selected' : '' }}>
                                                             Inactive</option>
 
                                                     </select>

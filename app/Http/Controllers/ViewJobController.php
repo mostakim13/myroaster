@@ -21,7 +21,7 @@ class ViewJobController extends Controller
         $fromDate = $request->input('start_date');
         $toDate = $request->input('end_date');
 
-        $timekeepers = TimeKeeper::with('employee')->where('projectStartDate', '>=', $fromDate)->where('projectEndDate', '<=', $toDate)->get();
+        $timekeepers = TimeKeeper::with('employee')->where('shift_start', '>=', $fromDate)->where('shift_end', '<=', $toDate)->get();
 
         return view('pages.Admin.viewjob.index', compact('timekeepers'));
     }

@@ -32,6 +32,7 @@ class User extends Authenticatable
         'is_admin',
         'created_at',
         'status',
+        'job_type',
         'updated_at'
     ];
 

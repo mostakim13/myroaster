@@ -2,6 +2,7 @@
 
 
 @section('user_content')
+ @include('sweetalert::alert')
     <h1>Welcome to User Dashboard</h1>
     <!-- Dashboard Ecommerce Starts -->
     {{-- <section id="dashboard-ecommerce">

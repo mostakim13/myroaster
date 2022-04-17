@@ -12,19 +12,19 @@ class CompanyTypeController extends Controller
     public function index()
     {
         // return 555;
-        $data = CompanyType::get();
-        return view("pages.Admin.company_type.index", compact('data'));
+        $data= CompanyType::where('user_id', Auth::id())->get();;
+        return view("pages.Admin.company_type.index",compact('data'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required',
+        'name' => 'required',
         ]);
 
         $single = new CompanyType;
-        $single->name = $request->name;
-        $single->remarks = $request->remarks;
+        $single->name= $request->name;
+        $single->remarks= $request->remarks;
         $single->user_id = Auth::id();
         $single->company_code = Auth::user()->company->company_code;
         $single->save();
@@ -36,17 +36,18 @@ class CompanyTypeController extends Controller
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'name' => 'required',
+        'name' => 'required',
         ]);
 
         $single = CompanyType::find($request->id);
-        if ($single) {
+        if($single){
 
-            $single->name = $request->name;
-            $single->remarks = $request->remarks;
-            $single->user_id = Auth::id();
-            $single->company_code = Auth::user()->company->company_code;
-            $single->save();
+        $single->name= $request->name;
+        $single->remarks= $request->remarks;
+        $single->user_id = Auth::id();
+        $single->company_code = Auth::user()->company->company_code;
+
+        $single->save();
         }
         Alert::success('Updated', 'Company Type Updated Successfully!');
         return redirect()->back();
@@ -55,10 +56,10 @@ class CompanyTypeController extends Controller
     public function destroy($id)
     {
         $single = CompanyType::find($id);
-        if ($single) {
+        if($single){
             $single->delete();
         }
-        Alert::success('Deleted', 'Company Type Deleted Successfully!');
+        Alert::success('Deleted', 'Company Type Deleted Successfully !!!');
         return redirect()->back();
     }
 }

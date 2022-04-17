@@ -4,9 +4,9 @@
 @section('admincontent')
     @include('sweetalert::alert')
 
-    <h1 class="text-center">Welcome to Admin Dashboard</h1>
+    <!--<h1 class="text-center">Welcome to Admin Dashboard</h1>-->
     <!-- Dashboard Ecommerce Starts -->
-    {{-- <section id="dashboard-ecommerce">
+    <section id="dashboard-ecommerce">
                     <div class="row match-height">
                         <!-- Medal Card -->
                         <div class="col-xl-4 col-md-6 col-12">
@@ -730,7 +730,7 @@
                         </div>
                         <!--/ Transaction Card -->
                     </div>
-                </section> --}}
+                </section> 
     <!-- Dashboard Ecommerce ends -->
 
 

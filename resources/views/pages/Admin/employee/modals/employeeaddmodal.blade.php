@@ -66,6 +66,9 @@
                                                     <label for="email-id-column">Email *</label>
                                                     <input type="email" class="form-control" name="email"
                                                         placeholder="Email" required />
+                                                        @error('email')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
                                                 </div>
                                             </div>
                                             <div class="col-md-6 col-12">

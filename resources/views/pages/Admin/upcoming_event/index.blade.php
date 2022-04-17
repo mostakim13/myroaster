@@ -53,8 +53,8 @@
                                 @foreach ($upcomingevents as $row)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td>{{ $row->client_name }}</td>
-                                        <td>{{ $row->project_name }}</td>
+                                        <td>{{ $row->client->cname }}</td>
+                                        <td>{{ $row->project->pName }}</td>
                                         <td>{{ $row->event_date }}</td>
                                         <td>{{ $row->shift_start }}</td>
                                         <td>{{ $row->shift_end }}</td>

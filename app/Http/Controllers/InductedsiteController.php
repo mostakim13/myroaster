@@ -11,7 +11,6 @@ use Alert;
 use App\Models\Inductedsite;
 use Carbon\Carbon;
 
-
 class InductedsiteController extends Controller
 {
     public function index($id)

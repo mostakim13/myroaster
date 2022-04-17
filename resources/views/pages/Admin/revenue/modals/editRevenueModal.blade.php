@@ -28,7 +28,7 @@
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($clients as $client)
-                                                            @if ($client->status == 1)
+                                                            @if ($client->Status == 1)
                                                                 <option value="{{ $client->id }}"
                                                                     {{ $client->id == $row->client_name ? 'selected' : '' }}>
                                                                     {{ $client->cname }}

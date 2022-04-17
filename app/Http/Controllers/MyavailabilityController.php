@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Myavailability;
+use App\Models\Employee;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,7 +13,8 @@ class MyavailabilityController extends Controller
     {
         // return 555;
         $data = Myavailability::get();
-        return view("pages.Admin.myavailability.index", compact('data'));
+        $employees = Employee::where('user_id',Auth::id())->get();
+        return view("pages.Admin.myavailability.index", compact('data','employees'));
     }
 
     public function userIndex($id)
@@ -24,8 +26,6 @@ class MyavailabilityController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'employee_id' => 'required',
-            'company_code' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
         ]);
@@ -33,7 +33,7 @@ class MyavailabilityController extends Controller
         $single = new Myavailability();
         $single->user_id = Auth::id();;
         $single->employee_id = $request->employee_id;
-        $single->company_code = $request->company_code;
+        $single->company_code = Auth::user()->company->company_code;
         $single->remarks = $request->remarks;
         $single->start_date = $request->start_date;
         $single->end_date = $request->end_date;
@@ -47,7 +47,6 @@ class MyavailabilityController extends Controller
     {
         $validated = $request->validate([
             'employee_id' => 'required',
-            'company_code' => 'required',
             'start_date' => 'required|date',
             'end_date' => 'required|date|after:start_date',
         ]);
@@ -56,7 +55,6 @@ class MyavailabilityController extends Controller
         $single = Myavailability::find($request->id);
         if ($single) {
             $single->employee_id = $request->employee_id;
-            $single->company_code = $request->company_code;
             $single->remarks = $request->remarks;
             $single->start_date = $request->start_date;
             $single->end_date = $request->end_date;

@@ -73,7 +73,7 @@
                                                 <label for="email-id-column">Select Status<span
                                                         class="text-danger">*</span></label>
                                                 <div class="form-group">
-                                                    <select class="form-control" name="status"
+                                                    <select class="form-control" name="Status"
                                                         aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>

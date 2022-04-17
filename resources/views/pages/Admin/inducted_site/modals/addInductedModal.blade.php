@@ -65,10 +65,10 @@
                                                         aria-label="Default select example" required>
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
-                                                        @foreach ($projects as $project)
-                                                            @if ($project->status == 1)
-                                                                <option value="{{ $project->id }}">
-                                                                    {{ $project->pName }}
+                                        @foreach ($projects as $project)
+                                            @if ($project->Status == 1)
+                                            <option value="{{ $project->id }}">
+                                                    {{ $project->pName }}
                                                                 </option>
                                                             @else
                                                             @endif

@@ -13,17 +13,14 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('upcomingevents', function (Blueprint $table) {
+        Schema::create('inductedsites', function (Blueprint $table) {
             $table->id();
-            $table->string('client_name')->nullable();
-            $table->string('project_name')->nullable();
-            $table->string('event_date')->nullable();
-            $table->string('shift_date')->nullable();
-            $table->string('shift_end')->nullable();
-            $table->string('rate')->nullable();
-            $table->string('employee_id')->nullable();
+            $table->unsignedInteger('employee_id')->nullable();
+            $table->unsignedInteger('client_id')->nullable();
+            $table->unsignedInteger('project_id')->nullable();
+            $table->date('induction_date')->nullable();
             $table->string('remarks')->nullable();
-            $table->string('user_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->string('company_code')->nullable();
             $table->timestamps();
         });
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('upcomingevents');
+        Schema::dropIfExists('inductedsites');
     }
 };

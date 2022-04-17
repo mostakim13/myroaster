@@ -43,8 +43,7 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Employee Id</th>
-                                    <th>Company Code</th>
+                                    <th>Employee Name</th>
                                     <th>Remarks</th>
                                     <th>Start Date</th>
                                     <th>End Date</th>
@@ -55,8 +54,7 @@
                                 @foreach ($data as $row)
                                     <tr>
                                         <td>{{ $loop->index + 1 }}</td>
-                                        <td>{{ $row->employee_id }}</td>
-                                        <td>{{ $row->company_code }}</td>
+                                        <td>{{ $row->employee->fname }}</td>
                                         <td>{{ $row->remarks }}</td>
                                         <td>{{ \Carbon\Carbon::parse($row->start_date)->format('d-m-Y h:i') }}</td>
                                         <td>{{ \Carbon\Carbon::parse($row->end_date)->format('d-m-Y h:i') }}</td>

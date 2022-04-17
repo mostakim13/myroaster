@@ -33,6 +33,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->string('first_aid_license');
             $table->integer('user_id')->unsigned()->index()->foreign()->references("id")->on("users")->onDelete("cascade");
+            $table->unsignedInteger('userID');
 
 
             $table->timestamps();

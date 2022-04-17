@@ -12,47 +12,44 @@ class StatusController extends Controller
     public function index()
     {
         // \Artisan::call('migrate');
-        $statuses = Status::where('user_id', Auth::id())->get();
-        return view("pages.Admin.status.index", compact('statuses'));
+        $statuses= Status::where('user_id', Auth::id())->get();
+        return view("pages.Admin.status.index",compact('statuses'));
     }
 
 
     public function store(Request $request)
     {
-
         $validated = $request->validate([
-            'status_name' => 'required',
+        'status_name' => 'required',
         ]);
 
         $status = new Status;
-        $status->status_name = $request->status_name;
-        $status->remarks = $request->remarks;
+        $status->status_name= $request->status_name;
+        $status->remarks= $request->remarks;
         $status->user_id = Auth::id();
         $status->company_code = Auth::user()->company->company_code;
-
         $status->save();
-        Alert::success('Success', 'Status added successfully!');
+        Alert::success('Success', 'Status Added Successfully!');
         return redirect()->back();
     }
 
     public function update(Request $request)
     {
         $validated = $request->validate([
-            'status_name' => 'required',
-
+        'status_name' => 'required',
         ]);
 
         $status = Status::find($request->id);
-        if ($status) {
+        if($status){
 
-            $status->status_name = $request->status_name;
-            $status->remarks = $request->remarks;
-            $status->user_id = Auth::id();
-            $status->company_code = Auth::user()->company->company_code;
+        $status->status_name= $request->status_name;
+        $status->remarks= $request->remarks;
+        $status->user_id = Auth::id();
+        $status->company_code = Auth::user()->company->company_code;
 
-            $status->save();
+        $status->save();
         }
-        Alert::success('Updated', 'Status updated successfully!');
+        Alert::success('Updated', 'Status Updated Successfully!');
         return redirect()->back();
     }
 
@@ -60,10 +57,10 @@ class StatusController extends Controller
     public function destroy($id)
     {
         $status = Status::find($id);
-        if ($status) {
+        if($status){
             $status->delete();
         }
-        Alert::success('Deleted', 'Status deleted successfully!');
+        Alert::success('Deleted', 'Status Deleted Successfully!');
         return redirect()->back();
     }
 }

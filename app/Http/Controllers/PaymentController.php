@@ -17,7 +17,7 @@ class PaymentController extends Controller
         $fromDate = $request->input('start_dates');
         $toDate = $request->input('end_dates');
 
-        $timekeepers =  TimeKeeper::with('employee')->where('projectStartDate', '>=', $fromDate)->where('projectEndDate', '<=', $toDate)->get();
+        $timekeepers =  TimeKeeper::with('employee')->where('shift_start', '>=', $fromDate)->where('shift_end', '<=', $toDate)->get();
 
         return view('pages.Admin.payment.index', compact('timekeepers'));
     }

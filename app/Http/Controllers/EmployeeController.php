@@ -31,6 +31,14 @@ class EmployeeController extends Controller
     //Employee Store
     public function store(Request $request)
     {
+        $rules = [
+            'email' => 'required|email|unique:users',
+        ];
+        $customMessages = [
+            'required' => 'The :attribute field is required.'
+        ];
+        $this->validate($request, $rules, $customMessages);
+
 
         $image = $request->file('file');
         $filename = null;
@@ -81,7 +89,7 @@ class EmployeeController extends Controller
         $employee->license_no = $request->license_no;
         $employee->license_expire_date = $request->license_expire_date;
         $employee->first_aid_license = $request->first_aid_license;
-        $employee->company_code = Auth::user()->company->company_code;
+        $employee->company = Auth::user()->company->company_code;
         $employee->image = $filename;
         $employee->save();
 
@@ -95,6 +103,17 @@ class EmployeeController extends Controller
 
     public function update(Request $request)
     {
+        // $rules = [
+        //     'fname' => 'required',
+        //     'email' => 'required|email',
+        //     'company_code' => 'required',
+
+        // ];
+        // $customMessages = [
+        //     'required' => 'The :attribute field is required.'
+        // ];
+        // $this->validate($request, $rules, $customMessages);
+
         $image = $request->file('file');
         $filename = null;
         $uploadedFile = $request->file('employee_image');
@@ -134,7 +153,6 @@ class EmployeeController extends Controller
 
 
         $employee = Employee::find($request->id);
-        $employee->user_id = Auth::id();
         $employee->fname = $request->fname;
         $employee->mname = $request->mname;
         $employee->lname = $request->lname;
@@ -164,7 +182,7 @@ class EmployeeController extends Controller
 
         // User::where('id', $data->user_id)->delete();
         // $user_id = Employee::all();
-
+        
         Employee::findOrFail($id)->delete();
 
 
@@ -185,8 +203,9 @@ class EmployeeController extends Controller
         Alert::success('Deleted', 'Employee record has been deleted successfully !!!');
         return Redirect()->back()->with($notification);
     }
-
-    //for profile
+    
+    
+    //for user profile
     public function userProfile($id)
     {
         return view('pages.User.profile');
@@ -236,7 +255,7 @@ class EmployeeController extends Controller
             'message' => 'Admin Profile Updated successfully!!!',
             'alert-type' => 'success'
         );
-        Alert::success('Success', "Admin Profile Updated successfully!!!");
+        Alert::success('Updated', "User Profile Updated successfully!!!");
         return Redirect('/home')->with($notification);
     }
 

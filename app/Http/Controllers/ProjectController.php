@@ -28,7 +28,7 @@ class ProjectController extends Controller
         $project->user_id = Auth::id();
         $project->pName = $request->pName;
         $project->cName = $request->cName;
-        $project->status = $request->status;
+        $project->Status = $request->Status;
         $project->cNumber = $request->cNumber;
         $project->project_address = $request->project_address;
         $project->project_venue = $request->project_venue;
@@ -52,7 +52,7 @@ class ProjectController extends Controller
         $project->user_id = Auth::id();
         $project->pName = $request->pName;
         $project->cName = $request->cName;
-        $project->status = $request->status;
+        $project->Status = $request->Status;
         $project->cNumber = $request->cNumber;
         $project->project_address = $request->project_address;
         $project->project_venue = $request->project_venue;

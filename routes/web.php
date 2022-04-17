@@ -12,15 +12,15 @@ use App\Http\Controllers\TimeKeeperController;
 use App\Http\Controllers\ViewJobController;
 use App\Http\Controllers\CalenderController;
 use App\Http\Controllers\CompanyTypeController;
-use App\Http\Controllers\InductedsiteController;
 use App\Http\Controllers\JobTypeController;
 use App\Http\Controllers\MyavailabilityController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PaymentStatusController;
-use App\Http\Controllers\RevenueController;
 use App\Http\Controllers\RoasterStatusController;
 use App\Http\Controllers\StatusController;
 use App\Http\Controllers\UpcomingeventController;
+use App\Http\Controllers\RevenueController;
+use App\Http\Controllers\InductedsiteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -95,6 +95,9 @@ Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'storeT
 Route::post('admin/home/timekeeper/update', [TimeKeeperController::class, 'update'])->name('update-timekeeper')->middleware('is_admin');
 Route::get('admin/home/timekeeper/delete/{id}', [TimeKeeperController::class, 'delete'])->middleware('is_admin');
 
+Route::get("client/project/{id?}", [TimeKeeperController::class, "getProject"])->name("ajax.client.project")->middleware('is_admin');
+
+
 //admin viewjob
 Route::get('admin/home/viewjob/{id}', [ViewJobController::class, 'index'])->middleware('is_admin');
 Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'storeTimeKeeper'])->name('store-timekeeper')->middleware('is_admin');
@@ -115,7 +118,7 @@ Route::post('admin/home/timekeeper/search', [TimeKeeperController::class, 'searc
 
 //admin calender
 Route::get('admin/home/calender/{id}', [CalenderController::class, 'index'])->middleware('is_admin');
-
+Route::get('home/calender/{id}', [CalenderController::class, 'userIndex']);
 
 // weekly report
 Route::get('admin/home/status/{company_code}', [StatusController::class, 'index']);
@@ -150,7 +153,9 @@ Route::get('job/type/delete/{id}', [JobTypeController::class, 'destroy']);
 
 #my availability
 Route::get('admin/home/myavailability/{company_code}', [MyavailabilityController::class, 'index']);
+
 Route::get('home/myavailability/{id}', [MyavailabilityController::class, 'userIndex']);
+
 Route::post('myavailability', [MyavailabilityController::class, 'store'])->name('myAvailability.store');
 Route::post('myavailability/edit', [MyavailabilityController::class, 'update'])->name('myAvailability.update');
 Route::get('myavailability/delete/{id}', [MyavailabilityController::class, 'destroy']);
@@ -175,11 +180,10 @@ Route::post('admin/home/inducted/site/update', [InductedsiteController::class, '
 Route::get('admin/home/inducted/site/delete/{id}', [InductedsiteController::class, 'delete'])->middleware('is_admin');
 
 
-//============================User Routes========================
-Route::get('home/calender/{id}', [CalenderController::class, 'userIndex']);
 
 // User Profile
 Route::get('/user/employee/profile-settings/{id}', [EmployeeController::class, 'userProfile']);
 Route::post('/user/employee/profile-settings/update', [EmployeeController::class, 'userProfileUpdate'])->name('user-profile-update');
 Route::post('user/employee/profile-settings/image/update', [EmployeeController::class, 'updateUserPhoto'])->name('user-profile-photo-update');
 Route::post('/user/employee/user-password/change-password-store', [EmployeeController::class, 'userchangePassStore'])->name('user-change-password-store');
+

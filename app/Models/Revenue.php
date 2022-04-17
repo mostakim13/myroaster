@@ -13,7 +13,7 @@ class Revenue extends Model
     {
         return $this->belongsTo('App\Models\Client', 'client_name');
     }
-
+    
     public function project()
     {
         return $this->belongsTo('App\Models\Project', 'project_name');

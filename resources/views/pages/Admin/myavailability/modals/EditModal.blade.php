@@ -26,18 +26,31 @@
                                         @endif
                                     <input type="hidden" name="id" value="{{$row->id}}">
                                       <div class="row">
-                                      <div class="col-md-6 col-12">
-                                              <div class="form-group">
-                                                  <label for="first-name-column">Employee Id *</label>
-                                                  <input type="text" value="{{$row->employee_id}}" class="form-control" placeholder="Employee Id" name="employee_id" required  />
-                                              </div>
-                                          </div>
-                                          <div class="col-md-6 col-12">
-                                              <div class="form-group">
-                                                  <label for="last-name-column">Company Code *</label>
-                                                  <input type="number" value="{{$row->company_code}}" class="form-control" placeholder="Company Code" name="company_code" required />
-                                              </div>
-                                          </div>
+                                       <div class="col-md-6 col-12">
+                                                <label for="">Select Employee<span
+                                                        class="text-danger">*</span></label>
+                                                <div class="form-group">
+                                                    <select class="form-control" name="employee_id"
+                                                        aria-label="Default select example" required>
+                                                        <option value="" disabled selected hidden>Please Choose...
+                                                        </option>
+                                    @foreach ($employees as $employee)
+                                    @if($employee->status == 1)
+                                    <option value="{{ $employee->id }}"
+                    {{ $employee->id == $row->employee_id ? 'selected' : '' }}>
+                            {{ $employee->fname }}</option>
+                            @else
+                            @endif
+                                                        @endforeach
+                                                    </select>
+                                                </div>
+                                            </div>
+                                          <!--<div class="col-md-6 col-12">-->
+                                          <!--    <div class="form-group">-->
+                                          <!--        <label for="last-name-column">Company Code *</label>-->
+                                          <!--        <input type="number" value="{{$row->company_code}}" class="form-control" placeholder="Company Code" name="company_code" required />-->
+                                          <!--    </div>-->
+                                          <!--</div>-->
                                           <div class="col-md-6 col-12">
                                               <div class="form-group">
                                                   <label for="email-id-column">Start Date *</label>

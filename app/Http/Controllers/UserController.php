@@ -138,7 +138,7 @@ class UserController extends Controller
         Alert::success('Success', 'Company Admin Added Successfully!');
         return Redirect()->back()->with($notification);
     }
-    //===========================================================================//
+     //===========================================================================//
     //========================Company Details Store End========================//
 
     //=======================================================================================//
@@ -171,8 +171,8 @@ class UserController extends Controller
         }
 
         $user = User::find($request->user_id);
-        $user->name = $request->name;
-        $user->email = $request->email;
+        $user ->name = $request->name;
+        $user ->email = $request->email;
         $user->save();
 
         $company = Company::find($request->id);

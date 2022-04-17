@@ -112,3 +112,5 @@
 	}
 @endif
 </script>
+@stack('scripts')
+

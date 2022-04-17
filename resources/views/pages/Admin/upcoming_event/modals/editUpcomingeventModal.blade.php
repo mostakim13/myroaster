@@ -48,7 +48,7 @@
                                                         <option value="" disabled selected hidden>Please Choose...
                                                         </option>
                                                         @foreach ($projects as $project)
-                                                            @if ($project->status == 1)
+                                                            @if ($project->Status == 1)
                                                                 <option value="{{ $project->id }}"
                                                                     {{ $project->id == $row->project_name ? 'selected' : '' }}>
                                                                     {{ $project->pName }}
