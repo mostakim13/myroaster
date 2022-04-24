@@ -167,6 +167,16 @@ Route::post('admin/home/upcomingevent/store', [UpcomingeventController::class, '
 Route::post('admin/home/upcomingevent/update', [UpcomingeventController::class, 'update'])->name('update-upcomingevent')->middleware('is_admin');
 Route::get('admin/home/upcomingevent/delete/{id}', [UpcomingeventController::class, 'delete'])->middleware('is_admin');
 
+// Event Request routes admin
+Route::get('admin/home/event/request/{id}', [UpcomingeventController::class, 'eventRequestIndex'])->middleware('is_admin');
+Route::post('admin/home/upcomingevent/store', [UpcomingeventController::class, 'store'])->name('store-upcomingevent')->middleware('is_admin');
+Route::post('admin/home/upcomingevent/update', [UpcomingeventController::class, 'update'])->name('update-upcomingevent')->middleware('is_admin');
+Route::get('admin/home/upcomingevent/delete/{id}', [UpcomingeventController::class, 'delete'])->middleware('is_admin');
+
+// Upcoming event routes user
+Route::get('user/home/upcomingevent/{id}', [UpcomingeventController::class, 'userIndex']);
+Route::post('user/home/event/store', [UpcomingeventController::class, 'eventStore'])->name('store-event');
+
 // Revenue routes
 Route::get('admin/home/revenue/{id}', [RevenueController::class, 'index'])->middleware('is_admin');
 Route::post('admin/home/revenue/store', [RevenueController::class, 'store'])->name('store-revenue')->middleware('is_admin');
@@ -186,4 +196,3 @@ Route::get('/user/employee/profile-settings/{id}', [EmployeeController::class, '
 Route::post('/user/employee/profile-settings/update', [EmployeeController::class, 'userProfileUpdate'])->name('user-profile-update');
 Route::post('user/employee/profile-settings/image/update', [EmployeeController::class, 'updateUserPhoto'])->name('user-profile-photo-update');
 Route::post('/user/employee/user-password/change-password-store', [EmployeeController::class, 'userchangePassStore'])->name('user-change-password-store');
-

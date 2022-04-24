@@ -51,7 +51,6 @@ class TimeKeeperController extends Controller
     {
         // dd($request->job_type_id);
 
-
         $timekeeper = new TimeKeeper();
         $timekeeper->user_id = Auth::id();
         $timekeeper->employee_id = $request->employee_id;
@@ -143,6 +142,7 @@ class TimeKeeperController extends Controller
     //timekepper search
     public function search(Request $request)
     {
+        dd($request);
         $rules = [
             'start_date2' => 'required',
             'end_date2' => 'required',

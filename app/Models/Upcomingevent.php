@@ -18,4 +18,8 @@ class Upcomingevent extends Model
     {
         return $this->belongsTo('App\Models\Project', 'project_name');
     }
+    public function employee()
+    {
+        return $this->belongsTo('App\Models\Employee', 'employee_id');
+    }
 }

@@ -190,6 +190,12 @@
 
             </li>
             <li class=" nav-item"><a class="d-flex align-items-center"
+                    href="/admin/home/event/request/{{ Auth::id() }}"><i data-feather='circle'></i><span
+                        class="menu-title text-truncate" data-i18n="Dashboards">Event
+                        Request</span><span class="badge badge-light-warning badge-pill ml-auto mr-1"></span></a>
+
+            </li>
+            <li class=" nav-item"><a class="d-flex align-items-center"
                     href="/admin/home/revenue/{{ Auth::user()->company->company_code }}"><i
                         data-feather='circle'></i><span class="menu-title text-truncate"
                         data-i18n="Dashboards">Revenue</span><span

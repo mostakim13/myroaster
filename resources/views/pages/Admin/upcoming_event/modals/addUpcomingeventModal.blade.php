@@ -57,23 +57,8 @@
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-6 col-12">
-                                                <div class="form-group">
-                                                    <label for="email-id-column">Employee Name *</label>
-                                                    <select class="form-control" name="employee_id"
-                                                        aria-label="Default select example" required>
-                                                        <option value="" disabled selected hidden>Please Choose...
-                                                        </option>
-                                                        @foreach ($employees as $employee)
-                                                            @if ($employee->status == 1)
-                                                                <option value="{{ $employee->id }}">
-                                                                    {{ $employee->fname }}</option>
-                                                            @else
-                                                            @endif
-                                                        @endforeach
-                                                    </select>
-                                                </div>
-                                            </div>
+                                           
+                                           
 
                                             <div class="col-md-6 col-12">
                                                 <div class="form-group">
