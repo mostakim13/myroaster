@@ -115,9 +115,9 @@
                                                             <i data-feather='edit'></i>
                                                         </a> --}}
 
-                                                        {{-- <a class="edit-btn btn-link btn"
+                                                        {{-- <button class="edit-btn btn-link btn"
                                                             data-row="{{ $json }}"><i
-                                                                data-feather='edit'></i></a> --}}
+                                                                data-feather='edit'></i></button> --}}
 
                                                         {{-- <button data-copy="true" class="edit-btn btn-link btn"
                                                             data-row="{{ $json }}"><i

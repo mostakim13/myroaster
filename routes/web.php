@@ -111,6 +111,7 @@ Route::post('admin/home/timekeeper/store', [TimeKeeperController::class, 'storeT
 Route::post('admin/home/timekeeper/update', [TimeKeeperController::class, 'update'])->name('update-timekeeper')->middleware('is_admin');
 Route::get('admin/home/timekeeper/delete/{id}', [TimeKeeperController::class, 'delete'])->middleware('is_admin');
 Route::post('admin/home/payment/search', [PaymentController::class, 'search'])->name('searchData')->middleware('is_admin');
+Route::get('admin/home/pay/details/{employee_id}', [PaymentController::class, 'payDetails'])->middleware('is_admin');
 
 
 Route::post('admin/home/viewjob/search', [ViewJobController::class, 'search'])->name('search')->middleware('is_admin');

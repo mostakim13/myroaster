@@ -144,23 +144,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <!--<div class="col-md-12 col-6">-->
-                                            <!--    <label for="">Select Roaster Type</label>-->
-                                            <!--    <div class="form-group">-->
-                                            <!--        <select class="form-control" name="roaster_type" id="raoster-select"-->
-                                            <!--            aria-label="Default select example" required>-->
-                                            <!--            <option value="" disabled selected hidden>Please Choose...-->
-                                            <!--            </option>-->
-                                            <!--            @foreach ($roaster_types as $roaster_type)
--->
-                                            <!--                <option value="{{ $roaster_type->id }}">{{ $roaster_type->roaster_type }}-->
-                                            <!--                </option>-->
-                                            <!--
-@endforeach-->
-
-                                            <!--        </select>-->
-                                            <!--    </div>-->
-                                            <!--</div>-->
                                             <div class="col-md-12 col-6">
                                                 <label for="">Select Roaster Status</label>
                                                 <div class="form-group">

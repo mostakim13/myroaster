@@ -155,6 +155,30 @@ function getTime($date)
         data-require="datatables@*"></script>
     @push('scripts')
         <script>
+            var myDate = function startDate(e) {
+                return start_date = new Date(e.target.value);
+
+            }
+
+            console.log(myDate)
+
+            function dateCalculate(e) {
+                var end_date = new Date(e.target.value);
+                console.log(end_date);
+                var rate = document.getElementById('rate').value;
+                var Difference_In_Time = end_date.getTime() - date.getTime();
+                var Difference_In_hours = Difference_In_Time / (1000 * 3600);
+                var amount = Difference_In_hours * rate;
+                // console.log(Difference_In_Time);
+
+                document.getElementById('duration').value = Difference_In_hours;
+                document.getElementById('amount')
+                    .value = amount;
+
+            }
+        </script>
+
+        <script>
             $(function() {
 
                 $("#newModalForm").validate({
@@ -206,21 +230,21 @@ function getTime($date)
             $(document).ready(function() {
 
 
-                // var roaster_date, roaster_end, shift_start, shift_end;
+                // var roaster_date1, roaster_end, shift_start, shift_end;
                 var isValid = true;
 
                 var modalToTarget = document.getElementById("addTimeKeeper");
 
                 function roasterEndTimeInit() {
-                    $("#shift_end").flatpickr({
+                    $("#shift_end1").flatpickr({
                         enableTime: true,
                         altInput: false,
                         altInput: true,
                         altFormat: "d-m-Y H:i",
                         dateFormat: "Y-m-d H:i",
-                        minDate: window.roaster_date,
+                        minDate: window.roaster_date1,
                         maxDate: window.roaster_end,
-                        defaultDate: shift_end,
+                        defaultDate: shift_end1,
                         time_24hr: true,
                         onOpen: function(selectedDates, dateStr, instance) {
                             modalToTarget.removeAttribute('tabindex');
@@ -229,8 +253,8 @@ function getTime($date)
                             modalToTarget.setAttribute('tabindex', -1);
                         },
                         onChange: function(selectedDates, dateStr, instance) {
-                            if (new Date(window.roaster_date) - new Date(selectedDates) > 0 || new Date(
-                                    shift_start) -
+                            if (new Date(window.roaster_date1) - new Date(selectedDates) > 0 || new Date(
+                                    shift_start1) -
                                 new Date(selectedDates) > 0) {
                                 $("#shift_end_error").html(
                                     "Shift End should be after Roaster");
@@ -244,15 +268,15 @@ function getTime($date)
                 }
 
                 function roasterStartTimeInit() {
-                    $("#shift_start").flatpickr({
+                    $("#shift_start1").flatpickr({
                         enableTime: true,
                         altInput: false,
                         altInput: true,
                         altFormat: "d-m-Y H:i",
                         dateFormat: "Y-m-d H:i",
-                        minDate: window.roaster_date,
+                        minDate: window.roaster_date1,
                         maxDate: window.roaster_end,
-                        defaultDate: window.shift_start,
+                        defaultDate: window.shift_start1,
                         time_24hr: true,
                         onOpen: function(selectedDates, dateStr, instance) {
                             modalToTarget.removeAttribute('tabindex');
@@ -261,29 +285,29 @@ function getTime($date)
                             modalToTarget.setAttribute('tabindex', -1);
                         },
                         onChange: function(selectedDates, dateStr, instance) {
-                            if (new Date(window.roaster_date) - new Date(selectedDates) > 0) {
+                            if (new Date(window.roaster_date1) - new Date(selectedDates) > 0) {
                                 $("#shift_start_error").html("Shift Start should be after Roaster Time");
                                 isValid = false;
                             } else {
                                 $("#shift_start_error").html("");
                                 isValid = true;
                             }
-                            window.shift_start = selectedDates;
+                            window.shift_start1 = selectedDates;
 
                             roasterEndTimeInit()
                         },
                     })
                 }
 
-                // console.log($("#roaster_date").datetimepicker())
+                // console.log($("#roaster_date1").datetimepicker())
 
                 const initDatePicker = () => {
-                    $("#roaster_date").flatpickr({
+                    $("#roaster_date1").flatpickr({
                         altInput: false,
                         altInput: true,
                         altFormat: "d-m-Y",
                         dateFormat: "Y-m-d",
-                        defaultDate: window.roaster_date,
+                        defaultDate: window.roaster_date1,
                         onOpen: function(selectedDates, dateStr, instance) {
                             modalToTarget.removeAttribute('tabindex');
                         },
@@ -293,7 +317,7 @@ function getTime($date)
 
                         onChange: function(selectedDates, dateStr, instance) {
 
-                            window.roaster_date = moment(new Date(selectedDates)).format('YYYY.MM.DD');
+                            window.roaster_date1 = moment(new Date(selectedDates)).format('YYYY.MM.DD');
                             window.roaster_end = moment(new Date(selectedDates))
                                 .add(24, "h")
                                 .format(
@@ -331,9 +355,9 @@ function getTime($date)
                 $(document).on("click", ".edit-btn", function() {
                     var rowData = $(this).data("row");
 
-                    window.roaster_date = rowData.roaster_date;
-                    window.shift_start = rowData.shift_start;
-                    window.shift_end = rowData.shift_end;
+                    window.roaster_date1 = rowData.roaster_date1;
+                    window.shift_start1 = rowData.shift_start1;
+                    window.shift_end1 = rowData.shift_end1;
                     console.log($(this).data("copy"))
 
                     if (!$(this).data("copy"))
@@ -342,12 +366,12 @@ function getTime($date)
                     $("#employee_id").val(rowData.employee_id);
                     $("#client-select").val(rowData.client_id).trigger('change');
 
-                    // $("#roaster_date").val(rowData.roaster_date)
+                    // $("#roaster_date1").val(rowData.roaster_date1)
                     // $("#shift_start").val(rowData.shift_start)
                     // $("#shift_end").val(rowData.shift_end)
-                    $("#rate").val(rowData.ratePerHour)
-                    $("#duration").val(rowData.duration)
-                    $("#amount").val(rowData.amount)
+                    $("#rate1").val(rowData.ratePerHour1)
+                    $("#duration1").val(rowData.duration1)
+                    $("#amount1").val(rowData.amount1)
                     $("#job").val(rowData.job)
                     $("#roaster").val(rowData.roaster)
 
@@ -366,9 +390,9 @@ function getTime($date)
 
 
                 $(document).on("input", ".reactive", function() {
-                    var start = $("#shift_start").val();
-                    var end = $("#shift_end").val();
-                    var rate = $("#rate").val();
+                    var start = $("#shift_start1").val();
+                    var end = $("#shift_end1").val();
+                    var rate1 = $("#rate1").val();
 
                     if (start && end) {
                         // calculate hours
@@ -388,9 +412,9 @@ function getTime($date)
                                 "");
                             isValid = true;
 
-                            $("#duration").val(diff);
-                            if (rate) {
-                                $("#amount").val(parseFloat(rate) * diff);
+                            $("#duration1").val(diff);
+                            if (rate1) {
+                                $("#amount1").val(parseFloat(rate1) * diff);
                             }
 
                         }

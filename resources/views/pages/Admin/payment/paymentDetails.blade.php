@@ -29,17 +29,32 @@
                     <form action="{{ route('searchData') }}" method="POST" id="dates_form">
                         @csrf
                         <div class="row row-xs">
-                            <div class="col-md-5 col-lg-4 ">
+                            <div class="col-md-3 col-3">
                                 <input type="date" class="form-control date_range_filter date"
                                     placeholder="Select Start Date" name="start_dates" id="start_date datepicker_from"
                                     required="required">
                             </div>
-                            <div class="col-md-5 col-lg-4 mt-3 mt-md-0 ">
+                            <div class="col-md-3 col-3 mt-3 mt-md-0 ">
                                 <input type="date" class="form-control" placeholder="Select End Date"
                                     id="end_date datepicker_to" required="required" name="end_dates"
                                     min="0000-00-00 00:00:00">
                             </div>
-                            <div class="col-md-2 col-lg-3 mt-3 mt-md-0">
+                            <div class="col-md-3 col-3 mt-3 mt-md-0 ">
+                                @php
+                                    $timekeeperID = App\Models\Timekeeper::first();
+                                @endphp
+                                {{-- {{ dd($timekeeperID->id) }} --}}
+                                <select class="form-control" name="employee_id" id="employee_id"
+                                    aria-label="Default select example" required>
+                                    <option value="{{ old('employee_id') }}" disabled selected hidden>Please Choose...
+                                    </option>
+                                    @foreach ($employees as $employee)
+                                        <option value="{{ $employee->id }}">
+                                            {{ $employee->fname }}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-3 mt-3 mt-md-0">
                                 <button type="submit" class="btn btn btn-outline-primary btn-block"
                                     id="btn_search">Search</button>
                             </div>
@@ -53,11 +68,13 @@
             <table class="table" id="datatable">
                 <thead>
                     <tr>
-                        <th scope="col">Employee Name</th>
-                        <th scope="col">Total Hour</th>
-                        <th scope="col">Total Amount</th>
-                        <th>Payment</th>
-                        {{-- <th>Actual Etart Date</th> --}}
+                        <th scope="col">Remarks</th>
+                        <th scope="col">App Start Time</th>
+                        <th scope="col">App End Time</th>
+                        <th scope="col">Duration</th>
+                        <th scope="col">Rate</th>
+                        <th scope="col">Amount</th>
+                        <th scope="col">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -67,25 +84,22 @@
                     @endphp
                     @foreach ($timekeepers as $timekeeper)
                         <tr>
-                            <td>{{ $timekeeper->employee->fname }} {{ $timekeeper->employee->mname }}
-                                {{ $timekeeper->employee->lname }}</td>
+                            <td>{{ $timekeeper->remarks }}</td>
+                            <td>{{ $timekeeper->shift_start }}</td>
+                            <td>{{ $timekeeper->shift_end }}</td>
                             <td>{{ $timekeeper->duration }}</td>
+                            <td>{{ $timekeeper->ratePerHour }}</td>
                             <td>{{ $timekeeper->amount }}</td>
-                            @php
+                            {{-- @php
                                 $sumDuration += $timekeeper->duration;
                                 $sum += $timekeeper->amount;
-                            @endphp
-                            <input type="hidden" name="employee_id" value="{{ $timekeeper->employee_id }}">
-                            <td><a href="/admin/home/pay/details/{{ $timekeeper->employee_id }}">Pay</a></td>
+                            @endphp --}}
+                            <td>
+                                <a href="" class="btn btn-primary btn-sm"><i data-feather='edit'></i></a>
+                                <a href="" class="btn btn-danger btn-sm"><i data-feather='trash-2'></i></a>
+                            </td>
                         </tr>
                     @endforeach
-
-                    <tr>
-                        <td></td>
-                        <td>Total: {{ $sumDuration }} hours</td>
-                        <td>Total: {{ $sum }} $</td>
-                    </tr>
-
 
                 </tbody>
             </table>

@@ -19,18 +19,18 @@
                                         Roaster Start Time test
                                     </label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control reative" placeholder="Start"
-                                            id="shift_start" name="shift_start" readonly>
+                                        <input type="date" class="form-control" placeholder="Start" id="shift_start3"
+                                            name="shift_start" onchange="startDate(event)">
                                     </div>
                                 </div>
 
                                 <div class="col-sm-6 @error('roaster_end_date') has-error @enderror">
-                                    <label for="username" class="control-label">
+                                    <label for="username" class="control-label ">
                                         Roaster Ends Time
                                     </label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control reactive" placeholder="Contact No"
-                                            id="shift_end" name="shift_end" readonly>
+                                        <input type="date" class="form-control" placeholder="Contact No"
+                                            id="shift_end3" name="shift_end" onchange="dateCalculate(event)">
                                     </div>
                                 </div>
                             </div>
@@ -42,16 +42,10 @@
                                     </label>
 
                                     <div class="input-group">
-                                        <input type="text" class="form-control" placeholder="Durarion" id="username"
-                                            wire:model.defer="date_to_display" wire:change="calculate2()"
-                                            disabled="disabled">
+                                        <input type="text" class="form-control" placeholder="Durarion" id="duration"
+                                            name="duration">
                                     </div>
 
-                                    <div class="input-group">
-                                        <input type="hidden" class="form-control" placeholder="Durarion" id="username"
-                                            wire:model.defer="date_to_display" wire:change="calculate2()"
-                                            disabled="disabled">
-                                    </div>
                                 </div>
 
                                 <div class="col-sm-6 @error('rate') has-error @enderror">
@@ -60,7 +54,7 @@
                                     </label>
                                     <div class="input-group">
                                         <input type="text" class="form-control reactive" placeholder="Rate" id="rate"
-                                            name="ratePerHour">
+                                            name="ratePerHour" onchange="dateCalculate()">
                                     </div>
                                 </div>
                             </div>
@@ -98,6 +92,7 @@
 
                         </div>
                     </div>
+
                     <div class="modal-footer">
 
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
